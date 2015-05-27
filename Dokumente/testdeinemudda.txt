@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 asdfasdfasdf 
 
 
 
 
    joanthan
+=======
+asdfasdfasdf
+
+philipp
+>>>>>>> 99745836a72afb36f67a8a543bb5102d03610769
