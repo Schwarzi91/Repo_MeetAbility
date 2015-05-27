@@ -1,0 +1,77 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:weightSum="4">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="2"
+            android:weightSum="4">
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="2"
+                android:id="@+id/btSearchActivity"
+                android:text="@string/search_activty"
+                android:textColor="#ffffff"
+                android:textSize="25dp"
+                android:background="@drawable/button_style"
+                android:layout_marginBottom="2dp"/>
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="2"
+                android:id="@+id/btCreateActivity"
+                android:text="@string/create_activity"
+                android:textColor="#ffffff"
+                android:textSize="25dp"
+                android:background="@drawable/button_style"
+                android:layout_marginTop="2dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="2"
+            android:weightSum="4">
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="2"
+                android:text="@string/show_profile"
+                android:textColor="#ffffff"
+                android:textSize="25dp"
+                android:id="@+id/btShowProfile"
+                android:background="@drawable/button_style"
+                android:layout_marginRight="2dp"
+                android:layout_marginTop="4dp"/>
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="2"
+                android:text="@string/show_history"
+                android:textColor="#ffffff"
+                android:textSize="25dp"
+                android:id="@+id/btShowHistory"
+                android:background="@drawable/button_style"
+                android:layout_marginLeft="2dp"
+                android:layout_marginTop="4dp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>
