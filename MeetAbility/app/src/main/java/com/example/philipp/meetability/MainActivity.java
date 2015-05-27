@@ -40,7 +40,7 @@ public class MainActivity extends Activity implements View.OnClickListener
             Toast.makeText(this, "Activity suchen", Toast.LENGTH_SHORT).show();
 
         else if(v == btShowProfile)
-            Toast.makeText(this, "Profil anzeigen", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Profil anzeige", Toast.LENGTH_SHORT).show();
 
         else if(v == btShowHistory)
             Toast.makeText(this, "Historie anzeigen", Toast.LENGTH_SHORT).show();
