@@ -42,8 +42,7 @@
                 android:text="@string/search_activty"
                 android:textColor="#ffffff"
                 android:textSize="25dp"
-                android:background="@drawable/button_style"
-                android:layout_marginBottom="2dp"/>
+                android:background="@drawable/button_style"/>
 
             <Button
                 android:layout_width="fill_parent"
@@ -53,8 +52,7 @@
                 android:text="@string/create_activity"
                 android:textColor="#ffffff"
                 android:textSize="25dp"
-                android:background="@drawable/button_style"
-                android:layout_marginTop="2dp"/>
+                android:background="@drawable/button_style"/>
         </LinearLayout>
 
         <LinearLayout
@@ -72,9 +70,7 @@
                 android:textColor="#ffffff"
                 android:textSize="25dp"
                 android:id="@+id/btShowProfile"
-                android:background="@drawable/button_style"
-                android:layout_marginRight="2dp"
-                android:layout_marginTop="4dp"/>
+                android:background="@drawable/button_style"/>
 
             <Button
                 android:layout_width="fill_parent"
@@ -84,9 +80,7 @@
                 android:textColor="#ffffff"
                 android:textSize="25dp"
                 android:id="@+id/btShowHistory"
-                android:background="@drawable/button_style"
-                android:layout_marginLeft="2dp"
-                android:layout_marginTop="4dp"/>
+                android:background="@drawable/button_style"/>
         </LinearLayout>
     </LinearLayout>
 

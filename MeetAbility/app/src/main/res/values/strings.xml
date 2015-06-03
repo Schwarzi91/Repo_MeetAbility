@@ -16,4 +16,6 @@
     <string name="title_activity_register">RegisterActivity</string>
     <string name="register">Registrieren</string>
     <string name="password_confirm">Passwort bestätigen</string>
+    <string name="title_activity_screen_slider_page">ScreenSliderPageActivity</string>
+    <string name="title_activity_screen_slider_page_fragment">ScreenSliderPageFragment</string>
 </resources>
