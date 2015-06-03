@@ -37,7 +37,7 @@ public class LoginActivity extends Activity implements View.OnClickListener
     {
         if(v == btLogin)
         {
-            Intent intent = new Intent(this, ScreenSlidePagerActivity.class);
+            Intent intent = new Intent(this, MainActivity.class);
                 intent.putExtra("E-Mail", etEmail.getText().toString());
             startActivity(intent);
         }
