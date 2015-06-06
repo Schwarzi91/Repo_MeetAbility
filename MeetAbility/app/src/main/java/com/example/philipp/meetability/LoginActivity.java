@@ -2,10 +2,7 @@ package com.example.philipp.meetability;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -38,7 +35,7 @@ public class LoginActivity extends Activity implements View.OnClickListener
         if(v == btLogin)
         {
             Intent intent = new Intent(this, MainActivity.class);
-                intent.putExtra("E-Mail", etEmail.getText().toString());
+            intent.putExtra("E-Mail", etEmail.getText().toString());
             startActivity(intent);
         }
         else if(v == tvNotRegistered)
