@@ -26,6 +26,7 @@ public class PageViewActivity extends android.support.v4.app.FragmentActivity
         pageAdapter = new MyPageAdapter(getSupportFragmentManager(), fragments);
 
         ViewPager pager = (ViewPager) findViewById(R.id.viewpager);
+        pager.setPageTransformer(true, new ZoomOutPageTransformer());
         pager.setAdapter(pageAdapter);
     }
 
