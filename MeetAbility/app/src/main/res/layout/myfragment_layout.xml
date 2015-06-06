@@ -5,11 +5,16 @@
     android:orientation="vertical" >
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Hallo was gehtn"/>
+        android:text="Hallo was gehtn"
+        android:textColor="#ff1111"
+        android:alpha="0.6"
+        android:layout_margin="20dp"
+        android:gravity="center"
+        android:background="#ffffff"/>
 
 </RelativeLayout>
