@@ -54,9 +54,7 @@
                         android:background="@drawable/round_button"
                         android:gravity="center"
                         android:layout_marginRight="10dp"
-                        android:text="Profil"
-                        android:textColor="#ffffff"
-                        android:alpha="0.8"/>
+                        android:drawableBottom="@drawable/icon"/>
 
                     <Button
                         android:layout_width="180dp"
@@ -66,9 +64,7 @@
                         android:gravity="center"
                         android:background="@drawable/round_button"
                         android:layout_marginLeft="10dp"
-                        android:text="Veranstaltung \nsuchen"
-                        android:textColor="#ffffff"
-                        android:alpha="0.8"/>
+                        android:drawableBottom="@drawable/icon"/>
                 </TableRow>
 
                 <TableRow
@@ -85,9 +81,7 @@
                         android:layout_column="5"
                         android:background="@drawable/round_button"
                         android:layout_marginRight="10dp"
-                        android:text="Veranstaltung erstellen"
-                        android:textColor="#ffffff"
-                        android:alpha="0.8"/>
+                        android:drawableBottom="@drawable/icon"/>
 
                     <Button
                         android:layout_width="180dp"
@@ -95,10 +89,8 @@
                         android:id="@+id/btShowProfile"
                         android:layout_column="7"
                         android:layout_marginLeft="10dp"
-                        android:background="@drawable/round_button"
-                        android:text="Veranstaltung erstellen"
-                        android:textColor="#ffffff"
-                        android:alpha="0.8"/>
+                        android:drawableBottom="@drawable/icon"
+                        android:background="@drawable/round_button"/>
                 </TableRow>
             </TableLayout>
         </LinearLayout>
