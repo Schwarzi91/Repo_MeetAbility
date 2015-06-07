@@ -57,7 +57,7 @@
                         android:drawableTop="@drawable/icon"
                         android:text="suchen"
                         android:textColor="#ffffff"
-                        android:textSize="25dp"/>
+                        android:textSize="14pt"/>
 
                     <Button
                         android:layout_width="150dp"
