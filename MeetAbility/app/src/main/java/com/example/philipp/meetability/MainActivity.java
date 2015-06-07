@@ -25,7 +25,7 @@ public class MainActivity extends Activity implements View.OnClickListener
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_new);
         btCreateActivity = (Button) findViewById(R.id.btCreateActivity);
         btSearchActivity = (Button) findViewById(R.id.btSearchActivity);
         btShowProfile = (Button) findViewById(R.id.btShowProfile);
@@ -38,8 +38,8 @@ public class MainActivity extends Activity implements View.OnClickListener
         btShowHistory.setOnClickListener(this);
 
         Intent intent = getIntent();
-        strUsername = intent.getStringExtra("E-Mail");
-        tvUsername.setText(strUsername);
+        //strUsername = intent.getStringExtra("E-Mail");
+       // tvUsername.setText(strUsername);
     }
 
     @Override

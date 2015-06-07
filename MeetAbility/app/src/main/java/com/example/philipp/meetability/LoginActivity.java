@@ -6,12 +6,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 
 public class LoginActivity extends Activity implements View.OnClickListener
 {
-    private Button btLogin;
+    private ImageButton btLogin;
     private EditText etEmail;
     private TextView tvNotRegistered;
 
@@ -19,14 +20,14 @@ public class LoginActivity extends Activity implements View.OnClickListener
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        btLogin = (Button) findViewById(R.id.btLogin);
+        setContentView(R.layout.activity_login_new);
+        btLogin = (ImageButton) findViewById(R.id.btLogin);
         btLogin.setOnClickListener(this);
 
         etEmail = (EditText) findViewById(R.id.etEmail);
 
-        tvNotRegistered = (TextView) findViewById(R.id.tvNotRegistered);
-        tvNotRegistered.setOnClickListener(this);
+        //tvNotRegistered = (TextView) findViewById(R.id.tvNotRegistered);
+        //tvNotRegistered.setOnClickListener(this);
     }
 
     @Override
