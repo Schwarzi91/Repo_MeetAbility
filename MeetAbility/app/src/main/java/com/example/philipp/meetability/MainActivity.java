@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,10 +15,10 @@ import viewpager.PageViewActivity;
 
 public class MainActivity extends Activity implements View.OnClickListener
 {
-    private Button btCreateActivity;
-    private Button btSearchActivity;
-    private Button btShowProfile;
-    private Button btShowHistory;
+    private ImageButton btCreateActivity;
+    private ImageButton btSearchActivity;
+    private ImageButton btShowProfile;
+    private ImageButton btShowHistory;
     private TextView tvUsername;
     private String strUsername;
 
@@ -26,10 +27,10 @@ public class MainActivity extends Activity implements View.OnClickListener
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_new);
-        btCreateActivity = (Button) findViewById(R.id.btCreateActivity);
-        btSearchActivity = (Button) findViewById(R.id.btSearchActivity);
-        btShowProfile = (Button) findViewById(R.id.btShowProfile);
-        btShowHistory = (Button) findViewById(R.id.btShowHistory);
+        btCreateActivity = (ImageButton) findViewById(R.id.ibCreateActivity);
+        btSearchActivity = (ImageButton) findViewById(R.id.ibSearchActivity);
+        btShowProfile = (ImageButton) findViewById(R.id.ibShowProfile);
+        btShowHistory = (ImageButton) findViewById(R.id.ibShowHistory);
         tvUsername = (TextView) findViewById(R.id.tvUsername);
 
         btCreateActivity.setOnClickListener(this);

@@ -44,12 +44,14 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:layout_weight="2">
+                    android:layout_weight="2"
+                    android:id="@+id/iv">
 
-                    <Button
+<!--                    <Button
                         android:layout_width="150dp"
                         android:layout_height="150dp"
                         android:id="@+id/btCreateActivity"
+                        android:scalety
                         android:layout_column="5"
                         android:background="@drawable/round_button"
                         android:gravity="center"
@@ -58,16 +60,29 @@
                         android:text="suchen"
                         android:textColor="#ffffff"
                         android:textSize="14pt"/>
-
-                    <Button
+-->
+                    <ImageButton
                         android:layout_width="150dp"
                         android:layout_height="150dp"
-                        android:id="@+id/btSearchActivity"
+                        android:padding="30dp"
+                        android:id="@+id/ibCreateActivity"
+                        android:layout_column="5"
+                        android:layout_marginRight="10dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/add"
+                        android:background="@drawable/round_button"/>
+
+                    <ImageButton
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:padding="30dp"
+                        android:scaleType="fitCenter"
+                        android:id="@+id/ibSearchActivity"
                         android:layout_column="7"
-                        android:gravity="center"
-                        android:background="@drawable/round_button"
                         android:layout_marginLeft="10dp"
-                        android:drawableBottom="@drawable/icon"/>
+                        android:src="@drawable/search"
+                        android:background="@drawable/round_button"/>
+
                 </TableRow>
 
                 <TableRow
@@ -76,7 +91,7 @@
                     android:gravity="center"
                     android:layout_marginTop="20dp"
                     android:layout_weight="2">
-
+<!--
                     <Button
                         android:layout_width="150dp"
                         android:layout_height="150dp"
@@ -85,15 +100,38 @@
                         android:background="@drawable/round_button"
                         android:layout_marginRight="10dp"
                         android:drawableBottom="@drawable/icon"/>
+-->
+                    <ImageButton
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:padding="30dp"
+                        android:id="@+id/ibShowHistory"
+                        android:layout_column="5"
+                        android:layout_marginRight="10dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/task"
+                        android:background="@drawable/round_button"/>
 
+                    <ImageButton
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:padding="30dp"
+                        android:id="@+id/ibShowProfile"
+                        android:layout_column="7"
+                        android:layout_marginRight="10dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/user"
+                        android:background="@drawable/round_button"/>
+<!--
                     <Button
                         android:layout_width="150dp"
                         android:layout_height="150dp"
                         android:id="@+id/btShowProfile"
                         android:layout_column="7"
                         android:layout_marginLeft="10dp"
-                        android:drawableBottom="@drawable/icon"
+                        android:drawableBottom="@drawable/search"
                         android:background="@drawable/round_button"/>
+-->
                 </TableRow>
             </TableLayout>
         </LinearLayout>
