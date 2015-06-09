@@ -31,16 +31,12 @@ public class MainActivity extends Activity implements View.OnClickListener
         btSearchActivity = (ImageButton) findViewById(R.id.ibSearchActivity);
         btShowProfile = (ImageButton) findViewById(R.id.ibShowProfile);
         btShowHistory = (ImageButton) findViewById(R.id.ibShowHistory);
-        tvUsername = (TextView) findViewById(R.id.tvUsername);
 
         btCreateActivity.setOnClickListener(this);
         btSearchActivity.setOnClickListener(this);
         btShowProfile.setOnClickListener(this);
         btShowHistory.setOnClickListener(this);
 
-        Intent intent = getIntent();
-        //strUsername = intent.getStringExtra("E-Mail");
-       // tvUsername.setText(strUsername);
     }
 
     @Override
