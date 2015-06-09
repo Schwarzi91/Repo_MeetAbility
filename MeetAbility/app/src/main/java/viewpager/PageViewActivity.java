@@ -34,9 +34,9 @@ public class PageViewActivity extends android.support.v4.app.FragmentActivity
     {
         List<Fragment> fragmentList = new ArrayList<>();
 
-        fragmentList.add(MyFragment.newInstance("Fragment 1"));
-        fragmentList.add(MyFragment.newInstance("Fragment 2"));
-        fragmentList.add(MyFragment.newInstance("Fragment 3"));
+        fragmentList.add(MyFragment.newInstance("Kino"));
+        fragmentList.add(MyFragment.newInstance("Kino"));
+        fragmentList.add(MyFragment.newInstance("Kino"));
 
         return fragmentList;
     }
