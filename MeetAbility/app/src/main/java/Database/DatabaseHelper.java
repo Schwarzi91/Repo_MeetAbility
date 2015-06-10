@@ -1,4 +1,4 @@
-package de.clearconsulting.meetability.Applikation.Database.Database;
+package Database;
 
 import android.database.sqlite.SQLiteOpenHelper;
 

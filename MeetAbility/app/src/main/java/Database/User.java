@@ -1,11 +1,11 @@
-package de.clearconsulting.meetability.Applikation.Database.Database;
+package Database;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
 import java.io.File;
 
-import de.clearconsulting.meetability.Applikation.Database.*;
+import Database.*;
 
 /**
  * Created by Kisman on 02.06.2015.
@@ -20,7 +20,7 @@ public class User {
     private int user_id;
 
     @DatabaseField (foreign = true, canBeNull = false)
-    private de.clearconsulting.meetability.Applikation.Database.History history_id;
+    private History history_id;
 
     @DatabaseField (canBeNull = false)
     private String email;
@@ -45,7 +45,7 @@ public class User {
 
     public User(){}
 
-    public User(de.clearconsulting.meetability.Applikation.Database.History history_id, String email, String password, String username, String sex, int age, File picture, String description){
+    public User(History history_id, String email, String password, String username, String sex, int age, File picture, String description){
         super();
         this.history_id=history_id;
         this.email=email;
