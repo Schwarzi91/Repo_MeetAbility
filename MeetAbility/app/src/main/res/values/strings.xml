@@ -31,6 +31,8 @@
     <string name="from_time">von Uhrzeit</string>
     <string name="to_time">bis Uhrzeit</string>
     <string name="description">Beschreibung</string>
-    <string name="participants">Teilnehmeranzahl</string>s
+    <string name="participants">Anzahl</string>s
     <string name="create">erstellen</string>
+    <string name="gender">Geschlecht</string>
+    <string name="activity_type">Aktivität</string>
 </resources>
