@@ -30,4 +30,7 @@
     <string name="to_date">bis Datum</string>
     <string name="from_time">von Uhrzeit</string>
     <string name="to_time">bis Uhrzeit</string>
+    <string name="description">Beschreibung</string>
+    <string name="participants">Teilnehmeranzahl</string>s
+    <string name="create">erstellen</string>
 </resources>

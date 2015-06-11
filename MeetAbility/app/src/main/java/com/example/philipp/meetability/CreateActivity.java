@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TimePicker;
 
+import java.nio.charset.Charset;
 import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -23,6 +24,7 @@ public class CreateActivity extends Activity implements View.OnClickListener
 {
     private Spinner spActivityTypes;
     private Spinner spGender;
+    private Spinner spMaxParticipants;
 
     //Datum
     private EditText etFromDate;
@@ -45,20 +47,21 @@ public class CreateActivity extends Activity implements View.OnClickListener
 
         //Spinner
         spActivityTypes = (Spinner) findViewById(R.id.spActivityType);
-
         ArrayAdapter<CharSequence> activityTypeAdapter = ArrayAdapter.createFromResource(this,
                 R.array.activityTypes, android.R.layout.simple_spinner_item);
-
         activityTypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
         spActivityTypes.setAdapter(activityTypeAdapter);
 
         spGender = (Spinner) findViewById(R.id.spGender);
-
         ArrayAdapter<CharSequence> genderAdapter = ArrayAdapter.createFromResource(this,
                 R.array.gender, android.R.layout.simple_expandable_list_item_1);
-
         spGender.setAdapter(genderAdapter);
+
+        spMaxParticipants = (Spinner) findViewById(R.id.spMaxParticipants);
+        ArrayAdapter<CharSequence> maxParticipantsAdapter = ArrayAdapter.createFromResource(this,
+                R.array.maxParticipants, android.R.layout.simple_spinner_dropdown_item);
+        maxParticipantsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spMaxParticipants.setAdapter(maxParticipantsAdapter);
         //Spinner ende
 
         //Datum
