@@ -12,9 +12,9 @@ import android.widget.TextView;
 
 public class LoginActivity extends Activity implements View.OnClickListener
 {
-    private ImageButton btLogin;
-    private Button btRegister;
+    private Button btLogin;
     private EditText etEmail;
+    private EditText etPassword;
     private TextView tvNotRegistered;
 
     @Override
@@ -22,13 +22,15 @@ public class LoginActivity extends Activity implements View.OnClickListener
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_new);
-        btLogin = (ImageButton) findViewById(R.id.btLogin);
-        btLogin.setOnClickListener(this);
-
-        btRegister = (Button) findViewById(R.id.btRegister);
-        btRegister.setOnClickListener(this);
 
         etEmail = (EditText) findViewById(R.id.etEmail);
+        etPassword = (EditText) findViewById(R.id.etPassword);
+
+        btLogin = (Button) findViewById(R.id.btLogin);
+        btLogin.setOnClickListener(this);
+
+        tvNotRegistered = (TextView) findViewById(R.id.tvNotRegistered);
+        tvNotRegistered.setOnClickListener(this);
 
         //tvNotRegistered = (TextView) findViewById(R.id.tvNotRegistered);
         //tvNotRegistered.setOnClickListener(this);
@@ -43,7 +45,7 @@ public class LoginActivity extends Activity implements View.OnClickListener
             intent.putExtra("E-Mail", etEmail.getText().toString());
             startActivity(intent);
         }
-        else if(v == btRegister)
+        else if(v == tvNotRegistered)
         {
             Intent intent = new Intent(this, RegisterActivity.class);
             startActivity(intent);

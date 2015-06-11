@@ -5,11 +5,12 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 
-public class RegisterActivity extends Activity
+public class RegisterActivity extends Activity implements View.OnClickListener
 {
     EditText etEmail;
     EditText etPassword;
@@ -26,5 +27,8 @@ public class RegisterActivity extends Activity
         btRegistration = (Button) findViewById(R.id.btRegister);
     }
 
+    @Override
+    public void onClick(View v) {
 
+    }
 }

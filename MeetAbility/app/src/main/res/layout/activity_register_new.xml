@@ -39,7 +39,8 @@
                 android:id="@+id/etEmail"
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/edittext"
-                android:textColorHint="#ffffff"/>
+                android:textColorHint="#ffffff"
+                android:textColor="#ffffff"/>
 
             <EditText
                 android:layout_width="match_parent"
@@ -58,7 +59,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="Registrieren"
-                android:background="#19d2ba"
+                android:background="@drawable/register_login_button"
                 android:textColor="#ffffff"
                 android:id="@+id/btRegister"
                 android:layout_marginTop="40dp"

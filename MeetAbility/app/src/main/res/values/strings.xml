@@ -11,7 +11,7 @@
     <string name="email">E-Mail</string>
     <string name="password">Passwort</string>
     <string name="user_name">Hallo User</string>
-    <string name="not_registered">Noch nicht registriert?</string>
+    <string name="not_registered">Sie sind noch nicht registriert?</string>
     <string name="title_activity_register">RegisterActivity</string>
     <string name="register">Registrieren</string>
     <string name="password_confirm">Passwort bestätigen</string>
@@ -19,7 +19,7 @@
     <string name="title_activity_screen_slider_page_fragment">ScreenSliderPageFragment</string>
     <string name="participate">teilnehmen</string>
     <string name="title_activity_main_activity2">MainActivity2Activity</string>
-
+    <string name="save_login">automatisch anmelden</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_activity_search">activity_search</string>
 </resources>
