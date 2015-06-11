@@ -1,19 +1,21 @@
 package com.example.philipp.meetability;
 
+import android.app.Activity;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
 
-public class activity_search extends ActionBarActivity {
+public class SearchActivity extends Activity //ActionBarActivity funktioniert nicht
+{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
     }
-
+/*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -35,4 +37,5 @@ public class activity_search extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+    */
 }

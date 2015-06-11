@@ -49,7 +49,10 @@ public class MainActivity extends Activity implements View.OnClickListener
             Toast.makeText(this, "Activity anlegen", Toast.LENGTH_SHORT).show();
 
         else if(v == btSearchActivity)
-            Toast.makeText(this, "Activity suchen", Toast.LENGTH_SHORT).show();
+        {
+            Intent viewPagerIntent = new Intent(this, SearchActivity.class);
+            startActivity(viewPagerIntent);
+        }
 
         else if(v == btShowProfile)
             Toast.makeText(this, "Profil anzeigen", Toast.LENGTH_SHORT).show();

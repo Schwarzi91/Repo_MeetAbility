@@ -46,7 +46,7 @@
             android:label="@string/title_activity_main_activity2" >
         </activity>
         <activity
-            android:name=".activity_search"
+            android:name=".SearchActivity"
             android:label="@string/title_activity_activity_search" >
         </activity>
     </application>
