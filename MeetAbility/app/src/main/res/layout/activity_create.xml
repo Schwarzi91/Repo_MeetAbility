@@ -59,7 +59,8 @@
                 android:id="@+id/spActivityType"
                 android:spinnerMode="dropdown"
                 android:layout_weight="5"
-                android:textAlignment="center"/>
+                android:textAlignment="center"
+                android:popupBackground="#ffffff" />
 
             <Spinner
                 android:layout_width="wrap_content"
@@ -98,6 +99,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="@+id/editText"
+            android:textColor="#ffffff"
+            android:textColorHint="#85ffffff"
             android:background="@drawable/edittext"
             android:hint="Cineplex Westpark"/>
     </LinearLayout>
@@ -145,6 +148,8 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/etFromDate"
+                        android:textColor="#ffffff"
+                        android:textColorHint="#80ffffff"
                         android:hint="@string/from_date"
                         android:layout_weight="5"/>
 
@@ -152,6 +157,8 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/etToDate"
+                        android:textColor="#ffffff"
+                        android:textColorHint="#80ffffff"
                         android:hint="@string/to_date"
                         android:layout_weight="5"/>
                 </LinearLayout>
@@ -166,6 +173,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/etFromTime"
+                        android:textColor="#ffffff"
+                        android:textColorHint="#80ffffff"
                         android:hint="@string/from_time"
                         android:layout_weight="5"/>
 
@@ -173,6 +182,8 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/etToTime"
+                        android:textColor="#ffffff"
+                        android:textColorHint="#80ffffff"
                         android:hint="@string/to_time"
                         android:layout_weight="5"/>
                 </LinearLayout>
@@ -190,34 +201,38 @@
         android:weightSum="10"
         android:layout_marginTop="11dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/description"
-            android:textColor="#ffffff"
-            android:textStyle="bold"
-            android:id="@+id/tvDescription"/>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="9">
 
-        <EditText
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="8.5"
-            android:id="@+id/etDescription"
-            android:background="@drawable/edittext"
-            android:layout_marginBottom="5dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/description"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:id="@+id/tvDescription"/>
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/etDescription"
+                android:background="@drawable/edittext"
+                android:textColor="#ffffff"/>
+        </LinearLayout>
 
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:text="@string/create"
             android:id="@+id/btCreate"
             android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="5dp"
-            android:layout_weight="1.5"
+            android:layout_weight="1"
             android:background="@drawable/register_login_button"/>
-
     </LinearLayout>
 
 </LinearLayout>
