@@ -16,6 +16,7 @@ import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
+import java.util.TimeZone;
 
 
 public class CreateActivity extends Activity implements View.OnClickListener
@@ -117,9 +118,9 @@ public class CreateActivity extends Activity implements View.OnClickListener
             {
                 Calendar newTime = Calendar.getInstance();
                 newTime.set(hourOfDay, minute);
-                etToTime.setText(hourOfDay + ":" + minute);
+                etFromTime.setText(hourOfDay + ":" + minute);
             }
-        }, newCalendar.get(Calendar.HOUR), newCalendar.get(Calendar.MINUTE), false);
+        }, newCalendar.get(Calendar.HOUR), newCalendar.get(Calendar.MINUTE), true);
 
         toTimePicker = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener()
         {
@@ -130,7 +131,7 @@ public class CreateActivity extends Activity implements View.OnClickListener
                 newTime.set(hourOfDay, minute);
                 etToTime.setText(hourOfDay + ":" + minute);
             }
-        }, newCalendar.get(Calendar.HOUR), newCalendar.get(Calendar.MINUTE), false);
+        }, newCalendar.get(Calendar.HOUR), newCalendar.get(Calendar.MINUTE), true);
     }
 
     @Override
