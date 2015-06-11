@@ -85,23 +85,52 @@
 
             <LinearLayout
                 android:orientation="horizontal"
-                android:layout_width="match_parent"
+                android:layout_width="fill_parent"
                 android:layout_height="match_parent"
                 android:weightSum="10">
 
-                <EditText
-                    android:layout_width="0dp"
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/etFromDate"
-                    android:hint="@string/from_date"
-                    android:layout_weight="5"/>
+                    android:layout_weight="5"
+                    android:weightSum="10">
 
-                <EditText
-                    android:layout_width="0dp"
+                    <EditText
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/etFromDate"
+                        android:hint="@string/from_date"
+                        android:layout_weight="5"/>
+
+                    <EditText
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/etToDate"
+                        android:hint="@string/to_date"
+                        android:layout_weight="5"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/etToDate"
-                    android:hint="@string/to_date"
-                    android:layout_weight="5"/>
+                    android:weightSum="10">
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/etFromTime"
+                        android:hint="@string/from_time"
+                        android:layout_weight="5"/>
+
+                    <EditText
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/etToTime"
+                        android:hint="@string/to_time"
+                        android:layout_weight="5"/>
+                </LinearLayout>
             </LinearLayout>
 
         </LinearLayout>

@@ -26,6 +26,8 @@
     <string name="male">männlich</string>
     <string name="female">weiblich</string>
     <string name="date">Zeit</string>
-    <string name="from_date">Von Datum</string>
+    <string name="from_date">von Datum</string>
     <string name="to_date">bis Datum</string>
+    <string name="from_time">von Uhrzeit</string>
+    <string name="to_time">bis Uhrzeit</string>
 </resources>
