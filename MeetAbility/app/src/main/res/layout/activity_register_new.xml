@@ -38,7 +38,8 @@
                 android:hint="E-Mail"
                 android:id="@+id/etEmail"
                 android:layout_gravity="center_horizontal"
-                android:background="@drawable/round_button"/>
+                android:background="@drawable/edittext"
+                android:textColorHint="#ffffff"/>
 
             <EditText
                 android:layout_width="match_parent"
@@ -50,13 +51,15 @@
                 android:id="@+id/etPassword"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/round_button"/>
+                android:background="@drawable/edittext"
+                android:textColorHint="#ffffff"/>
 
             <Button
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="Registrieren"
-                android:background="@drawable/round_button"
+                android:background="#19d2ba"
+                android:textColor="#ffffff"
                 android:id="@+id/btRegister"
                 android:layout_marginTop="40dp"
                 android:layout_gravity="center_horizontal" />
