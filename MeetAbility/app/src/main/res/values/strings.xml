@@ -22,4 +22,8 @@
     <string name="save_login">automatisch anmelden</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_activity_search">activity_search</string>
+    <string name="title_activity_create">CreateActivity</string>
+    <string name="male">männlich</string>
+    <string name="female">weiblich</string>
+    <string name="date">Zeit</string>
 </resources>

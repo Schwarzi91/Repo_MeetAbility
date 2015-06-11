@@ -1,0 +1,15 @@
+<resources>
+    <string-array name="activityTypes">
+        <item>Kino</item>
+        <item>Fischen</item>
+        <item>Party</item>
+        <item>Essen</item>
+        <item>Shoppen</item>
+    </string-array>
+
+    <string-array name="gender">
+        <item>Neutral</item>
+        <item>Männlich</item>
+        <item>Weiblich</item>
+    </string-array>
+</resources>
