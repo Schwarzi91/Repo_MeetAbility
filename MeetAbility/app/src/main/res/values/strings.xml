@@ -35,4 +35,5 @@
     <string name="create">erstellen</string>
     <string name="gender">Geschlecht</string>
     <string name="activity_type">Aktivität</string>
+    <string name="title_activity_profil">ProfilActivity</string>
 </resources>

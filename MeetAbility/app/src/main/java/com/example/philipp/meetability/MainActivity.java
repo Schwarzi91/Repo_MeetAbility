@@ -58,8 +58,10 @@ public class MainActivity extends Activity implements View.OnClickListener
         }
 
         else if(v == btShowProfile)
-            Toast.makeText(this, "Profil anzeigen", Toast.LENGTH_SHORT).show();
-
+        {
+            Intent intent = new Intent(this, ProfilActivity.class);
+            startActivity(intent);
+        }
         else if(v == btShowHistory)
         {
             Intent viewPagerIntent = new Intent(this, PageViewActivity.class);
