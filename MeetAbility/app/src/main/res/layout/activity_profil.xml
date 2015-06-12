@@ -24,7 +24,7 @@
             android:layout_width="0dp"
             android:layout_weight=".40"
             android:layout_height="wrap_content"
-            android:id="@+id/imageView"
+            android:id="@+id/ivuser"
             android:src="@drawable/user" />
 
     </LinearLayout>
@@ -65,7 +65,9 @@
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
                 android:ems="10"
-                android:id="@+id/dbEmail" />
+                android:id="@+id/etEmail"
+                android:text="wf2383@thi.de"
+                 />
         </TableRow>
 
         <TableRow
@@ -85,6 +87,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
                 android:ems="10"
+                android:text="Andre"
                 android:id="@+id/etUser" />
 
         </TableRow>
@@ -126,7 +129,8 @@
                 android:inputType="date"
                 android:ems="10"
                 android:id="@+id/etAge"
-                android:layout_column="1" />
+                android:layout_column="1"
+                android:text="Bitte Wählen" />
 
         </TableRow>
 

@@ -13,6 +13,12 @@
         <item>Weiblich</item>
     </string-array>
 
+    <string-array name="genderProfil">
+        <item>Bitte Wählen</item>
+        <item>Männlich</item>
+        <item>Weiblich</item>
+    </string-array>
+
     <string-array name="maxParticipants">
         <item>1</item>
         <item>2</item>
