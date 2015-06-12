@@ -59,25 +59,23 @@
                 android:id="@+id/spActivityType"
                 android:spinnerMode="dropdown"
                 android:layout_weight="5"
-                android:textAlignment="center"
-                android:popupBackground="#ffffff" />
+                android:gravity="center"/>
 
             <Spinner
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="fill_parent"
                 android:id="@+id/spGender"
                 android:spinnerMode="dropdown"
-                android:layout_weight="5"
-                android:textAlignment="center"/>
+                android:gravity="center"
+                android:layout_weight="5"/>
 
             <Spinner
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="fill_parent"
                 android:id="@+id/spMaxParticipants"
                 android:layout_weight="5"
                 android:spinnerMode="dropdown"
-                android:layout_marginBottom="8dp"
-                android:textAlignment="center"/>
+                android:gravity="center"/>
         </TableRow>
     </TableLayout>
 
