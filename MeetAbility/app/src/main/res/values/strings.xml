@@ -22,4 +22,19 @@
     <string name="save_login">automatisch anmelden</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_activity_search">activity_search</string>
+    <string name="title_activity_create">CreateActivity</string>
+    <string name="male">männlich</string>
+    <string name="female">weiblich</string>
+    <string name="date">Zeit</string>
+    <string name="from_date">von Datum</string>
+    <string name="to_date">bis Datum</string>
+    <string name="from_time">von Uhrzeit</string>
+    <string name="to_time">bis Uhrzeit</string>
+    <string name="description">Beschreibung</string>
+    <string name="participants">Anzahl</string>s
+    <string name="create">erstellen</string>
+    <string name="gender">Geschlecht</string>
+    <string name="activity_type">Aktivität</string>
+    <string name="title_activity_profil">ProfilActivity</string>
+    <string name="search">suchen</string>
 </resources>

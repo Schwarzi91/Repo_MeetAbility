@@ -46,17 +46,22 @@ public class MainActivity extends Activity implements View.OnClickListener
     public void onClick(View v)
     {
         if(v == btCreateActivity)
-            Toast.makeText(this, "Activity anlegen", Toast.LENGTH_SHORT).show();
+        {
+            Intent intent = new Intent(this, CreateActivity.class);
+            startActivity(intent);
+        }
 
         else if(v == btSearchActivity)
         {
-            Intent viewPagerIntent = new Intent(this, SearchActivity.class);
-            startActivity(viewPagerIntent);
+            Intent intent = new Intent(this, SearchActivity.class);
+            startActivity(intent);
         }
 
         else if(v == btShowProfile)
-            Toast.makeText(this, "Profil anzeigen", Toast.LENGTH_SHORT).show();
-
+        {
+            Intent intent = new Intent(this, ProfilActivity.class);
+            startActivity(intent);
+        }
         else if(v == btShowHistory)
         {
             Intent viewPagerIntent = new Intent(this, PageViewActivity.class);

@@ -5,7 +5,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.example.philipp.meetability.SearchActivity"
+    tools:context="com.example.philipp.meetability.CreateActivity"
     android:orientation="vertical"
     android:background="@drawable/wood">
 
@@ -37,6 +37,15 @@
                 android:layout_weight="5"
                 android:textAlignment="center"/>
 
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:text="@string/participants"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_weight="5"
+                android:textAlignment="center"/>
         </TableRow>
 
         <TableRow
@@ -50,8 +59,7 @@
                 android:id="@+id/spActivityType"
                 android:spinnerMode="dropdown"
                 android:layout_weight="5"
-                android:gravity="center"
-                android:entries="@array/activityTypes"/>
+                android:gravity="center"/>
 
             <Spinner
                 android:layout_width="wrap_content"
@@ -59,11 +67,41 @@
                 android:id="@+id/spGender"
                 android:spinnerMode="dropdown"
                 android:gravity="center"
-                android:layout_weight="5"
-                android:entries="@array/gender"/>
+                android:layout_weight="5"/>
 
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:id="@+id/spMaxParticipants"
+                android:layout_weight="5"
+                android:spinnerMode="dropdown"
+                android:gravity="center"/>
         </TableRow>
     </TableLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Location"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:id="@+id/textView"/>
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText"
+            android:textColor="#ffffff"
+            android:textColorHint="#85ffffff"
+            android:background="@drawable/edittext"
+            android:hint="Cineplex Westpark"/>
+    </LinearLayout>
 
     <FrameLayout
         android:layout_width="fill_parent"
@@ -153,13 +191,46 @@
 
     </FrameLayout>
 
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="10"
+        android:layout_marginTop="11dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="9">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/description"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:id="@+id/tvDescription"/>
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/etDescription"
+                android:background="@drawable/edittext"
+                android:textColor="#ffffff"/>
+        </LinearLayout>
+
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:text="@string/search"
-            android:id="@+id/btSearch"
+            android:layout_marginTop="10dp"
+            android:text="@string/create"
+            android:id="@+id/btCreate"
             android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
             android:background="@drawable/register_login_button"/>
+    </LinearLayout>
 
 </LinearLayout>
