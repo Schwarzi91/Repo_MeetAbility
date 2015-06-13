@@ -1,35 +1,165 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context=".SearchActivity"
+    tools:context="com.example.philipp.meetability.SearchActivity"
+    android:orientation="vertical"
     android:background="@drawable/wood">
 
-    <FrameLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/round_button">
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-        <TableLayout
+        <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TableRow
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:text="@string/activity_type"
+                android:textStyle="bold"
+                android:textColor="#ffffff"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_weight="5"
+                android:textAlignment="center"/>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:text="@string/gender"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_weight="5"
+                android:textAlignment="center"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edittext">
+
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:id="@+id/spActivityType"
+                android:spinnerMode="dropdown"
+                android:layout_weight="5"
+                android:gravity="center"
+                android:entries="@array/activityTypes"/>
+
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:id="@+id/spGender"
+                android:spinnerMode="dropdown"
+                android:gravity="center"
+                android:layout_weight="5"
+                android:entries="@array/gender"/>
+
+        </TableRow>
+    </TableLayout>
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <Spinner
-                    android:layout_width="200dp"
-                    android:layout_height="50dp"
-                    android:id="@+id/spinner"
-                    android:layout_column="0"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginLeft="5dp" />
-            </TableRow>
-        </TableLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/date"
+                    android:textColor="#ffffff"
+                    android:textStyle="bold"
+                    android:id="@+id/tvTime" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:weightSum="10"
+                android:background="@drawable/edittext">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:weightSum="10">
+
+                    <EditText
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/etFromDate"
+                        android:textColor="#ffffff"
+                        android:textColorHint="#80ffffff"
+                        android:hint="@string/from_date"
+                        android:layout_weight="5"/>
+
+                    <EditText
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/etToDate"
+                        android:textColor="#ffffff"
+                        android:textColorHint="#80ffffff"
+                        android:hint="@string/to_date"
+                        android:layout_weight="5"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="10">
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/etFromTime"
+                        android:textColor="#ffffff"
+                        android:textColorHint="#80ffffff"
+                        android:hint="@string/from_time"
+                        android:layout_weight="5"/>
+
+                    <EditText
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/etToTime"
+                        android:textColor="#ffffff"
+                        android:textColorHint="#80ffffff"
+                        android:hint="@string/to_time"
+                        android:layout_weight="5"/>
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
     </FrameLayout>
-</RelativeLayout>
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="@string/search"
+            android:id="@+id/btSearch"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/register_login_button"/>
+
+</LinearLayout>

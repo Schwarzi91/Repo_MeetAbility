@@ -140,9 +140,12 @@ public class CreateActivity extends Activity implements View.OnClickListener
     @Override
     public void onClick(View view)
     {
-        if(view == etFromDate) {
+        if(view == etFromDate)
+        {
             fromDatePicker.show();
-        } else if(view == etToDate) {
+        }
+        else if(view == etToDate)
+        {
             toDatePicker.show();
         }
         else if(view == etFromTime)
