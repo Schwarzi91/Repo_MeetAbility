@@ -24,6 +24,8 @@ public class DatabaseHelper {
     private ConnectionSource connectionSource;
     private SQLiteOpenHelper helper;
 
+
+
     {
         if (connectionSource == null) {
             try {
