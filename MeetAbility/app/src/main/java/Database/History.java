@@ -26,6 +26,8 @@ public class History {
     @DatabaseField (canBeNull = true)
     private String description;
 
+    //Konstruktors
+
    public  History(){}
 
     public History(Aktivity aktivity_id, Timestamp ended, int rating, String description){
@@ -36,5 +38,18 @@ public class History {
         this.description=description;
     }
 
+    //Getter
 
+    public int getHistoryId() {return history_id;}
+    public Aktivity getAktivityId() {return aktivity_id;}
+    public Timestamp getEnded() {return ended;}
+    public int getRating() {return rating;}
+    public String getDescription() {return description;}
+
+    //Setter
+
+    public void setAktivityId(Aktivity aktivity_id) {this.aktivity_id = aktivity_id;}
+    public void setEnded(Timestamp ended) {this.ended = ended;}
+    public void setRating(int rating) {this.rating = rating;}
+    public void setDescription(String description) {this.description = description;}
 }

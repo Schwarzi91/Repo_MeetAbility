@@ -21,6 +21,9 @@ public class Participant {
     @DatabaseField (canBeNull = false)
     private boolean creator;
 
+
+    //Konstruktors
+
     public Participant(){}
 
     public Participant(User user_id, Aktivity aktivity_id, boolean creator){
@@ -30,4 +33,17 @@ public class Participant {
         this.creator=creator;
 
     }
+
+    //Getter
+
+    public int getParticipantId() {return participant_id;}
+    public User getUserId() {return user_id;}
+    public Aktivity getAktivityId() {return aktivity_id;}
+    public boolean isCreator() {return creator;}
+
+    //Setter
+
+    public void setUserId(User user_id) {this.user_id = user_id;}
+    public void setAktivityId(Aktivity aktivity_id) {this.aktivity_id = aktivity_id;}
+    public void setCreator(boolean creator) {this.creator = creator;}
 }

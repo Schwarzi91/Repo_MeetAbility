@@ -26,6 +26,8 @@ public class Block {
     @DatabaseField (canBeNull = true)
     private Time until;
 
+    //Konstruktors
+
     public Block(){}
 
     public  Block(User user_id, int violations, Time until){
@@ -33,7 +35,18 @@ public class Block {
         this.user_id=user_id;
         this.violations=violations;
         this.until=until;
-
-
     }
+
+    //Gettter
+
+    public int getBlockId() {return block_id;}
+    public User getUserId() {return user_id;}
+    public int getViolations() {return violations;}
+    public Time getUntil() {return until;}
+
+    //Setter
+
+    public void setUserId(User user_id) {this.user_id = user_id;}
+    public void setUntil(Time until) {this.until = until;}
+    public void setViolations(int violations) {this.violations = violations;}
 }

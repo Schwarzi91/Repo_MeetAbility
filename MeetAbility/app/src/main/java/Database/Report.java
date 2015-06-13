@@ -25,6 +25,8 @@ public class Report {
     @DatabaseField (canBeNull = true)
     private String description;
 
+    //Konstruktors
+
     public Report(){}
 
     public Report(User reported_id, User reporter_id, String reason, String description){
@@ -36,5 +38,18 @@ public class Report {
 
     }
 
+    //Getter
 
+    public int getReportId() {return report_id;}
+    public User getReportedId() {return reported_id;}
+    public User getReporterId() {return reporter_id;}
+    public String getReason() {return reason;}
+    public String getDescription() {return description;}
+
+    //Setter
+
+    public void setReportedId(User reported_id) {this.reported_id = reported_id;}
+    public void setReporterId(User reporter_id) {this.reporter_id = reporter_id;}
+    public void setReason(String reason) {this.reason = reason;}
+    public void setDescription(String description) {this.description = description;}
 }
