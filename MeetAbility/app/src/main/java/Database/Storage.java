@@ -15,6 +15,7 @@ public class Storage {
     private final DatabaseHelper dbHelper;
     private static Storage INSTANCE;
 
+    //Creating Database
     public Storage(Context context) {dbHelper =new DatabaseHelper();}
 
 
@@ -89,7 +90,22 @@ public class Storage {
         return Collections.EMPTY_LIST;}
 
 
+//Dao Getter
 
+    public User getUserByEmail(String user_email){
+        try {
+            List<User> listUser = dbHelper.userDao.queryForEq(
+                    "email", user_email);
+            if (listUser.size() == 1) {
+                return listUser.get(0);
+            } else {
+                return new User();
+            }
+        } catch (SQLException e) {
+            handleEx(e);
+        }
+        return null;
+    }
 
 
     }

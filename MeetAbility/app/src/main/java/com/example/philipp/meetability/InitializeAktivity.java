@@ -1,5 +1,6 @@
 package com.example.philipp.meetability;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
@@ -27,8 +28,19 @@ public class InitializeAktivity extends AppCompatActivity implements View.OnClic
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_logo_page);
-        Storage.initialize(this);
 
+        //Initializing Database
+        Storage.getStorageInstance().createTestDataIfNeccessary();
+
+        //Timeout and Aktivity Switch
+        try {
+            wait(3000);
+            Intent intent =new Intent(InitializeAktivity.this,LoginActivity.class);
+            startActivity(intent);
+            finish();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
     }
 }
