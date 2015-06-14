@@ -60,12 +60,12 @@
                 android:text="E-Mail"
                 android:id="@+id/EmailView" />
 
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
-                android:ems="10"
                 android:id="@+id/etEmail"
+                android:textSize="18dp"
                 android:text="wf2383@thi.de"
                  />
         </TableRow>
@@ -87,7 +87,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
                 android:ems="10"
-                android:text="Andre"
+                android:hint="Andre"
                 android:id="@+id/etUser" />
 
         </TableRow>
@@ -130,7 +130,7 @@
                 android:ems="10"
                 android:id="@+id/etAge"
                 android:layout_column="1"
-                android:text="Bitte Wählen" />
+                android:hint="Bitte Wählen" />
 
         </TableRow>
 
