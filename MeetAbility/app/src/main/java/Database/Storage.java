@@ -2,6 +2,8 @@ package Database;
 
 import android.content.Context;
 
+import com.example.philipp.meetability.InitializeAktivity;
+
 import java.sql.SQLException;
 import java.util.Collections;
 import java.util.List;
@@ -14,6 +16,8 @@ public class Storage {
     private static Storage INSTANCE;
 
     public Storage(Context context) {dbHelper =new DatabaseHelper();}
+
+
 
     public static Storage getStorageInstance() {
         if (INSTANCE == null) {
