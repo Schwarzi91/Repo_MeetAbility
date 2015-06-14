@@ -13,7 +13,7 @@ import android.widget.TextView;
 import Database.Aktivity;
 
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener
+public class LoginActivity extends Activity implements View.OnClickListener
 {
     private Button btLogin;
     private EditText etEmail;
