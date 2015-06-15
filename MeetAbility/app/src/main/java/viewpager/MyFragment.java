@@ -1,9 +1,6 @@
 package viewpager;
 
 import android.database.DataSetObserver;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
-import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -12,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.example.philipp.meetability.R;
@@ -37,15 +33,11 @@ public class MyFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         String message = getArguments().getString(EXTRA_MESSAGE);
-        View v = inflater.inflate(R.layout.activity_history, container, false);
+        View v = inflater.inflate(R.layout.myfragment_layout, container, false);
         TextView messageTextView = (TextView)v.findViewById(R.id.tvActivityType);
         messageTextView.setText(message);
 
-        RatingBar ratingBar = (RatingBar) v.findViewById(R.id.ratingBar);
-        LayerDrawable stars = (LayerDrawable) ratingBar.getProgressDrawable();
-        stars.getDrawable(2).setColorFilter(Color.CYAN, PorterDuff.Mode.SRC_ATOP);
-
-        //lvDetails = (ListView) v.findViewById(R.id.lvDetails);
+        lvDetails = (ListView) v.findViewById(R.id.lvDetails);
         List<String> listDetails = new ArrayList<String>();
 
         listDetails.add("CineStar Westpark");
@@ -56,7 +48,7 @@ public class MyFragment extends Fragment {
 
         ListAdapter listAdapter = new ArrayAdapter(this.getActivity(), R.layout.custom_listview_layout, listDetails);
 
-       // lvDetails.setAdapter(listAdapter);
+        lvDetails.setAdapter(listAdapter);
 
         return v;
     }

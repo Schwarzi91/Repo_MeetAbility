@@ -1,8 +1,6 @@
 package Database;
 
 
-import android.os.Bundle;
-
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
@@ -87,7 +85,6 @@ public class Aktivity {
     public void setStartDate(Date start_date) {this.start_date = start_date;}
     public void setDescription(String description) {this.description = description;}
     public void setMaxParticipants(int max_participants) {this.max_participants = max_participants;}
-
 
 
 }

@@ -3,14 +3,10 @@ package com.example.philipp.meetability;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.TextView;
-
-import Database.Aktivity;
 
 
 public class LoginActivity extends Activity implements View.OnClickListener
@@ -26,7 +22,7 @@ public class LoginActivity extends Activity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_new);
 
-        etEmail = (EditText) findViewById(R.id.etEmail);
+        etEmail = (EditText) findViewById(R.id.tvEmail);
         etPassword = (EditText) findViewById(R.id.etPassword);
 
         btLogin = (Button) findViewById(R.id.btLogin);
