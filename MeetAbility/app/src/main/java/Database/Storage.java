@@ -23,7 +23,7 @@ public class Storage {
     public static Storage getStorageInstance() {
         if (INSTANCE == null) {
             throw new IllegalStateException(
-                    "Storage must be initialized");
+                    "Storage must be initialized!");
         }
         return INSTANCE;
     }
