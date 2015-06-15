@@ -15,7 +15,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.app.DatePickerDialog;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
@@ -31,10 +30,8 @@ public class ProfilActivity extends Activity implements View.OnClickListener
     private EditText etAge;
     private SimpleDateFormat dateFormatter;
     private DatePickerDialog datePicker;
-    //Textview
-
-    private TextView tvEmail;
     //textfelder
+    private EditText etEmail;
     private EditText etUser;
     private EditText etDescription;
     //profilbild
@@ -62,7 +59,7 @@ public class ProfilActivity extends Activity implements View.OnClickListener
         etAge.setOnClickListener(this);
 
         //view setzen
-        tvEmail=(TextView) findViewById(R.id.tvEmail);
+        etEmail=(EditText) findViewById(R.id.etEmail);
         etUser=(EditText) findViewById(R.id.etUser);
         etDescription=(EditText)findViewById(R.id.etDescription);
         btChangeUserInfo= (Button) findViewById(R.id.btChangeUserInfo);
@@ -83,7 +80,7 @@ public class ProfilActivity extends Activity implements View.OnClickListener
     private void setChange(boolean i) {
         spGender.setFocusable(i);
         etAge.setFocusable(i);
-        tvEmail.setFocusable(i);
+        etEmail.setFocusable(i);
         etUser.setFocusable(i);
         etDescription.setFocusable(i);
         if (i==false) {
