@@ -113,20 +113,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <RelativeLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="@string/date"
-                    android:textColor="#ffffff"
-                    android:textStyle="bold"
-                    android:id="@+id/tvTime" />
-            </RelativeLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/date"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:id="@+id/tvTime" />
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -214,12 +208,16 @@
                 android:textStyle="bold"
                 android:id="@+id/tvDescription"/>
 
-            <EditText
+            <ScrollView
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:id="@+id/etDescription"
-                android:background="@drawable/edittext"
-                android:textColor="#ffffff"/>
+                android:layout_height="fill_parent">
+                <EditText
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/etDescription"
+                    android:background="@drawable/edittext"
+                    android:textColor="#ffffff"/>
+            </ScrollView>
         </LinearLayout>
 
         <Button
