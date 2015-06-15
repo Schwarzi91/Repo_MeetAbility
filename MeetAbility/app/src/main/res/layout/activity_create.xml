@@ -214,12 +214,16 @@
                 android:textStyle="bold"
                 android:id="@+id/tvDescription"/>
 
-            <EditText
+            <ScrollView
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:id="@+id/etDescription"
-                android:background="@drawable/edittext"
-                android:textColor="#ffffff"/>
+                android:layout_height="fill_parent">
+                <EditText
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/etDescription"
+                    android:background="@drawable/edittext"
+                    android:textColor="#ffffff"/>
+            </ScrollView>
         </LinearLayout>
 
         <Button
