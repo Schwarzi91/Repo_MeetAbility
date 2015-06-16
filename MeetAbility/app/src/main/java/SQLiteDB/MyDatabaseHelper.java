@@ -17,6 +17,8 @@ public class MyDatabaseHelper extends SQLiteOpenHelper
     private static final String TABLE_HISTORY = "History";
     private static final String TABLE_OBJECT = "Object";
     private static final String TABLE_CHAT = "Chat";
+    private static final String TABLE_REPORT = "Report";
+
 
     private static final int DATABASE_VERSION = 1;
 
@@ -30,29 +32,23 @@ public class MyDatabaseHelper extends SQLiteOpenHelper
     {
         try
         {
-            db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_USER_DETAIL + " (_id integer primary key autoincrement, " +
-                    "TrunkStatus varchar(20))");
+            db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_USER_DETAIL + " (UserID integer primary key autoincrement, Username varchar(20), Sex boolean, Age date, Picture file, Descrition varchar(20),foreign key(UserID) references User(ID) )");
 
-            db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_BLOCK + " (_id integer primary key autoincrement, " +
-                    "WindowStatus varchar(20))");
+            db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_BLOCK + " (ID integer primary key , UserID varchar(20), Violations integer, Until date, foreign key(UserID ) references User(ID))");
 
-            db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_USER + " (_id integer primary key autoincrement, " +
-                    "CarDoorStatus varchar(20))");
+            db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_USER + " (ID integer primary key autoincrement, Email varchar(40), Passwort varchar(16), Acitv boolean)");
 
-            db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_PARTICIPANT + " (_id integer primary key autoincrement, " +
-                    "CarDoorStatus varchar(20))");
+            db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_PARTICIPANT + " (ID integer primary key, UserId integer, Creator boolean, primary key(ID, UserID), foreign key(UserID) reference User(ID)");
 
-            db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_AKTIVITY + " (_id integer primary key autoincrement, " +
-                    "CarDoorStatus varchar(20))");
+            db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_OBJECT + " (ID integer primary key autoincrement, Name varchar(20), Avaible boolean)");
 
-            db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_HISTORY + " (_id integer primary key autoincrement, " +
-                    "CarDoorStatus varchar(20))");
+            db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_CHAT + " (ID integer primary key autoincrement, FileID varchar(40))");
 
-            db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_OBJECT + " (_id integer primary key autoincrement, " +
-                    "CarDoorStatus varchar(20))");
+            db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_AKTIVITY + " (ID integer primary key autoincrement, ParticipantID integer, ObjectID integer, ChatID integer, Location varchar(50), Sex boolean, Start_Time time, End_Time time, Start_Date date, Description varchar(250), Max_Participants integer, foreign key(ParticipantID ) references Participant(ID), foreign key(ObjectID) references Object(ID),foreign key(ChatID ) references Chat(ID))");
 
-            db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_CHAT + " (_id integer primary key autoincrement, " +
-                    "CarDoorStatus varchar(20))");
+            db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_HISTORY + " (ID integer primary key autoincrement, AktivityID integer, Rating integer, foreign key(AktivityID) references Aktvity(ID))");
+
+            db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_REPORT + " (ID integer primary key autoincrement, UserID integer, Reason varchar(30), Description varchar(30))");
 
         } finally {
             if(db == null)
