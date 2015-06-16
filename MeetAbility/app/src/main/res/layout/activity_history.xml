@@ -247,8 +247,10 @@
                 android:layout_gravity="center"
                 android:id="@+id/ratingBar"
                 android:layout_weight="1"
+                android:background="#40ffffff"
                 android:numStars="5"
-                android:background="@drawable/edittext"/>
+                android:stepSize="1.0"
+                android:rating="2.0"/>
 
             <Button
                 android:layout_width="fill_parent"
