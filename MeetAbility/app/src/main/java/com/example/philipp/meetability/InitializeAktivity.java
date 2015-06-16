@@ -34,7 +34,8 @@ public class InitializeAktivity extends Activity implements View.OnClickListener
         setContentView(R.layout.activity_logo_page);
 
         //Initializing Database
-       // Storage.getStorageInstance().createTestDataIfNeccessary();
+        Storage.initialize(this);
+        Storage.getStorageInstance().createTestDataIfNeccessary();
 
         //Timeout and Aktivity Switch
         Timer timer = new Timer();
@@ -45,7 +46,7 @@ public class InitializeAktivity extends Activity implements View.OnClickListener
                 InitializeAktivity.this.startActivity(intent);
                 InitializeAktivity.this.finish();
             }
-        }, 3000);
+        }, 5000);
 
 
 

@@ -19,6 +19,9 @@ public class Storage {
     public Storage(Context context) {dbHelper =new DatabaseHelper();}
 
 
+    public static void initialize(InitializeAktivity initializeAktivity){
+        INSTANCE = new Storage(initializeAktivity);
+    }
 
     public static Storage getStorageInstance() {
         if (INSTANCE == null) {
@@ -29,12 +32,17 @@ public class Storage {
     }
 
     public void createTestDataIfNeccessary() {
+    /*   if (getUserList().isEmpty()) {
+            //saveBlock(new Block());
+        }
+
         if (getAktivityList().isEmpty()) {
             saveAktivity(new Aktivity());
+            User user_id, String aktivity_name, String sex, Time start_time, Time end_time, Date start_date, String description, int max_participants
         }
         if (getBlockList().isEmpty()) {
-            saveBlock(new Block());
-        }
+            //saveBlock(new Block());
+        }*/
         }
 
 
@@ -89,6 +97,15 @@ public class Storage {
         }
         return Collections.EMPTY_LIST;}
 
+    public List<User> getUserList() {
+        try {
+            return dbHelper.userDao.queryForAll();
+        } catch (SQLException e) {
+            handleEx(e);
+        }
+        return Collections.EMPTY_LIST;
+    }
+
 
 //Dao Getter
 
@@ -108,5 +125,6 @@ public class Storage {
     }
 
 
-    }
+
+}
 

@@ -30,7 +30,6 @@ public class DatabaseHelper {
         if (connectionSource == null) {
             try {
 
-
                 connectionSource = new AndroidConnectionSource(helper);
                 aktivityDao = DaoManager.createDao(connectionSource, Aktivity.class);
                 blockDao = DaoManager.createDao(connectionSource, Block.class);
@@ -50,8 +49,6 @@ public class DatabaseHelper {
                 TableUtils.createTableIfNotExists(connectionSource, Participant.class);
                 TableUtils.createTableIfNotExists(connectionSource, Report.class);
                 TableUtils.createTableIfNotExists(connectionSource, User.class);
-
-
 
             } catch (SQLException e) {
                 System.out.print(e);
