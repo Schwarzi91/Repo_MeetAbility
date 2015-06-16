@@ -51,7 +51,7 @@ public class Aktivity {
 
     public Aktivity(){}
 
-    public Aktivity(User user_id, String objekt, String sex, Time start_time, Time end_time, Date start_date, String description, int max_participants){
+    public Aktivity(User user_id, String aktivity_name, String sex, Time start_time, Time end_time, Date start_date, String description, int max_participants){
         super();
         this.user_id=user_id;
         this.aktivity_name=aktivity_name;
