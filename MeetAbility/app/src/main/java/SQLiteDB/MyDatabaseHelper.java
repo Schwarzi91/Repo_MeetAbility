@@ -2,6 +2,7 @@ package SQLiteDB;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -70,6 +71,8 @@ public class MyDatabaseHelper extends SQLiteOpenHelper
             db.insert(TABLE_USER_DETAIL, null, value); // schreibt es auf Datenbank // erste ist Tabellenname // zweite bleibt null // dritte ist der Wert
             Log.i("Datenbank Table " + strComponent + "_", strCommand);
             db.close(); // datenbank schließen
+            //db.rawQuery("SELECT id, name FROM people WHERE name = ? AND id = ?", new String[] {"David", "2"});
+            //Cursor mCursor
         }
 
         else if(strComponent.equals(TABLE_BLOCK))
