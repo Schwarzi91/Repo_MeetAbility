@@ -46,9 +46,9 @@ public class LoginActivity extends Activity implements View.OnClickListener
     @Override
     public void onClick(View v)
     {
+
         if(v == btLogin){
             //Initialisieren von variablen
-
             usermail=etEmail.getText().toString();
             userpw=etPassword.getText().toString();
 
@@ -59,7 +59,9 @@ public class LoginActivity extends Activity implements View.OnClickListener
             if(usercheckItem!=null && usercheckItem.getEmail().equals(usermail) && usercheckItem.getPassword().equals(userpw) ){
             Intent intent = new Intent(this, MainActivity.class);
             intent.putExtra("E-Mail", etEmail.getText().toString());
-            startActivity(intent);
+            this.startActivity(intent);
+                this.finish();
+
         }
         else{
                 etEmail.setText(null);

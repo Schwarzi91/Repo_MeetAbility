@@ -80,7 +80,7 @@ public class Storage {
         }
     }
 
-    private void saveUser(User user) {
+    public void saveUser(User user) {
         try {
             dbHelper.getUserDao().createOrUpdate(user);
         } catch (SQLException e) {

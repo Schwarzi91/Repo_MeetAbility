@@ -39,7 +39,7 @@ public class InitializeAktivity extends Activity implements View.OnClickListener
             public void run() {
                 Intent intent = new Intent(InitializeAktivity.this, LoginActivity.class);
                 InitializeAktivity.this.startActivity(intent);
-                //InitializeAktivity.this.finish();
+                InitializeAktivity.this.finish();
             }
         }, 5000);
 

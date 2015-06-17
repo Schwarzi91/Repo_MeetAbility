@@ -24,13 +24,13 @@ public class User {
     @DatabaseField(canBeNull = false)
     private String password;
 
-    @DatabaseField (canBeNull = false)
+    @DatabaseField (canBeNull = true)
     private String username;
 
-    @DatabaseField (canBeNull = false)
+    @DatabaseField (canBeNull = true)
     private String sex;
 
-    @DatabaseField (canBeNull = false)
+    @DatabaseField (canBeNull = true)
     private int age;
 
     //@DatabaseField (canBeNull = true)
