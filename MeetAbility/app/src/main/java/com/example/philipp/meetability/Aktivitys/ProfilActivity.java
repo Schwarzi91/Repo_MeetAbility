@@ -1,4 +1,4 @@
-package com.example.philipp.meetability;
+package com.example.philipp.meetability.Aktivitys;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
@@ -16,6 +16,8 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.app.DatePickerDialog;
 import android.widget.Toast;
+
+import com.example.philipp.meetability.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

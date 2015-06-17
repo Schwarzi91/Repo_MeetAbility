@@ -1,4 +1,4 @@
-package Database;
+package com.example.philipp.meetability.Database;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
@@ -6,7 +6,7 @@ import com.j256.ormlite.table.DatabaseTable;
 /**
  * Created by Kisman on 02.06.2015.
  */
-@DatabaseTable(tableName = "Participant")
+@DatabaseTable(tableName = "participant")
 public class Participant {
 
     @DatabaseField (generatedId = true)

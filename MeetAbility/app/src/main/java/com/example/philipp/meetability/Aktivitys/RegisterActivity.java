@@ -1,17 +1,15 @@
-package com.example.philipp.meetability;
+package com.example.philipp.meetability.Aktivitys;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import Database.DatabaseHelper;
-import Database.User;
+import com.example.philipp.meetability.Database.DatabaseHelper;
+import com.example.philipp.meetability.Database.User;
+import com.example.philipp.meetability.R;
 
 
 public class RegisterActivity extends Activity implements View.OnClickListener
@@ -31,7 +29,7 @@ public class RegisterActivity extends Activity implements View.OnClickListener
         etEmail = (EditText) findViewById(R.id.etEmail);
         etPassword = (EditText) findViewById(R.id.etPassword);
         btRegistration = (Button) findViewById(R.id.btRegister);
-        db = new DatabaseHelper();
+        //db = new DatabaseHelper();
         user = new User();
     }
 
