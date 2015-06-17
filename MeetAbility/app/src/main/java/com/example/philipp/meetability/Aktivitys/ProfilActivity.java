@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.app.DatePickerDialog;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.philipp.meetability.R;
@@ -33,7 +34,7 @@ public class ProfilActivity extends Activity implements View.OnClickListener
     private SimpleDateFormat dateFormatter;
     private DatePickerDialog datePicker;
     //textfelder
-    private EditText etEmail;
+    private TextView etEmail;
     private EditText etUser;
     private EditText etDescription;
     //profilbild
@@ -61,7 +62,7 @@ public class ProfilActivity extends Activity implements View.OnClickListener
         etAge.setOnClickListener(this);
 
         //view setzen
-        etEmail=(EditText) findViewById(R.id.etEmail);
+        etEmail=(TextView) findViewById(R.id.etEmail);
         etUser=(EditText) findViewById(R.id.etUser);
         etDescription=(EditText)findViewById(R.id.etDescription);
         btChangeUserInfo= (Button) findViewById(R.id.btChangeUserInfo);
