@@ -60,16 +60,16 @@ public class MyDatabaseHelper extends SQLiteOpenHelper
 
     public void insert(String strComponent, String strCommand)
     {
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = this.getWritableDatabase(); // holt sich Datenbankreferenz
 
         ContentValues value = new ContentValues();
 
         if(strComponent.equals(TABLE_USER_DETAIL))
         {
-            value.put("TrunkStatus", strCommand);
-            db.insert(TABLE_USER_DETAIL, null, value);
+            value.put("TrunkStatus", strCommand); // erste ist Name von Spalte und zweite ist der Wert -> man kann auch ehrere Spalten ansprechen
+            db.insert(TABLE_USER_DETAIL, null, value); // schreibt es auf Datenbank // erste ist Tabellenname // zweite bleibt null // dritte ist der Wert
             Log.i("Datenbank Table " + strComponent + "_", strCommand);
-            db.close();
+            db.close(); // datenbank schließen
         }
 
         else if(strComponent.equals(TABLE_BLOCK))
