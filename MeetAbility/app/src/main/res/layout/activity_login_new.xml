@@ -61,12 +61,14 @@
                 android:text="@string/save_login"
                 android:id="@+id/cbSaveLogin"
                 android:checked="false"
-                android:textColor="#ffffff"/>
+                android:textColor="#ffffff"
+                android:buttonTint="#ffefefef"
+                android:textSize="20dp" />
 
             <Button
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="login"
+                android:text="LOGIN"
                 android:background="@drawable/register_login_button"
                 android:textColor="#ffffff"
                 android:id="@+id/btLogin"
@@ -81,7 +83,8 @@
                 android:id="@+id/tvNotRegistered"
                 android:textColor="#ffffff"
                 android:layout_marginTop="10dp"
-                android:clickable="true"/>
+                android:clickable="true"
+                android:layout_marginLeft="50dp" />
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

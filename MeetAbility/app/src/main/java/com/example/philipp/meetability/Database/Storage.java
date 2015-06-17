@@ -147,7 +147,7 @@ public class Storage {
                 return listUser.get(0);
 
             } else {
-                return new User();
+                return null;
             }
         } catch (SQLException e) {
             handleEx(e);
