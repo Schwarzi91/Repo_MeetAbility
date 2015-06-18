@@ -64,6 +64,7 @@ public class LoginActivity extends Activity implements View.OnClickListener
                 this.startActivity(intent);
                 this.finish();
             }
+
         else
         {
             //etEmail.setText(null); usability

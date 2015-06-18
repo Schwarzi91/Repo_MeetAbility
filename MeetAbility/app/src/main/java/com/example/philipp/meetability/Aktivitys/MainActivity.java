@@ -35,7 +35,6 @@ public class MainActivity extends Activity implements View.OnClickListener
         btSearchActivity.setOnClickListener(this);
         btShowProfile.setOnClickListener(this);
         btShowHistory.setOnClickListener(this);
-
     }
 
     @Override
