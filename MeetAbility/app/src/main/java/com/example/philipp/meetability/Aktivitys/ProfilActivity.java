@@ -18,6 +18,7 @@ import android.app.DatePickerDialog;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.philipp.meetability.Database.Storage;
 import com.example.philipp.meetability.Database.User;
 import com.example.philipp.meetability.R;
 
@@ -46,8 +47,6 @@ public class ProfilActivity extends Activity implements View.OnClickListener
     private Button btLogOut;
     private Button btDeaktivate;
 
-    //Database
-    public static User usercheckItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -81,7 +80,7 @@ public class ProfilActivity extends Activity implements View.OnClickListener
         btLogOut.setOnClickListener(this);
         btDeaktivate.setOnClickListener(this);
 
-        //tvEmail.setText(usercheckItem.getEmail());
+        tvEmail.setText(LoginActivity.usercheckItem.getEmail());
 
         setDateField();
         setChange(false);
