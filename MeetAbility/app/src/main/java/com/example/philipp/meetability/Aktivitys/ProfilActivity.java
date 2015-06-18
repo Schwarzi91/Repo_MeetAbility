@@ -57,10 +57,11 @@ public class ProfilActivity extends Activity implements View.OnClickListener
 
         //Spinner
         spGender = (Spinner) findViewById(R.id.spGender);
-        ArrayAdapter<CharSequence> activityTypeAdapter = ArrayAdapter.createFromResource(this, R.array.genderProfil, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> activityTypeAdapter = ArrayAdapter.createFromResource(this, R.array.genderProfil, R.layout.spinner_style);
         activityTypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spGender.setAdapter(activityTypeAdapter);
         spGender.setEnabled(false);
+        spGender.setSelection(LoginActivity.usercheckItem.getSex());
         //Datum
         etAge = (EditText) findViewById(R.id.etAge);
         etAge.setInputType(InputType.TYPE_NULL);
@@ -89,7 +90,7 @@ public class ProfilActivity extends Activity implements View.OnClickListener
         tvEmail.setText(LoginActivity.usercheckItem.getEmail());
         setDateField();
 
-        if(LoginActivity.usercheckItem.getUsername().isEmpty())
+        if(LoginActivity.usercheckItem.getUsername().equals(""))
         {
             setEditable(true);
         }
@@ -103,6 +104,7 @@ public class ProfilActivity extends Activity implements View.OnClickListener
     {
         etUserName.setText(LoginActivity.usercheckItem.getUsername());
         etDescription.setText(LoginActivity.usercheckItem.getDescription());
+        //spGender.setSelection(LoginActivity.usercheckItem.getSex());
     }
 
     private void setEditable(boolean i)
@@ -165,16 +167,24 @@ public class ProfilActivity extends Activity implements View.OnClickListener
         }
         else if(view == btChangeUserInfo)
         {
-            if(btChangeUserInfo.getText() == "Speichern")
+            if(etUserName.getText().toString().trim().equals(""))
             {
-                setEditable(false);
-                LoginActivity.usercheckItem.setUsername(etUserName.getText().toString());
-                LoginActivity.usercheckItem.setSex(spGender.getSelectedItem().toString());
-                LoginActivity.usercheckItem.setDescription(etDescription.getText().toString());
-                //etAge.setFocusable(false);
+                Toast.makeText(this, "Bitte geben Sie einen Nutzernamen ein!", Toast.LENGTH_SHORT).show();
             }
             else
-                setEditable(true);
+            {
+                if (btChangeUserInfo.getText() == "Speichern")
+                {
+                    setEditable(false);
+                    LoginActivity.usercheckItem.setUsername(etUserName.getText().toString());
+                    LoginActivity.usercheckItem.setSex(spGender.getSelectedItemPosition());
+                    LoginActivity.usercheckItem.setDescription(etDescription.getText().toString());
+                    Storage.getStorageInstance().saveUser(LoginActivity.usercheckItem);
+                    //etAge.setFocusable(false);
+                } else {
+                    setEditable(true);
+                }
+            }
         }
         else if(view == btLogOut)
         {

@@ -50,18 +50,19 @@ public class CreateActivity extends Activity implements View.OnClickListener
         //Spinner
         spActivityTypes = (Spinner) findViewById(R.id.spActivityType);
         ArrayAdapter<CharSequence> activityTypeAdapter = ArrayAdapter.createFromResource(this,
-                R.array.activityTypes, android.R.layout.simple_spinner_item);
+                R.array.activityTypes, R.layout.spinner_style);
         activityTypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spActivityTypes.setAdapter(activityTypeAdapter);
 
         spGender = (Spinner) findViewById(R.id.spGender);
         ArrayAdapter<CharSequence> genderAdapter = ArrayAdapter.createFromResource(this,
-                R.array.gender, android.R.layout.simple_expandable_list_item_1);
+                R.array.gender, R.layout.spinner_style);
+        genderAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spGender.setAdapter(genderAdapter);
 
         spMaxParticipants = (Spinner) findViewById(R.id.spMaxParticipants);
         ArrayAdapter<CharSequence> maxParticipantsAdapter = ArrayAdapter.createFromResource(this,
-                R.array.maxParticipants, android.R.layout.simple_spinner_dropdown_item);
+                R.array.maxParticipants, R.layout.spinner_style);
         maxParticipantsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spMaxParticipants.setAdapter(maxParticipantsAdapter);
         //Spinner ende

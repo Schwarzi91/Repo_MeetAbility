@@ -36,8 +36,8 @@ public class Storage {
 
         if (getUserList().isEmpty()) {
             try {
-                saveUser(new User("muster@thi.de", "test123", "Max Muster", "Maennlich", 20, "Ich bin Super"));
-                saveUser(new User("edgar@thi.de", "test123", "Ede Muster", "Maennlich", 20, "Ich bins"));
+                saveUser(new User("muster@thi.de", "test123", "Max Muster", 2, 20, "Ich bin Dumm"));
+                saveUser(new User("edgar@thi.de", "test123", "Ede Muster", 2, 20, "Ich bins nicht"));
             }catch (Exception e){
                 Log.e(DatabaseHelper.class.getName(), "Cant safe Data", e);
                 throw new RuntimeException(e);
