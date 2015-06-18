@@ -41,7 +41,7 @@ public class InitializeAktivity extends Activity implements View.OnClickListener
                 InitializeAktivity.this.startActivity(intent);
                 InitializeAktivity.this.finish();
             }
-        }, 5000);
+        }, 2000);
 
 
 

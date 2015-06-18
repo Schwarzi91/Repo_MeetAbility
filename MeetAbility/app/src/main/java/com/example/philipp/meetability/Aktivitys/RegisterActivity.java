@@ -43,20 +43,30 @@ public class RegisterActivity extends Activity implements View.OnClickListener
 
     @Override
     public void onClick(View v) {
+
         email = etEmail.getText().toString();
         pw1 = etPassword.getText().toString();
         pw2 = etPassword2.getText().toString();
-        if (Storage.getStorageInstance().getUserByEmail(email)==null && pw1.equals(pw2)) {
-            Storage.getStorageInstance().saveUser(new User(email, pw1, "", "", 0, ""));
-            Intent intent = new Intent(this, ProfilActivity.class);
-            this.startActivity(intent);
-            this.finish();
-        } else {
-            etEmail.setText(null);
-            etPassword.setText(null);
-            etPassword2.setText(null);
-            etEmail.requestFocus();
-            Toast.makeText(getApplicationContext(), "Falsches Passwort", Toast.LENGTH_LONG).show();
+
+        if(etEmail.getText().toString().contains("@"))
+        {
+            if (Storage.getStorageInstance().getUserByEmail(email) == null && pw1.equals(pw2))
+            {
+                Storage.getStorageInstance().saveUser(new User(email, pw1, "", "", 0, ""));
+                Intent intent = new Intent(this, ProfilActivity.class);
+                this.startActivity(intent);
+                this.finish();
+            }
+            else
+            {
+                //etEmail.setText(null); usability -> man sollte nicht immer wieder seine e-mail eingeben müssen
+                etPassword.setText(null);
+                etPassword2.setText(null);
+                etEmail.requestFocus();
+                Toast.makeText(getApplicationContext(), "Falsches Passwort", Toast.LENGTH_LONG).show();
+            }
         }
+        else
+            Toast.makeText(this, "Sie müssen eine E-Mail-Adresse angeben", Toast.LENGTH_LONG).show();
     }
 }

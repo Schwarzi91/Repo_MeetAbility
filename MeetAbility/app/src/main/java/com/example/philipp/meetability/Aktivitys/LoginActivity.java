@@ -47,28 +47,30 @@ public class LoginActivity extends Activity implements View.OnClickListener
     public void onClick(View v)
     {
 
-        if(v == btLogin){
+        if(v == btLogin)
+        {
             //Initialisieren von variablen
-            usermail=etEmail.getText().toString();
-            userpw=etPassword.getText().toString();
+            usermail = etEmail.getText().toString();
+            userpw = etPassword.getText().toString();
 
             //Initializieren vom User Dao
-            usercheckItem=Storage.getStorageInstance().getUserByEmail(usermail);
+            usercheckItem = Storage.getStorageInstance().getUserByEmail(usermail);
 
             //Abfrage nach Passwort
-            if(usercheckItem!=null && usercheckItem.getEmail().equals(usermail) && usercheckItem.getPassword().equals(userpw) ){
-            Intent intent = new Intent(this, MainActivity.class);
-            intent.putExtra("E-Mail", etEmail.getText().toString());
-            this.startActivity(intent);
+            if(usercheckItem != null && usercheckItem.getEmail().equals(usermail) && usercheckItem.getPassword().equals(userpw) )
+            {
+                Intent intent = new Intent(this, MainActivity.class);
+                intent.putExtra("E-Mail", etEmail.getText().toString());
+                this.startActivity(intent);
                 this.finish();
-
-        }
-        else{
-                etEmail.setText(null);
-                etPassword.setText(null);
-                etEmail.requestFocus();
-                Toast.makeText(getApplicationContext(), "E-Mail oder Passwort falsch", Toast.LENGTH_LONG).show();
             }
+        else
+        {
+            //etEmail.setText(null); usability
+            etPassword.setText(null);
+            etEmail.requestFocus();
+            Toast.makeText(getApplicationContext(), "E-Mail oder Passwort falsch", Toast.LENGTH_LONG).show();
+        }
 
         }
         else if(v == tvNotRegistered)

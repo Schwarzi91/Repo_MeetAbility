@@ -196,11 +196,6 @@
 
         </LinearLayout>
 
-        <ProgressBar
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/progressBar" />
 
     </FrameLayout>
 
@@ -258,7 +253,8 @@
                 android:rating="0"
                 android:clickable="true"
                 android:progressTint="#ffffc62b"
-                android:progressTintMode="screen" />
+                android:progressTintMode="screen"
+                android:background="#40ffffff"/>
 
             <Button
                 android:layout_width="fill_parent"

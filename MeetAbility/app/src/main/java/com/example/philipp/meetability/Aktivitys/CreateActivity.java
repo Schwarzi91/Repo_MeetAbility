@@ -69,8 +69,10 @@ public class CreateActivity extends Activity implements View.OnClickListener
         //Datum
         etFromDate = (EditText) findViewById(R.id.etFromDate);
         etFromDate.setInputType(InputType.TYPE_NULL);
+        etFromDate.setFocusable(false);
         etToDate = (EditText) findViewById(R.id.etToDate);
         etToDate.setInputType(InputType.TYPE_NULL);
+        etToDate.setFocusable(false);
         dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.GERMANY);
         etFromDate.setOnClickListener(this);
         etToDate.setOnClickListener(this);
@@ -79,8 +81,10 @@ public class CreateActivity extends Activity implements View.OnClickListener
 
         //Uhrzeit
         etFromTime = (EditText) findViewById(R.id.etFromTime);
+        etFromTime.setFocusable(false);
         etFromTime.setInputType(InputType.TYPE_NULL);
         etToTime = (EditText) findViewById(R.id.etToTime);
+        etToTime.setFocusable(false);
         etToTime.setInputType(InputType.TYPE_NULL);
         etFromTime.setOnClickListener(this);
         etToTime.setOnClickListener(this);

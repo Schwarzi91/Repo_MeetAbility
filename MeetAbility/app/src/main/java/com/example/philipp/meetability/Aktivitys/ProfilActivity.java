@@ -18,6 +18,7 @@ import android.app.DatePickerDialog;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.philipp.meetability.Database.User;
 import com.example.philipp.meetability.R;
 
 import java.text.SimpleDateFormat;
@@ -34,7 +35,7 @@ public class ProfilActivity extends Activity implements View.OnClickListener
     private SimpleDateFormat dateFormatter;
     private DatePickerDialog datePicker;
     //textfelder
-    private TextView etEmail;
+    private TextView tvEmail;
     private EditText etUser;
     private EditText etDescription;
     //profilbild
@@ -45,8 +46,12 @@ public class ProfilActivity extends Activity implements View.OnClickListener
     private Button btLogOut;
     private Button btDeaktivate;
 
+    //Database
+    public static User usercheckItem;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profil);
 
@@ -62,13 +67,13 @@ public class ProfilActivity extends Activity implements View.OnClickListener
         etAge.setOnClickListener(this);
 
         //view setzen
-        etEmail=(TextView) findViewById(R.id.etEmail);
-        etUser=(EditText) findViewById(R.id.etUser);
-        etDescription=(EditText)findViewById(R.id.etDescription);
-        btChangeUserInfo= (Button) findViewById(R.id.btChangeUserInfo);
-        btChangePW=(Button) findViewById(R.id.btChangePW);
-        btLogOut=(Button)findViewById(R.id.btLogOut);
-        btDeaktivate=(Button)findViewById(R.id.btDeaktivate);
+        tvEmail = (TextView) findViewById(R.id.etEmail);
+        etUser = (EditText) findViewById(R.id.etUser);
+        etDescription = (EditText)findViewById(R.id.etDescription);
+        btChangeUserInfo = (Button) findViewById(R.id.btChangeUserInfo);
+        btChangePW = (Button) findViewById(R.id.btChangePW);
+        btLogOut = (Button)findViewById(R.id.btLogOut);
+        btDeaktivate = (Button)findViewById(R.id.btDeaktivate);
 
         //listener
         btChangeUserInfo.setOnClickListener(this);
@@ -76,22 +81,27 @@ public class ProfilActivity extends Activity implements View.OnClickListener
         btLogOut.setOnClickListener(this);
         btDeaktivate.setOnClickListener(this);
 
+        //tvEmail.setText(usercheckItem.getEmail());
+
         setDateField();
         setChange(false);
     }
 
-    private void setChange(boolean i) {
+    private void setChange(boolean i)
+    {
         spGender.setFocusable(i);
         etAge.setFocusable(i);
-        etEmail.setFocusable(i);
+        tvEmail.setFocusable(i);
         etUser.setFocusable(i);
         etDescription.setFocusable(i);
-        if (i==false) {
+        if (i == false)
+        {
             i = true;
             btChangeUserInfo.setText("Profil bearbeiten");
         }
-        else {
-            i=false;
+        else
+        {
+            i = false;
             btChangeUserInfo.setText("Speichern");
         }
         btChangePW.setFocusable(i);
