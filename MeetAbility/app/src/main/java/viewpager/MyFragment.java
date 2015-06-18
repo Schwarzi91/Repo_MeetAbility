@@ -56,8 +56,9 @@ public class MyFragment extends Fragment {
 
         ListAdapter listAdapter = new ArrayAdapter(this.getActivity(), R.layout.custom_listview_layout, listDetails);
 
-       // lvDetails.setAdapter(listAdapter);
+        // lvDetails.setAdapter(listAdapter);
 
         return v;
     }
 }
+

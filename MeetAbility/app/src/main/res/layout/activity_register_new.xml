@@ -55,6 +55,19 @@
                 android:background="@drawable/edittext"
                 android:textColorHint="#ffffff"/>
 
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:inputType="textPassword"
+                android:ems="10"
+                android:hint="Passwort wiederholen"
+                android:textColor="#ffffff"
+                android:id="@+id/etPassword2"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/edittext"
+                android:textColorHint="#ffffff" />
+
             <Button
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"

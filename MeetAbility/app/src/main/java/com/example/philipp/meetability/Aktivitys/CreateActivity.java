@@ -1,4 +1,4 @@
-package com.example.philipp.meetability;
+package com.example.philipp.meetability.Aktivitys;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
@@ -6,17 +6,27 @@ import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TimePicker;
 
+import com.example.philipp.meetability.R;
+
+import java.nio.charset.Charset;
+import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
+import java.util.TimeZone;
 
 
-public class SearchActivity extends Activity implements View.OnClickListener
+public class CreateActivity extends Activity implements View.OnClickListener
 {
+    private Spinner spActivityTypes;
+    private Spinner spGender;
+    private Spinner spMaxParticipants;
 
     //Datum
     private EditText etFromDate;
@@ -35,13 +45,34 @@ public class SearchActivity extends Activity implements View.OnClickListener
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search);
+        setContentView(R.layout.activity_create);
+
+        //Spinner
+        spActivityTypes = (Spinner) findViewById(R.id.spActivityType);
+        ArrayAdapter<CharSequence> activityTypeAdapter = ArrayAdapter.createFromResource(this,
+                R.array.activityTypes, android.R.layout.simple_spinner_item);
+        activityTypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spActivityTypes.setAdapter(activityTypeAdapter);
+
+        spGender = (Spinner) findViewById(R.id.spGender);
+        ArrayAdapter<CharSequence> genderAdapter = ArrayAdapter.createFromResource(this,
+                R.array.gender, android.R.layout.simple_expandable_list_item_1);
+        spGender.setAdapter(genderAdapter);
+
+        spMaxParticipants = (Spinner) findViewById(R.id.spMaxParticipants);
+        ArrayAdapter<CharSequence> maxParticipantsAdapter = ArrayAdapter.createFromResource(this,
+                R.array.maxParticipants, android.R.layout.simple_spinner_dropdown_item);
+        maxParticipantsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spMaxParticipants.setAdapter(maxParticipantsAdapter);
+        //Spinner ende
 
         //Datum
         etFromDate = (EditText) findViewById(R.id.etFromDate);
         etFromDate.setInputType(InputType.TYPE_NULL);
+        etFromDate.setFocusable(false);
         etToDate = (EditText) findViewById(R.id.etToDate);
         etToDate.setInputType(InputType.TYPE_NULL);
+        etToDate.setFocusable(false);
         dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.GERMANY);
         etFromDate.setOnClickListener(this);
         etToDate.setOnClickListener(this);
@@ -50,14 +81,17 @@ public class SearchActivity extends Activity implements View.OnClickListener
 
         //Uhrzeit
         etFromTime = (EditText) findViewById(R.id.etFromTime);
+        etFromTime.setFocusable(false);
         etFromTime.setInputType(InputType.TYPE_NULL);
         etToTime = (EditText) findViewById(R.id.etToTime);
+        etToTime.setFocusable(false);
         etToTime.setInputType(InputType.TYPE_NULL);
         etFromTime.setOnClickListener(this);
         etToTime.setOnClickListener(this);
         setTimeField();
         //Uhrzeit ende
     }
+
     private void setDateField()
     {
         Calendar newCalendar = Calendar.getInstance();
