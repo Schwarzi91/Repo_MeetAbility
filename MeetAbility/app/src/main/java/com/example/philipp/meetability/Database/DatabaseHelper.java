@@ -119,6 +119,12 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper{
     public void setUserDao(Dao<User, String> userDao) {
         this.userDao = userDao;
     }
+
+
+    public void close(Dao dao) {
+        super.close();
+        dao = null;
+    }
 }
 
 
