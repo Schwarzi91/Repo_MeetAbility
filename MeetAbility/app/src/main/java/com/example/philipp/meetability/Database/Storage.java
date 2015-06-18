@@ -20,8 +20,8 @@ public class Storage {
     public Storage(Context context) {dbHelper =new DatabaseHelper(context);}
 
 
-    public static void initialize(InitializeAktivity initializeAktivity){
-        INSTANCE = new Storage(initializeAktivity);
+    public static void initialize(Context context){
+        INSTANCE = new Storage(context);
     }
 
     public static Storage getStorageInstance() {
