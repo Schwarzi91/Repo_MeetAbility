@@ -53,6 +53,7 @@ public class RegisterActivity extends Activity implements View.OnClickListener
             if (Storage.getStorageInstance().getUserByEmail(email) == null && pw1.equals(pw2))
             {
                 Storage.getStorageInstance().saveUser(new User(email, pw1, "", "", 0, ""));
+                LoginActivity.usercheckItem = Storage.getStorageInstance().getUserByEmail(email);
                 Intent intent = new Intent(this, ProfilActivity.class);
                 this.startActivity(intent);
                 this.finish();
