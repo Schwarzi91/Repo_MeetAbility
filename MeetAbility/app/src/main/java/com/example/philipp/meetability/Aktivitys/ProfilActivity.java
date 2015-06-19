@@ -18,6 +18,7 @@ import android.app.DatePickerDialog;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.philipp.meetability.Database.DatabaseHelper;
 import com.example.philipp.meetability.Database.Storage;
 import com.example.philipp.meetability.Database.User;
 import com.example.philipp.meetability.R;
@@ -37,7 +38,7 @@ public class ProfilActivity extends Activity implements View.OnClickListener
     private DatePickerDialog datePicker;
     //textfelder
     private TextView tvEmail;
-    private EditText etUser;
+    private EditText etUserName;
     private EditText etDescription;
     //profilbild
     private ImageView  ivUser;
@@ -56,19 +57,25 @@ public class ProfilActivity extends Activity implements View.OnClickListener
 
         //Spinner
         spGender = (Spinner) findViewById(R.id.spGender);
-        ArrayAdapter<CharSequence> activityTypeAdapter = ArrayAdapter.createFromResource(this, R.array.genderProfil, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> activityTypeAdapter = ArrayAdapter.createFromResource(this, R.array.genderProfil, R.layout.spinner_style);
         activityTypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spGender.setAdapter(activityTypeAdapter);
+        spGender.setEnabled(false);
+        spGender.setSelection(LoginActivity.usercheckItem.getSex());
         //Datum
         etAge = (EditText) findViewById(R.id.etAge);
         etAge.setInputType(InputType.TYPE_NULL);
-        dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.GERMANY);
+        etAge.setEnabled(false);
         etAge.setOnClickListener(this);
+        dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.GERMANY);
 
         //view setzen
         tvEmail = (TextView) findViewById(R.id.etEmail);
-        etUser = (EditText) findViewById(R.id.etUser);
+        etUserName = (EditText) findViewById(R.id.etUserName);
+        etUserName.setEnabled(false);
         etDescription = (EditText)findViewById(R.id.etDescription);
+        etDescription.setEnabled(false);
+
         btChangeUserInfo = (Button) findViewById(R.id.btChangeUserInfo);
         btChangePW = (Button) findViewById(R.id.btChangePW);
         btLogOut = (Button)findViewById(R.id.btLogOut);
@@ -81,31 +88,55 @@ public class ProfilActivity extends Activity implements View.OnClickListener
         btDeaktivate.setOnClickListener(this);
 
         tvEmail.setText(LoginActivity.usercheckItem.getEmail());
-
         setDateField();
-        setChange(false);
+
+        if(LoginActivity.usercheckItem.getUsername().equals(""))
+        {
+            setEditable(true);
+        }
+        else
+        {
+            setUserinformation();
+        }
     }
 
-    private void setChange(boolean i)
+    private void setUserinformation()
     {
+        etUserName.setText(LoginActivity.usercheckItem.getUsername());
+        etDescription.setText(LoginActivity.usercheckItem.getDescription());
+        //spGender.setSelection(LoginActivity.usercheckItem.getSex());
+    }
+
+    private void setEditable(boolean i)
+    {
+        /*
         spGender.setFocusable(i);
         etAge.setFocusable(i);
         tvEmail.setFocusable(i);
-        etUser.setFocusable(i);
-        etDescription.setFocusable(i);
+        etUserName.setFocusable(i);
+        etDescription.setFocusable(i);*/
         if (i == false)
         {
             i = true;
+            etDescription.setEnabled(false);
+            etAge.setEnabled(false);
+            etUserName.setEnabled(false);
+            spGender.setEnabled(false);
             btChangeUserInfo.setText("Profil bearbeiten");
         }
         else
         {
+
+            etDescription.setEnabled(true);
+            etAge.setEnabled(true);
+            etUserName.setEnabled(true);
+            spGender.setEnabled(true);
             i = false;
             btChangeUserInfo.setText("Speichern");
         }
-        btChangePW.setFocusable(i);
+        /*btChangePW.setFocusable(i);
         btLogOut.setFocusable(i);
-        btDeaktivate.setFocusable(i);
+        btDeaktivate.setFocusable(i);*/
 
     }
 
@@ -128,18 +159,37 @@ public class ProfilActivity extends Activity implements View.OnClickListener
 
 
     @Override
-    public void onClick(View view) {
-        if(view==etAge)
+    public void onClick(View view)
+    {
+        if(view == etAge)
+        {
             datePicker.show();
-        if(view==btChangeUserInfo) {
-            if(btChangeUserInfo.getText()=="Speichern"){
-                setChange(false);
-                etAge.setFocusable(false);}
+        }
+        else if(view == btChangeUserInfo)
+        {
+            if(etUserName.getText().toString().trim().equals(""))
+            {
+                Toast.makeText(this, "Bitte geben Sie einen Nutzernamen ein!", Toast.LENGTH_SHORT).show();
+            }
             else
-                setChange(true);
-
-
-
+            {
+                if (btChangeUserInfo.getText() == "Speichern")
+                {
+                    setEditable(false);
+                    LoginActivity.usercheckItem.setUsername(etUserName.getText().toString());
+                    LoginActivity.usercheckItem.setSex(spGender.getSelectedItemPosition());
+                    LoginActivity.usercheckItem.setDescription(etDescription.getText().toString());
+                    Storage.getStorageInstance().saveUser(LoginActivity.usercheckItem);
+                    //etAge.setFocusable(false);
+                } else {
+                    setEditable(true);
+                }
+            }
+        }
+        else if(view == btLogOut)
+        {
+            DatabaseHelper dbh = new DatabaseHelper(this);
+            //dbh.close(LoginActivity.usercheckItem);
         }
     }
 }

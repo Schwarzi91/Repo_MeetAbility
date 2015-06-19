@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.philipp.meetability.Database.DatabaseHelper;
 import com.example.philipp.meetability.Database.Storage;
 import com.example.philipp.meetability.Database.User;
 import com.example.philipp.meetability.R;
@@ -64,6 +65,7 @@ public class LoginActivity extends Activity implements View.OnClickListener
                 this.startActivity(intent);
                 this.finish();
             }
+
         else
         {
             //etEmail.setText(null); usability

@@ -27,9 +27,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper{
     public Dao<User, String> userDao;
 
  public DatabaseHelper(Context context){
-
      super(context, DATABAS_NAME,null,DATABASE_VERSION);
-
  }
 
 
@@ -113,6 +111,18 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper{
         return userDao;
     }
 
+
+    //Dao Setter
+
+    public void setUserDao(Dao<User, String> userDao) {
+        this.userDao = userDao;
     }
+
+
+    public void close(Dao dao) {
+        super.close();
+        dao = null;
+    }
+}
 
 
