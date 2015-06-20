@@ -42,7 +42,6 @@
         <activity
             android:name=".Aktivitys.InitializeAktivity"
             android:label="@string/title_activity_activity_search" >
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -54,7 +53,8 @@
         </activity>
         <activity
             android:name=".Aktivitys.CreateActivity"
-            android:label="@string/title_activity_create" >
+            android:label="@string/title_activity_create"
+            android:windowSoftInputMode="adjustPan">
         </activity>
         <activity
             android:name=".Aktivitys.ProfilActivity"
