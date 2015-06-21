@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 
+import com.example.philipp.meetability.Aktivitys.HistoryActivity;
 import com.example.philipp.meetability.R;
 
 import java.util.ArrayList;
@@ -34,9 +35,9 @@ public class PageViewActivity extends android.support.v4.app.FragmentActivity
     {
         List<Fragment> fragmentList = new ArrayList<>();
 
-        fragmentList.add(MyFragment.newInstance("Kino"));
-        fragmentList.add(MyFragment.newInstance("Kino"));
-        fragmentList.add(MyFragment.newInstance("Kino"));
+        fragmentList.add(HistoryActivity.newInstance("Kino"));
+        fragmentList.add(HistoryActivity.newInstance("Kino"));
+        fragmentList.add(HistoryActivity.newInstance("Kino"));
 
         return fragmentList;
     }

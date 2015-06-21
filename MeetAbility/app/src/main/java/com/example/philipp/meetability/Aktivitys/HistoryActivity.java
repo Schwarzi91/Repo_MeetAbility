@@ -1,4 +1,4 @@
-package com.example.philipp.meetability.viewpager;
+package com.example.philipp.meetability.Aktivitys;
 
 import android.graphics.Color;
 import android.graphics.PorterDuff;
@@ -19,13 +19,13 @@ import com.example.philipp.meetability.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyFragment extends Fragment {
+public class HistoryActivity extends Fragment {
     public static final String EXTRA_MESSAGE = "EXTRA_MESSAGE";
     private ListView lvDetails;
 
-    public static final MyFragment newInstance(String message)
+    public static final HistoryActivity newInstance(String message)
     {
-        MyFragment f = new MyFragment();
+        HistoryActivity f = new HistoryActivity();
         Bundle bdl = new Bundle(1);
         bdl.putString(EXTRA_MESSAGE, message);
         f.setArguments(bdl);
