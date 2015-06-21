@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -40,7 +41,11 @@ public class CreateActivity extends Activity implements View.OnClickListener
     private EditText etToTime;
     private TimePickerDialog fromTimePicker;
     private TimePickerDialog toTimePicker;
-
+    //Button
+    private Button btCreate;
+    //editText
+    private EditText etLocation;
+    private EditText et;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -91,6 +96,13 @@ public class CreateActivity extends Activity implements View.OnClickListener
         etToTime.setOnClickListener(this);
         setTimeField();
         //Uhrzeit ende
+
+        //Button
+        btCreate= (Button) findViewById(R.id.btCreate);
+        btCreate.setOnClickListener(this);
+        //EditText
+        etLocation=(EditText) findViewById(R.id.etLocation);
+
     }
 
     private void setDateField()
@@ -162,6 +174,9 @@ public class CreateActivity extends Activity implements View.OnClickListener
         else if(view == etToTime)
         {
             toTimePicker.show();
+        }
+        if(view== btCreate){
+
         }
     }
 }
