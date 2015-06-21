@@ -38,8 +38,8 @@ public class Storage {
                 saveUser(new User("edgar@thi.de", "test123", "Ede Muster", 2, 20, "Ich bins nicht"));
             }
             if(getAktivityList().isEmpty()){
-                saveActivity(new Aktivity(getUserList().get(0), "Kino", 2, "Heute ins Kino Gehen", 10));
-                saveActivity(new Aktivity(getUserList().get(1), "Fischen", 1, "Heute Fischen Gehen", 5));
+                saveActivity(new Aktivity(getUserList().get(0), "Kino", 2,"25-06-2015 18:35", "25-06-2015 17:40", "Heute ins Kino Gehen", 10));
+                saveActivity(new Aktivity(getUserList().get(1), "Fischen",1,"25-06-2015 18:35", "25-06-2015 18:40",  "Heute Fischen Gehen", 5));
             }
             if(getHistoryList().isEmpty()){
                 saveHistory(new History(getAktivityList().get(0), 5, "War super"));

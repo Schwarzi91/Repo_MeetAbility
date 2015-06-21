@@ -86,12 +86,12 @@ public class HistoryActivity extends Fragment implements View.OnClickListener{
         btRate = (Button) v.findViewById(R.id.btRate);
         btRate.setOnClickListener(this);
         return v;
-        userId = LoginActivity.usercheckItem.getUser_id();
+        //userId = LoginActivity.usercheckItem.getUser_id();
     }
 
-    for (x=0; x < userID; i++){
+    //for (x=0; x < userID; i++){
 
-    }
+
 
 
     public void addListenerOnRatingBar(){

@@ -240,10 +240,6 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-<<<<<<< HEAD
-
-=======
->>>>>>> 2ab027373f89a23522f8790ea279ca3d5d65738f
             android:text="Profil Bearbeiten"
             android:id="@+id/btChangeUserInfo"
             android:layout_gravity="center_horizontal"
