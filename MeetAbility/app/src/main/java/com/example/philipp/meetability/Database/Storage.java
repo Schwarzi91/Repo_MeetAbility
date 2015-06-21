@@ -4,13 +4,11 @@ import android.content.Context;
 import android.util.Log;
 
 import java.sql.SQLException;
-<<<<<<< HEAD
 import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-=======
->>>>>>> 6b0bf538fd1da6d2e1eae242c90d930845433129
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -44,8 +42,8 @@ public class Storage {
                 saveUser(new User("edgar@thi.de", "test123", "Ede Muster", 2, 20, "Ich bins nicht"));
             }
             if(getAktivityList().isEmpty()){
-                saveActivity(new Aktivity(getUserList().get(0), "Kino", 2,"25-06-2015 18:35", "25-06-2015 17:40", "Heute ins Kino Gehen", 10));
-                saveActivity(new Aktivity(getUserList().get(1), "Fischen",1,"25-06-2015 18:35", "25-06-2015 18:40",  "Heute Fischen Gehen", 5));
+                saveActivity(new Aktivity(getUserList().get(0), "Kino", 2, "25-06-2015 18:35", "25-06-2015 17:40", "Heute ins Kino Gehen", 10));
+                saveActivity(new Aktivity(getUserList().get(1), "Fischen", 1, "25-06-2015 18:35", "25-06-2015 18:40", "Heute Fischen Gehen", 5));
             }
             if(getHistoryList().isEmpty()){
                 saveHistory(new History(getAktivityList().get(0), 5, "War super"));
@@ -220,7 +218,6 @@ public class Storage {
         return null;
     }
 
-<<<<<<< HEAD
     public Aktivity getFilteredAktivity(String activityName, int sex, String dateFrom, String dateTo){
         List<Aktivity> listAktivity = Storage.getStorageInstance().getAktivityList();
         Date dbStartDate;
@@ -247,9 +244,6 @@ public class Storage {
                 return null;
             }
         }
-=======
->>>>>>> 6b0bf538fd1da6d2e1eae242c90d930845433129
-
 
     public Date dateFormatter(String date)
     {
