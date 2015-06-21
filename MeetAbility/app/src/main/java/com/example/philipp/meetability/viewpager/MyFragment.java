@@ -42,7 +42,7 @@ public class MyFragment extends Fragment {
 
         RatingBar ratingBar = (RatingBar) v.findViewById(R.id.ratingBar);
         LayerDrawable stars = (LayerDrawable) ratingBar.getProgressDrawable();
-        stars.getDrawable(2).setColorFilter(Color.CYAN, PorterDuff.Mode.SRC_ATOP);
+        stars.getDrawable(2).setColorFilter(Color.parseColor("#ffd700"), PorterDuff.Mode.SRC_ATOP);
 
         //lvDetails = (ListView) v.findViewById(R.id.lvDetails);
         List<String> listDetails = new ArrayList<String>();

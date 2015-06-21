@@ -1,25 +1,51 @@
 package com.example.philipp.meetability.Aktivitys;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import com.example.philipp.meetability.R;
 
-public class ReportActivity extends ActionBarActivity {
+public class ReportActivity extends Activity {
 
+    private Spinner spinnerReport;
+    private String reportType;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report);
+        reportType = getIntent().getExtras().getString("report");
+        spinnerReport = (Spinner) findViewById(R.id.spActivityType);
+
+        if(reportType.equals("userreport")) {
+            ArrayAdapter<CharSequence> activityReasonUserreportAdapter = ArrayAdapter.createFromResource(this,
+                    R.array.reasons_userreport, R.layout.spinner_style);
+            activityReasonUserreportAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spinnerReport.setAdapter(activityReasonUserreportAdapter);
+        }
+        else if(reportType.equals("bugreport")) {
+            ArrayAdapter<CharSequence> activityReasonBugreportAdapter = ArrayAdapter.createFromResource(this,
+                    R.array.reasons_bugreport, R.layout.spinner_style);
+            activityReasonBugreportAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spinnerReport.setAdapter(activityReasonBugreportAdapter);
+        }
+
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_activity_report, menu);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_activity_all, menu);
         return true;
+
     }
 
     @Override
@@ -30,8 +56,18 @@ public class ReportActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_logout) {
             return true;
+        }
+        if (id == R.id.action_userreport) {
+            Intent intent = new Intent(this, ReportActivity.class);
+            intent.putExtra("report", "userreport");
+            startActivity(intent);
+        }
+        if (id == R.id.action_bugreport) {
+            Intent intent = new Intent(this, ReportActivity.class);
+            intent.putExtra("report", "bugreport");
+            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);
