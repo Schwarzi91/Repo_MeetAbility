@@ -7,13 +7,17 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.philipp.meetability.Database.Report;
 import com.example.philipp.meetability.R;
 
 import com.example.philipp.meetability.viewpager.PageViewActivity;
+
+
 
 
 public class MainActivity extends Activity implements View.OnClickListener
@@ -24,6 +28,7 @@ public class MainActivity extends Activity implements View.OnClickListener
     private ImageButton btShowHistory;
     private TextView tvUsername;
     private String strUsername;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -39,6 +44,7 @@ public class MainActivity extends Activity implements View.OnClickListener
         btSearchActivity.setOnClickListener(this);
         btShowProfile.setOnClickListener(this);
         btShowHistory.setOnClickListener(this);
+
     }
 
     @Override
@@ -84,19 +90,19 @@ public class MainActivity extends Activity implements View.OnClickListener
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_logout) {
-
             return true;
         }
         if (id == R.id.action_userreport) {
             Intent intent = new Intent(this, ReportActivity.class);
+            intent.putExtra("report", "userreport");
             startActivity(intent);
         }
         if (id == R.id.action_bugreport) {
             Intent intent = new Intent(this, ReportActivity.class);
+            intent.putExtra("report", "bugreport");
             startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);
     }
-
 }

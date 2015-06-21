@@ -2,12 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.philipp.meetability" >
 
-<<<<<<< HEAD
 
-    <!-- Access to External Storage -->
-=======
-    <!-- To access Google+ APIs: -->
->>>>>>> 1f2518c5059b14ee272c5a2b51606ec91bffe439
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <!--
  To retrieve OAuth 2.0 tokens or invalidate tokens to disconnect a user. This disconnect
@@ -63,8 +58,6 @@
         <activity
             android:name=".Aktivitys.ProfilActivity"
             android:label="@string/title_activity_profil" >
-        </activity>
-        <activity android:name="." >
         </activity>
         <activity
             android:name=".Aktivitys.ReportActivity"

@@ -101,15 +101,16 @@ public class LoginActivity extends Activity implements View.OnClickListener
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_logout) {
-
             return true;
         }
         if (id == R.id.action_userreport) {
             Intent intent = new Intent(this, ReportActivity.class);
+            intent.putExtra("report", "userreport");
             startActivity(intent);
         }
         if (id == R.id.action_bugreport) {
             Intent intent = new Intent(this, ReportActivity.class);
+            intent.putExtra("report", "bugreport");
             startActivity(intent);
         }
 

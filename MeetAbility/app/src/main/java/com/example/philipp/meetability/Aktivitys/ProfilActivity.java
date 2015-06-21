@@ -59,7 +59,7 @@ public class ProfilActivity extends Activity implements View.OnClickListener
         setContentView(R.layout.activity_profil);
 
         //Spinner
-        spGender = (Spinner) findViewById(R.id.spGender);
+        spGender = (Spinner)findViewById(R.id.spGender);
         ArrayAdapter<CharSequence> activityTypeAdapter = ArrayAdapter.createFromResource(this, R.array.genderProfil, R.layout.spinner_style);
         activityTypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spGender.setAdapter(activityTypeAdapter);
@@ -213,15 +213,16 @@ public class ProfilActivity extends Activity implements View.OnClickListener
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_logout) {
-
             return true;
         }
         if (id == R.id.action_userreport) {
             Intent intent = new Intent(this, ReportActivity.class);
+            intent.putExtra("report", "userreport");
             startActivity(intent);
         }
         if (id == R.id.action_bugreport) {
             Intent intent = new Intent(this, ReportActivity.class);
+            intent.putExtra("report", "bugreport");
             startActivity(intent);
         }
 
