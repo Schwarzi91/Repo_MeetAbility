@@ -1,6 +1,7 @@
 package com.example.philipp.meetability.Database;
 
 import android.content.Context;
+import android.text.Editable;
 import android.util.Log;
 
 import com.example.philipp.meetability.Aktivitys.InitializeAktivity;
@@ -40,8 +41,8 @@ public class Storage {
                 saveUser(new User("edgar@thi.de", "test123", "Ede Muster", 2, 20, "Ich bins nicht"));
             }
             if(getAktivityList().isEmpty()){
-                saveAktivity(new Aktivity(getUserList().get(0),"Kino",2,"Heute ins Kino Gehen",10));
-                saveAktivity(new Aktivity(getUserList().get(1),"Fischen",1,"Heute Fischen Gehen",5));
+                saveAktivity(new Aktivity(getUserList().get(0),"Kino",2, "25-06-2015 10:50","25-06-2015 11:50","Heute ins Kino Gehen",10));
+                saveAktivity(new Aktivity(getUserList().get(1),"Fischen",1,"25-06-2015 10:50","27-06-2015 10:50","Heute Fischen Gehen",5));
             }
         }catch (Exception e){
             Log.e(DatabaseHelper.class.getName(), "Cant safe Data", e);
@@ -63,7 +64,7 @@ public class Storage {
         }
     }
 
-    private void saveAktivity(Aktivity aktivity) {
+    public void saveAktivity(Aktivity aktivity) {
         try {
             dbHelper.getAktivityDao().createOrUpdate(aktivity);
         } catch (SQLException e) {
@@ -153,8 +154,6 @@ public class Storage {
         }
         return null;
     }
-
-
 
 }
 
