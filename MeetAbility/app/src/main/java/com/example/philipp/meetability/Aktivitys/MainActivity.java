@@ -7,10 +7,9 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.example.philipp.meetability.Database.DatabaseHelper;
 import com.example.philipp.meetability.R;
 
-import viewpager.PageViewActivity;
+import com.example.philipp.meetability.viewpager.PageViewActivity;
 
 
 public class MainActivity extends Activity implements View.OnClickListener

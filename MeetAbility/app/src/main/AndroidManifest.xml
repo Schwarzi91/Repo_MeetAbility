@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.philipp.meetability" >
 
-
     <!-- To access Google+ APIs: -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <!--
@@ -32,18 +31,18 @@
         <activity
             android:name=".Aktivitys.LoginActivity"
             android:label="@string/app_name" >
-
         </activity>
         <activity
             android:name=".Aktivitys.RegisterActivity"
             android:label="@string/title_activity_register" >
         </activity>
-        <activity android:name="viewpager.PageViewActivity" />
+        <activity android:name=".viewpager.PageViewActivity" />
         <activity
             android:name=".Aktivitys.InitializeAktivity"
             android:label="@string/title_activity_activity_search" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -54,11 +53,17 @@
         <activity
             android:name=".Aktivitys.CreateActivity"
             android:label="@string/title_activity_create"
-            android:windowSoftInputMode="adjustPan">
+            android:windowSoftInputMode="adjustPan" >
         </activity>
         <activity
             android:name=".Aktivitys.ProfilActivity"
             android:label="@string/title_activity_profil" >
+        </activity>
+        <activity android:name="." >
+        </activity>
+        <activity
+            android:name=".Aktivitys.ReportActivity"
+            android:label="@string/title_activity_activity_report" >
         </activity>
     </application>
 

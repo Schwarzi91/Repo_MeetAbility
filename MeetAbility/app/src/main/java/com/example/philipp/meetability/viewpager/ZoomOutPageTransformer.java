@@ -1,4 +1,4 @@
-package viewpager;
+package com.example.philipp.meetability.viewpager;
 
 /**
  * Created by Philipp on 06.06.15.
