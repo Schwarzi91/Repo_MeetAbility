@@ -43,6 +43,7 @@ public class Storage {
                 saveAktivity(new Aktivity(getUserList().get(0),"Kino",2,"Heute ins Kino Gehen",10));
                 saveAktivity(new Aktivity(getUserList().get(1),"Fischen",1,"Heute Fischen Gehen",5));
             }
+
         }catch (Exception e){
             Log.e(DatabaseHelper.class.getName(), "Cant safe Data", e);
             throw new RuntimeException(e);
@@ -66,6 +67,14 @@ public class Storage {
     private void saveAktivity(Aktivity aktivity) {
         try {
             dbHelper.getAktivityDao().createOrUpdate(aktivity);
+        } catch (SQLException e) {
+            handleEx(e);
+        }
+    }
+
+    private void saveReport(Report report) {
+        try {
+            dbHelper.getReportDao().createOrUpdate(report);
         } catch (SQLException e) {
             handleEx(e);
         }
@@ -104,6 +113,14 @@ public class Storage {
     public List<Aktivity> getAktivityList(){
         try {
             return dbHelper.getAktivityDao().queryForAll();
+        } catch (SQLException e) {
+            handleEx(e);
+        }
+        return Collections.EMPTY_LIST;}
+
+    public List<Report> getReportList(){
+        try {
+            return dbHelper.getReportDao().queryForAll();
         } catch (SQLException e) {
             handleEx(e);
         }
