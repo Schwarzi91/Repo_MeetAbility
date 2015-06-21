@@ -37,9 +37,9 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper{
         try {
             Log.i(DatabaseHelper.class.getName(), "onCreate");
            TableUtils.createTable(connectionSource, Aktivity.class);
-          //  TableUtils.createTable(connectionSource, Block.class);
-           // TableUtils.createTable(connectionSource, History.class);
-           // TableUtils.createTable(connectionSource, Participant.class);
+            //TableUtils.createTable(connectionSource, Block.class);
+            TableUtils.createTable(connectionSource, History.class);
+            //TableUtils.createTable(connectionSource, Participant.class);
             //TableUtils.createTable(connectionSource, Report.class);
             TableUtils.createTable(connectionSource, User.class);
 

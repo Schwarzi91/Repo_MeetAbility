@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.LayerDrawable;
 import android.media.Rating;
+import android.media.tv.TvContract;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -18,8 +19,13 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.philipp.meetability.Database.Aktivity;
+import com.example.philipp.meetability.Database.History;
+import com.example.philipp.meetability.Database.Participant;
 import com.example.philipp.meetability.Database.Storage;
 import com.example.philipp.meetability.R;
+
+import org.xml.sax.helpers.LocatorImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,8 +35,11 @@ public class HistoryActivity extends Fragment implements View.OnClickListener{
     private ListView lvDetails;
     private RatingBar ratingBar;
     private int intRatingValue;
-    private Button btnSubmit;
+    private int userId;
+    private Button btRate;
     private View view;
+    private List<Participant> participantList;
+    private List<Aktivity> aktivityList;
 
     public static final HistoryActivity newInstance(String message)
     {
@@ -48,8 +57,7 @@ public class HistoryActivity extends Fragment implements View.OnClickListener{
         View v = inflater.inflate(R.layout.activity_history, container, false);
         TextView messageTextView = (TextView)v.findViewById(R.id.tvActivityType);
         messageTextView.setText(message);
-
-        RatingBar ratingBar = (RatingBar) v.findViewById(R.id.ratingBar);
+        ratingBar = (RatingBar) v.findViewById(R.id.ratingBar);
         LayerDrawable stars = (LayerDrawable) ratingBar.getProgressDrawable();
         stars.getDrawable(2).setColorFilter(Color.parseColor("#ffd700"), PorterDuff.Mode.SRC_ATOP);
 
@@ -66,17 +74,28 @@ public class HistoryActivity extends Fragment implements View.OnClickListener{
 
         ListAdapter listAdapter = new ArrayAdapter(this.getActivity(), R.layout.custom_listview_layout, listDetails);
 
+        ratingBar.setRating(Storage.getStorageInstance().getHistoryList().get(0).getRating());
+
+
+        participantList = Storage.getStorageInstance().getParticipantList();
+        aktivityList = Storage.getStorageInstance().getAktivityByUserId(LoginActivity.usercheckItem.getUser_id());
+
 
 
         // lvDetails.setAdapter(listAdapter);
-         btnSubmit = (Button) view.findViewById(R.id.btCreate);
-        btnSubmit.setOnClickListener(this);
+        btRate = (Button) v.findViewById(R.id.btRate);
+        btRate.setOnClickListener(this);
         return v;
+        //userId = LoginActivity.usercheckItem.getUser_id();
     }
+
+    //for (x=0; x < userID; i++){
+
+
+
 
     public void addListenerOnRatingBar(){
 
-        ratingBar = (RatingBar) view.findViewById(R.id.ratingBar);
 
         //if rating value is changed,
         //display the current rating value in the result (textview) automatically
@@ -84,6 +103,7 @@ public class HistoryActivity extends Fragment implements View.OnClickListener{
             public void onRatingChanged(RatingBar ratingBar, float rating,
                                         boolean fromUser) {
                 intRatingValue = ratingBar.getNumStars();
+
 
             }
         });
@@ -93,6 +113,11 @@ public class HistoryActivity extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
+
+
+       History historyCheckItem = Storage.getStorageInstance().getHistoryList().get(0);
+        historyCheckItem.setRating(intRatingValue);
+        Storage.getStorageInstance().saveHistory(historyCheckItem);
 
     }
 }
