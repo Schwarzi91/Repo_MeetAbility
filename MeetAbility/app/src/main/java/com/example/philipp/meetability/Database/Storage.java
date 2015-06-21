@@ -1,7 +1,6 @@
 package com.example.philipp.meetability.Database;
 
 import android.content.Context;
-import android.text.Editable;
 import android.util.Log;
 
 import com.example.philipp.meetability.Aktivitys.InitializeAktivity;
@@ -41,9 +40,18 @@ public class Storage {
                 saveUser(new User("edgar@thi.de", "test123", "Ede Muster", 2, 20, "Ich bins nicht"));
             }
             if(getAktivityList().isEmpty()){
-                saveAktivity(new Aktivity(getUserList().get(0),"Kino",2, "25-06-2015 10:50","25-06-2015 11:50","Heute ins Kino Gehen",10));
-                saveAktivity(new Aktivity(getUserList().get(1),"Fischen",1,"25-06-2015 10:50","27-06-2015 10:50","Heute Fischen Gehen",5));
+                saveAktivity(new Aktivity(getUserList().get(0), "Kino", 2, "Heute ins Kino Gehen", 10));
+                saveAktivity(new Aktivity(getUserList().get(1), "Fischen", 1, "Heute Fischen Gehen", 5));
             }
+            if(getHistoryList().isEmpty()){
+                saveHistory(new History(getAktivityList().get(0), 5, "War super"));
+                saveHistory(new History(getAktivityList().get(1), 0, "War kacke"));
+            }
+            if(getParticipantList().isEmpty()){
+                saveParticipant(new Participant(getUserList().get(0),getAktivityList().get(0),false));
+                saveParticipant(new Participant(getUserList().get(1),getAktivityList().get(1),false));
+            }
+
         }catch (Exception e){
             Log.e(DatabaseHelper.class.getName(), "Cant safe Data", e);
             throw new RuntimeException(e);
@@ -56,6 +64,7 @@ public class Storage {
 
 
     //Data 2 com.example.philipp.meetability.Database Saver
+
     private void saveHistory(History history) {
         try {
             dbHelper.getHistoryDao().createOrUpdate(history);
@@ -64,9 +73,17 @@ public class Storage {
         }
     }
 
-    public void saveAktivity(Aktivity aktivity) {
+    private void saveAktivity(Aktivity aktivity) {
         try {
             dbHelper.getAktivityDao().createOrUpdate(aktivity);
+        } catch (SQLException e) {
+            handleEx(e);
+        }
+    }
+
+    private void saveReport(Report report) {
+        try {
+            dbHelper.getReportDao().createOrUpdate(report);
         } catch (SQLException e) {
             handleEx(e);
         }
@@ -88,6 +105,16 @@ public class Storage {
         }
     }
 
+    public void saveParticipant(Participant participant) {
+        try {
+            dbHelper.getParticipantDao().createOrUpdate(participant);
+        } catch (SQLException e) {
+            handleEx(e);
+        }
+    }
+
+
+
 
 
     //Exception Handler
@@ -105,6 +132,14 @@ public class Storage {
     public List<Aktivity> getAktivityList(){
         try {
             return dbHelper.getAktivityDao().queryForAll();
+        } catch (SQLException e) {
+            handleEx(e);
+        }
+        return Collections.EMPTY_LIST;}
+
+    public List<Report> getReportList(){
+        try {
+            return dbHelper.getReportDao().queryForAll();
         } catch (SQLException e) {
             handleEx(e);
         }
@@ -136,6 +171,16 @@ public class Storage {
         return Collections.EMPTY_LIST;
     }
 
+    public List<Participant> getParticipantList() {
+        try {
+            return dbHelper.getParticipantDao().queryForAll();
+        } catch (SQLException e) {
+            handleEx(e);
+        }
+        return Collections.EMPTY_LIST;
+    }
+
+
 
 //Dao Getter
 
@@ -154,6 +199,24 @@ public class Storage {
         }
         return null;
     }
+
+    public Aktivity getAktivityByUserId(int user_id){
+        List<Aktivity> listAktivity;
+        try {
+            listAktivity = dbHelper.getAktivityDao().queryForEq("user_id", user_id);
+            if (listAktivity.size() == 1) {
+                return listAktivity.get(0);
+
+            } else {
+                return null;
+            }
+        } catch (SQLException e) {
+            handleEx(e);
+        }
+        return null;
+    }
+
+
 
 }
 

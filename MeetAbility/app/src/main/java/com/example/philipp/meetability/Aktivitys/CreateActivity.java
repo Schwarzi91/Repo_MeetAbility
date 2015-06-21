@@ -3,8 +3,12 @@ package com.example.philipp.meetability.Aktivitys;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -12,26 +16,19 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TimePicker;
-import android.widget.Toast;
 
-import com.example.philipp.meetability.Database.Aktivity;
-import com.example.philipp.meetability.Database.Storage;
 import com.example.philipp.meetability.R;
 
-import java.text.ParseException;
+import java.nio.charset.Charset;
+import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
-
+import java.util.TimeZone;
 
 
 public class CreateActivity extends Activity implements View.OnClickListener
 {
-    private String fromDate;
-    private String toDate;
-
-
-    private String unconvertDate;
     private Spinner spActivityTypes;
     private Spinner spGender;
     private Spinner spMaxParticipants;
@@ -52,7 +49,7 @@ public class CreateActivity extends Activity implements View.OnClickListener
     private Button btCreate;
     //editText
     private EditText etLocation;
-    private EditText etDescription;
+    private EditText et;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -109,7 +106,7 @@ public class CreateActivity extends Activity implements View.OnClickListener
         btCreate.setOnClickListener(this);
         //EditText
         etLocation=(EditText) findViewById(R.id.etLocation);
-        etDescription=(EditText) findViewById(R.id.etDescription);
+
     }
 
     private void setDateField()
@@ -183,19 +180,8 @@ public class CreateActivity extends Activity implements View.OnClickListener
             toTimePicker.show();
         }
         if(view== btCreate){
-           if(etLocation.length()>0){
-               if(etDescription.length()>0) {
-                   fromDate=etFromDate.getText().toString()+ " "+ etFromTime.getText().toString();
-                   toDate=etToDate.getText().toString()+ " "+ etToTime.getText().toString();
 
-                   Storage.getStorageInstance().saveAktivity(new Aktivity(LoginActivity.usercheckItem, spActivityTypes.getSelectedItem().toString(), spGender.getSelectedItemPosition(), fromDate, toDate, etDescription.getText().toString(), spMaxParticipants.getSelectedItemPosition()));
-               }else
-               Toast.makeText(getApplicationContext(), "Beschreibung ist nicht ausgefüllt", Toast.LENGTH_LONG).show();
-           }
-            else
-               Toast.makeText(getApplicationContext(), "Location nicht gewählt", Toast.LENGTH_LONG).show();
         }
     }
-
 
 }

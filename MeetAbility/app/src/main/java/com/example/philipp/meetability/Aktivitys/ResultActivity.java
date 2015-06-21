@@ -1,4 +1,4 @@
-package com.example.philipp.meetability.viewpager;
+package com.example.philipp.meetability.Aktivitys;
 
 import android.graphics.Color;
 import android.graphics.PorterDuff;
@@ -19,13 +19,13 @@ import com.example.philipp.meetability.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyFragment extends Fragment {
+public class ResultActivity extends Fragment {
     public static final String EXTRA_MESSAGE = "EXTRA_MESSAGE";
     private ListView lvDetails;
 
-    public static final MyFragment newInstance(String message)
+    public static final ResultActivity newInstance(String message)
     {
-        MyFragment f = new MyFragment();
+        ResultActivity f = new ResultActivity();
         Bundle bdl = new Bundle(1);
         bdl.putString(EXTRA_MESSAGE, message);
         f.setArguments(bdl);
@@ -42,7 +42,7 @@ public class MyFragment extends Fragment {
 
         RatingBar ratingBar = (RatingBar) v.findViewById(R.id.ratingBar);
         LayerDrawable stars = (LayerDrawable) ratingBar.getProgressDrawable();
-        stars.getDrawable(2).setColorFilter(Color.CYAN, PorterDuff.Mode.SRC_ATOP);
+        stars.getDrawable(2).setColorFilter(Color.parseColor("#ffd700"), PorterDuff.Mode.SRC_ATOP);
 
         //lvDetails = (ListView) v.findViewById(R.id.lvDetails);
         List<String> listDetails = new ArrayList<String>();

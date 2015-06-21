@@ -253,15 +253,14 @@
                 android:rating="0"
                 android:clickable="true"
                 android:progressTint="#ffffc62b"
-                android:progressTintMode="screen"
-                android:background="#40ffffff"/>
+                android:progressTintMode="screen"/>
 
             <Button
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="@string/feedback"
-                android:id="@+id/btCreate"
+                android:id="@+id/btRate"
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/register_login_button"
                 android:layout_weight="2"/>

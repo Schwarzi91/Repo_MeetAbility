@@ -2,10 +2,12 @@ package com.example.philipp.meetability.Aktivitys;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -44,9 +46,7 @@ public class ProfilActivity extends Activity implements View.OnClickListener
     //profilbild
     private ImageView  ivUser;
     //Buttons
-    private Button btChangeUserInfo;
-    private Button btChangePW;
-    private Button btLogOut;
+
     private Button btDeaktivate;
 
 
@@ -57,7 +57,7 @@ public class ProfilActivity extends Activity implements View.OnClickListener
         setContentView(R.layout.activity_profil);
 
         //Spinner
-        spGender = (Spinner) findViewById(R.id.spGender);
+        spGender = (Spinner)findViewById(R.id.spGender);
         ArrayAdapter<CharSequence> activityTypeAdapter = ArrayAdapter.createFromResource(this, R.array.genderProfil, R.layout.spinner_style);
         activityTypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spGender.setAdapter(activityTypeAdapter);
@@ -77,15 +77,11 @@ public class ProfilActivity extends Activity implements View.OnClickListener
         etDescription = (EditText)findViewById(R.id.etDescription);
         etDescription.setEnabled(false);
 
-        btChangeUserInfo = (Button) findViewById(R.id.btChangeUserInfo);
-        btChangePW = (Button) findViewById(R.id.btChangePW);
-        btLogOut = (Button)findViewById(R.id.btLogOut);
+
         btDeaktivate = (Button)findViewById(R.id.btDeaktivate);
 
         //listener
-        btChangeUserInfo.setOnClickListener(this);
-        btChangePW.setOnClickListener(this);
-        btLogOut.setOnClickListener(this);
+
         btDeaktivate.setOnClickListener(this);
 
         tvEmail.setText(LoginActivity.usercheckItem.getEmail());
@@ -97,26 +93,17 @@ public class ProfilActivity extends Activity implements View.OnClickListener
         }
         else
         {
-            setUserinformation();
+            etUserName.setText(LoginActivity.usercheckItem.getUsername());
+            etDescription.setText(LoginActivity.usercheckItem.getDescription());
+
         }
     }
 
-    private void setUserinformation()
-    {
-        etUserName.setText(LoginActivity.usercheckItem.getUsername());
-        etDescription.setText(LoginActivity.usercheckItem.getDescription());
-        //spGender.setSelection(LoginActivity.usercheckItem.getSex());
-    }
-    
+
 
     private void setEditable(boolean i)
     {
-        /*
-        spGender.setFocusable(i);
-        etAge.setFocusable(i);
-        tvEmail.setFocusable(i);
-        etUserName.setFocusable(i);
-        etDescription.setFocusable(i);*/
+
         if (i == false)
         {
             i = true;
@@ -124,7 +111,7 @@ public class ProfilActivity extends Activity implements View.OnClickListener
             etAge.setEnabled(false);
             etUserName.setEnabled(false);
             spGender.setEnabled(false);
-            btChangeUserInfo.setText("Profil bearbeiten");
+
         }
         else
         {
@@ -134,11 +121,9 @@ public class ProfilActivity extends Activity implements View.OnClickListener
             etUserName.setEnabled(true);
             spGender.setEnabled(true);
             i = false;
-            btChangeUserInfo.setText("Speichern");
+
         }
-        /*btChangePW.setFocusable(i);
-        btLogOut.setFocusable(i);
-        btDeaktivate.setFocusable(i);*/
+
 
     }
 
@@ -167,7 +152,7 @@ public class ProfilActivity extends Activity implements View.OnClickListener
         {
             datePicker.show();
         }
-        else if(view == btChangeUserInfo)
+        /*else if(view == btChangeUserInfo)
         {
             if(etUserName.getText().toString().trim().equals(""))
             {
@@ -192,6 +177,38 @@ public class ProfilActivity extends Activity implements View.OnClickListener
         {
             DatabaseHelper dbh = new DatabaseHelper(this);
             //dbh.close(LoginActivity.usercheckItem);
+        }*/
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_activity_all, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_logout) {
+            return true;
         }
+        if (id == R.id.action_userreport) {
+            Intent intent = new Intent(this, ReportActivity.class);
+            intent.putExtra("report", "userreport");
+            startActivity(intent);
+        }
+        if (id == R.id.action_bugreport) {
+            Intent intent = new Intent(this, ReportActivity.class);
+            intent.putExtra("report", "bugreport");
+            startActivity(intent);
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
