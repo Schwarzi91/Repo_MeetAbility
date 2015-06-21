@@ -33,15 +33,19 @@ public class Storage {
     }
 
     public void createTestDataIfNeccessary() {
-
+        try {
         if (getUserList().isEmpty()) {
-            try {
+
                 saveUser(new User("muster@thi.de", "test123", "Max Muster", 2, 20, "Ich bin Dumm"));
                 saveUser(new User("edgar@thi.de", "test123", "Ede Muster", 2, 20, "Ich bins nicht"));
-            }catch (Exception e){
-                Log.e(DatabaseHelper.class.getName(), "Cant safe Data", e);
-                throw new RuntimeException(e);
             }
+            if(getAktivityList().isEmpty()){
+                saveAktivity(new Aktivity(getUserList().get(0),"Kino",2,"Heute ins Kino Gehen",10));
+                saveAktivity(new Aktivity(getUserList().get(1),"Fischen",1,"Heute Fischen Gehen",5));
+            }
+        }catch (Exception e){
+            Log.e(DatabaseHelper.class.getName(), "Cant safe Data", e);
+            throw new RuntimeException(e);
 
         }
 

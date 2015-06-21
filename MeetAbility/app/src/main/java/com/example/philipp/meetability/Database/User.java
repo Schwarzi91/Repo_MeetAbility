@@ -15,9 +15,6 @@ public class User {
     @DatabaseField (generatedId = true)
     private int user_id;
 
-   // @DatabaseField (foreign = true, canBeNull = true)
-  //  private History history_id;
-
     @DatabaseField (canBeNull = false)
     private String email;
 
@@ -43,9 +40,8 @@ public class User {
 
     public User(){}
 
-    public User(/*History history_id,*/ String email, String password, String username, int sex, int age/*, Image picture*/, String description){
+    public User(String email, String password, String username, int sex, int age/*, Image picture*/, String description){
         super();
-        //this.history_id=history_id;
         this.email=email;
         this.password=password;
         this.username=username;
@@ -59,7 +55,6 @@ public class User {
     //Getter
 
     public int getUser_id() {return user_id;}
-  //  public History getHistory_id() {return history_id;}
     public String getEmail() {return email;}
     public String getPassword() {return password;}
     public String getUsername() {return username;}
