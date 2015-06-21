@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">MeetAbility</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_logout">Logout</string>
+    <string name="action_bugreport">Bug-Report</string>
+    <string name="action_userreport">User-Report</string>
     <string name="create_activity">Activity anlegen</string>
     <string name="search_activty">Activity suchen</string>
     <string name="show_profile">Profil</string>

@@ -63,7 +63,7 @@
         </activity>
         <activity
             android:name=".Aktivitys.ReportActivity"
-            android:label="@string/title_activity_activity_report" >
+            android:label="@string/title_activity_activity_report">
         </activity>
     </application>
 
