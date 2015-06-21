@@ -21,17 +21,52 @@
 
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_weight=".40"
+        <FrameLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/ivuser"
-            android:src="@drawable/user" />
+            android:layout_weight="1"></FrameLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/ivuser"
+                android:src="@drawable/user"
+                android:layout_weight="1"
+                android:layout_marginRight="60dp" />
+
+        </LinearLayout>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageButton2"
+            android:layout_weight="0.1"
+            android:src="@drawable/cast_ic_notification_on"
+            android:background="#80000000"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginRight="20dp" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageButton"
+            android:layout_weight="0.1"
+            android:src="@drawable/ic_setting_dark"
+            android:background="#80000000"
+            android:clickable="true"
+            android:focusable="true" />
 
     </LinearLayout>
+
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -43,7 +78,7 @@
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:text="Benutzerinformationen"
+                android:text="E-Mail"
                 android:textStyle="bold"
                 android:textColor="#ffffff"
                 android:textAppearance="?android:attr/textAppearanceMedium"
@@ -57,23 +92,30 @@
             android:layout_height="wrap_content"
             android:background="@drawable/edittext">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="E-Mail"
-                android:id="@+id/EmailView"
-                android:textColor="#ffffff"/>
-
-            <TextView
+            <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
                 android:id="@+id/etEmail"
                 android:textSize="18dp"
-                android:text="wf2383@thi.de"
                 android:textColor="#ffffff"
-                 />
+                android:text="Bitte E-Mail Adresse eingeben" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:text="Benutzername"
+                android:textStyle="bold"
+                android:textColor="#ffffff"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_weight="5"
+                android:textAlignment="center"
+                android:singleLine="true" />
         </TableRow>
 
         <TableRow
@@ -81,38 +123,39 @@
             android:layout_height="wrap_content"
             android:background="@drawable/edittext">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Name"
-                android:id="@+id/TvUser"
-                android:textColor="#ffffff" />
-
             <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:inputType="textPersonName"
                 android:ems="10"
-                android:hint="Andre"
                 android:textColor="#ffffff"
                 android:textColorHint="#ffffff"
                 android:textSize="18dp"
-                android:id="@+id/etUserName" />
+                android:id="@+id/etUserName"
+                android:text="Bitte Benutzername eingeben" />
 
         </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:text="Geschlecht"
+                android:textStyle="bold"
+                android:textColor="#ffffff"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_weight="5"
+                android:textAlignment="center"
+                android:singleLine="true" />
+        </TableRow>
+
         <TableRow
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/edittext">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Geschlecht"
-                android:id="@+id/TvGender"
-                android:textColor="#ffffff" />
 
             <Spinner
                 android:layout_width="wrap_content"
@@ -124,18 +167,27 @@
                 android:textColor="#ffffff" />
 
         </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:text="Geburtsdatum"
+                android:textStyle="bold"
+                android:textColor="#ffffff"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_weight="5"
+                android:textAlignment="center"
+                android:singleLine="true" />
+        </TableRow>
+
         <TableRow
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/edittext">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Geburtsdatum"
-                android:id="@+id/tvAge"
-                android:textColor="#ffffff" />
 
             <EditText
                 android:layout_width="wrap_content"
@@ -143,8 +195,7 @@
                 android:inputType="date"
                 android:ems="10"
                 android:id="@+id/etAge"
-                android:layout_column="1"
-                android:hint="Bitte Wählen"
+                android:layout_column="0"
                 android:textColorHint="#ffffff"
                 android:textColor="#ffffff"
                 android:textSize="18dp"/>
@@ -185,33 +236,6 @@
                 android:textSize="18dp"/>
         </LinearLayout>
 
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Profil Bearbeiten"
-            android:id="@+id/btChangeUserInfo"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="1"
-            android:background="@drawable/register_login_button"/>
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Passwort ändern"
-            android:id="@+id/btChangePW"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="1"
-            android:background="@drawable/register_login_button"/>
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="LogOut"
-            android:id="@+id/btLogOut"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="1"
-            android:background="@drawable/register_login_button"/>
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
