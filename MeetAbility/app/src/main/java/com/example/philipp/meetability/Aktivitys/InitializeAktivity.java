@@ -14,9 +14,7 @@ import java.util.TimerTask;
 import com.example.philipp.meetability.Database.Storage;
 import com.example.philipp.meetability.R;
 
-/**
- * Created by Edik on 14.06.2015.
- */
+
 public class InitializeAktivity extends Activity implements View.OnClickListener {
 
 

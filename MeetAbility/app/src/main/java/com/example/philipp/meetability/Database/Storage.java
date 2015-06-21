@@ -2,11 +2,11 @@ package com.example.philipp.meetability.Database;
 
 import android.content.Context;
 import android.util.Log;
-
-import com.example.philipp.meetability.Aktivitys.InitializeAktivity;
-
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -15,7 +15,7 @@ import java.util.List;
 public class Storage {
     private final DatabaseHelper dbHelper;
     private static Storage INSTANCE;
-
+    private SimpleDateFormat format;
     //Creating com.example.philipp.meetability.Database
     public Storage(Context context) {dbHelper =new DatabaseHelper(context);}
 
@@ -40,8 +40,16 @@ public class Storage {
                 saveUser(new User("edgar@thi.de", "test123", "Ede Muster", 2, 20, "Ich bins nicht"));
             }
             if(getAktivityList().isEmpty()){
-                saveAktivity(new Aktivity(getUserList().get(0),"Kino",2,"Heute ins Kino Gehen",10));
-                saveAktivity(new Aktivity(getUserList().get(1),"Fischen",1,"Heute Fischen Gehen",5));
+                saveActivity(new Aktivity(getUserList().get(0), "Kino", 2, "25-06-2015 18:35", "25-06-2015 17:40", "Heute ins Kino Gehen", 10));
+                saveActivity(new Aktivity(getUserList().get(1), "Fischen", 1, "25-06-2015 18:35", "25-06-2015 18:40", "Heute Fischen Gehen", 5));
+            }
+            if(getHistoryList().isEmpty()){
+                saveHistory(new History(getAktivityList().get(0), 5, "War super"));
+                saveHistory(new History(getAktivityList().get(1), 0, "War kacke"));
+            }
+            if(getParticipantList().isEmpty()){
+                saveParticipant(new Participant(getUserList().get(0),getAktivityList().get(0),false));
+                saveParticipant(new Participant(getUserList().get(1),getAktivityList().get(1),false));
             }
 
         }catch (Exception e){
@@ -56,7 +64,8 @@ public class Storage {
 
 
     //Data 2 com.example.philipp.meetability.Database Saver
-    private void saveHistory(History history) {
+
+    public void saveHistory(History history) {
         try {
             dbHelper.getHistoryDao().createOrUpdate(history);
         } catch (SQLException e) {
@@ -64,7 +73,7 @@ public class Storage {
         }
     }
 
-    private void saveAktivity(Aktivity aktivity) {
+    public void saveActivity(Aktivity aktivity) {
         try {
             dbHelper.getAktivityDao().createOrUpdate(aktivity);
         } catch (SQLException e) {
@@ -72,7 +81,7 @@ public class Storage {
         }
     }
 
-    private void saveReport(Report report) {
+    public void saveReport(Report report) {
         try {
             dbHelper.getReportDao().createOrUpdate(report);
         } catch (SQLException e) {
@@ -80,7 +89,7 @@ public class Storage {
         }
     }
 
-    private void saveBlock(Block block) {
+    public void saveBlock(Block block) {
         try {
             dbHelper.getBlockDao().createOrUpdate(block);
         } catch (SQLException e) {
@@ -95,6 +104,16 @@ public class Storage {
             handleEx(e);
         }
     }
+
+    public void saveParticipant(Participant participant) {
+        try {
+            dbHelper.getParticipantDao().createOrUpdate(participant);
+        } catch (SQLException e) {
+            handleEx(e);
+        }
+    }
+
+
 
 
 
@@ -152,6 +171,16 @@ public class Storage {
         return Collections.EMPTY_LIST;
     }
 
+    public List<Participant> getParticipantList() {
+        try {
+            return dbHelper.getParticipantDao().queryForAll();
+        } catch (SQLException e) {
+            handleEx(e);
+        }
+        return Collections.EMPTY_LIST;
+    }
+
+
 
 //Dao Getter
 
@@ -171,7 +200,62 @@ public class Storage {
         return null;
     }
 
+    public List<Aktivity> getAktivityByUserId(int user_id){
+        List<Aktivity> listAktivity;
+        try {
+            listAktivity = dbHelper.getAktivityDao().queryForEq("user_id_id", user_id);
+            if (listAktivity.size() == 1) {
+                return listAktivity;
 
+            } else {
+                return null;
+            }
+        } catch (SQLException e) {
+            handleEx(e);
+        }
+        return null;
+    }
+
+    public Aktivity getFilteredAktivity(String activityName, int sex, String dateFrom, String dateTo)
+    {
+        List<Aktivity> listAktivity = Storage.getStorageInstance().getAktivityList();
+        Date dbStartDate;
+        Date dbEndDate;
+        Date searchDateFrom;
+        Date searchDateTo;
+
+        for (int x = 0; x < listAktivity.size(); x++) {
+
+            dbStartDate = dateFormatter(listAktivity.get(x).getStartDate());
+            dbEndDate = dateFormatter(listAktivity.get(x).getEndDate());
+            searchDateFrom = dateFormatter(dateFrom);
+            searchDateTo = dateFormatter(dateTo);
+
+            //if (listAktivity.get(x).getAktivityName().equals(activityName) && listAktivity.get(x).getSex() == sex)
+
+            if (listAktivity.size() == 1) {
+                return listAktivity.get(0);
+
+            } else
+            {
+                return null;
+            }
+        }
+        return listAktivity.get(0);
+    }
+
+    public Date dateFormatter(String date)
+    {
+        format = new SimpleDateFormat("dd-mm-yyyy HH:mm");
+        try {
+            Date dateFormatted = format.parse(date);
+            return dateFormatted;
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return null;
+    }
 
 }
 
