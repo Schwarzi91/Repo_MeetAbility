@@ -253,8 +253,7 @@
                 android:rating="0"
                 android:clickable="true"
                 android:progressTint="#ffffc62b"
-                android:progressTintMode="screen"
-                android:background="#40ffffff"/>
+                android:progressTintMode="screen"/>
 
             <Button
                 android:layout_width="fill_parent"
