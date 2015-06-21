@@ -21,6 +21,7 @@ import android.widget.Toast;
 import com.example.philipp.meetability.Database.DatabaseHelper;
 import com.example.philipp.meetability.Database.Storage;
 import com.example.philipp.meetability.Database.User;
+import com.example.philipp.meetability.Helper.ProfilHelper;
 import com.example.philipp.meetability.R;
 
 import java.text.SimpleDateFormat;
@@ -106,6 +107,7 @@ public class ProfilActivity extends Activity implements View.OnClickListener
         etDescription.setText(LoginActivity.usercheckItem.getDescription());
         //spGender.setSelection(LoginActivity.usercheckItem.getSex());
     }
+    
 
     private void setEditable(boolean i)
     {
