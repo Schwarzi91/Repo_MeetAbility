@@ -72,9 +72,8 @@
                 android:id="@+id/cbSaveLogin"
                 android:checked="false"
                 android:textColor="#ffffff"
-                android:buttonTint="#ffefefef"
-                android:textSize="20dp"
-                android:buttonTintMode="src_over" />
+                android:buttonTint="#ff1bd2ba"
+                android:textSize="20dp" />
 
             <Button
                 android:layout_width="fill_parent"
