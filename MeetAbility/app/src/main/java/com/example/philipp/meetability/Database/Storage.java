@@ -45,11 +45,6 @@ public class Storage {
 
         }
 
-       /* if (getAktivityList().isEmpty()) {
-            saveAktivity(new Aktivity(getUserList().get(0), "Kino", "Maennlich", new Time()., 1500, 13.05, "Film schauen",5));
-        }*/
-
-
         }
 
 
