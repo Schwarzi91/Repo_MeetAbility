@@ -1,27 +1,36 @@
 package com.example.philipp.meetability.Aktivitys;
 
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.LayerDrawable;
+import android.media.Rating;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.philipp.meetability.Database.Storage;
 import com.example.philipp.meetability.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class HistoryActivity extends Fragment {
+public class HistoryActivity extends Fragment implements View.OnClickListener{
     public static final String EXTRA_MESSAGE = "EXTRA_MESSAGE";
     private ListView lvDetails;
+    private RatingBar ratingBar;
+    private int intRatingValue;
+    private Button btnSubmit;
+    private View view;
 
     public static final HistoryActivity newInstance(String message)
     {
@@ -44,6 +53,8 @@ public class HistoryActivity extends Fragment {
         LayerDrawable stars = (LayerDrawable) ratingBar.getProgressDrawable();
         stars.getDrawable(2).setColorFilter(Color.parseColor("#ffd700"), PorterDuff.Mode.SRC_ATOP);
 
+        addListenerOnRatingBar();
+
         //lvDetails = (ListView) v.findViewById(R.id.lvDetails);
         List<String> listDetails = new ArrayList<String>();
 
@@ -55,9 +66,34 @@ public class HistoryActivity extends Fragment {
 
         ListAdapter listAdapter = new ArrayAdapter(this.getActivity(), R.layout.custom_listview_layout, listDetails);
 
-        // lvDetails.setAdapter(listAdapter);
 
+
+        // lvDetails.setAdapter(listAdapter);
+         btnSubmit = (Button) view.findViewById(R.id.btCreate);
+        btnSubmit.setOnClickListener(this);
         return v;
+    }
+
+    public void addListenerOnRatingBar(){
+
+        ratingBar = (RatingBar) view.findViewById(R.id.ratingBar);
+
+        //if rating value is changed,
+        //display the current rating value in the result (textview) automatically
+        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            public void onRatingChanged(RatingBar ratingBar, float rating,
+                                        boolean fromUser) {
+                intRatingValue = ratingBar.getNumStars();
+
+            }
+        });
+
+    }
+
+
+    @Override
+    public void onClick(View v) {
+
     }
 }
 
