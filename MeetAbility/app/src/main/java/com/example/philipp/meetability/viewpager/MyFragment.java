@@ -1,6 +1,5 @@
-package viewpager;
+package com.example.philipp.meetability.viewpager;
 
-import android.database.DataSetObserver;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.LayerDrawable;

@@ -31,4 +31,20 @@
         <item>9</item>
         <item>10</item>
     </string-array>
+
+    <string-array name="reasons_userreport">
+        <item>Nervig und Geschmacklos</item>
+        <item>Enthält Pornographie</item>
+        <item>Es ist gegen meine Ansichten</item>
+        <item>Es fördert Gewalt</item>
+        <item>Es ist eine Falschmeldung</item>
+        <item>Etwas anderes</item>
+    </string-array>
+
+    <string-array name="reasons_bugreport">
+        <item>Grafikfehler</item>
+        <item>Laufzeitfehler</item>
+        <item>Syntaxfehler</item>
+        <item>Etwas andres</item>
+    </string-array>
 </resources>
