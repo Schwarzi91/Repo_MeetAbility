@@ -12,7 +12,7 @@ public class History {
     @DatabaseField (generatedId = true)
     private int history_id;
 
-    @DatabaseField (foreign = true, canBeNull = true)
+    @DatabaseField (foreign = true, canBeNull = false)
     private Aktivity aktivity_id;
 
    // @DatabaseField (canBeNull = false)

@@ -46,9 +46,7 @@ public class ProfilActivity extends Activity implements View.OnClickListener
     //profilbild
     private ImageView  ivUser;
     //Buttons
-    private Button btChangeUserInfo;
-    private Button btChangePW;
-    private Button btLogOut;
+
     private Button btDeaktivate;
 
 
@@ -79,15 +77,11 @@ public class ProfilActivity extends Activity implements View.OnClickListener
         etDescription = (EditText)findViewById(R.id.etDescription);
         etDescription.setEnabled(false);
 
-        btChangeUserInfo = (Button) findViewById(R.id.btChangeUserInfo);
-        btChangePW = (Button) findViewById(R.id.btChangePW);
-        btLogOut = (Button)findViewById(R.id.btLogOut);
+
         btDeaktivate = (Button)findViewById(R.id.btDeaktivate);
 
         //listener
-        btChangeUserInfo.setOnClickListener(this);
-        btChangePW.setOnClickListener(this);
-        btLogOut.setOnClickListener(this);
+
         btDeaktivate.setOnClickListener(this);
 
         tvEmail.setText(LoginActivity.usercheckItem.getEmail());
@@ -99,26 +93,17 @@ public class ProfilActivity extends Activity implements View.OnClickListener
         }
         else
         {
-            setUserinformation();
+            etUserName.setText(LoginActivity.usercheckItem.getUsername());
+            etDescription.setText(LoginActivity.usercheckItem.getDescription());
+
         }
     }
 
-    private void setUserinformation()
-    {
-        etUserName.setText(LoginActivity.usercheckItem.getUsername());
-        etDescription.setText(LoginActivity.usercheckItem.getDescription());
-        //spGender.setSelection(LoginActivity.usercheckItem.getSex());
-    }
-    
+
 
     private void setEditable(boolean i)
     {
-        /*
-        spGender.setFocusable(i);
-        etAge.setFocusable(i);
-        tvEmail.setFocusable(i);
-        etUserName.setFocusable(i);
-        etDescription.setFocusable(i);*/
+
         if (i == false)
         {
             i = true;
@@ -126,7 +111,7 @@ public class ProfilActivity extends Activity implements View.OnClickListener
             etAge.setEnabled(false);
             etUserName.setEnabled(false);
             spGender.setEnabled(false);
-            btChangeUserInfo.setText("Profil bearbeiten");
+
         }
         else
         {
@@ -136,11 +121,9 @@ public class ProfilActivity extends Activity implements View.OnClickListener
             etUserName.setEnabled(true);
             spGender.setEnabled(true);
             i = false;
-            btChangeUserInfo.setText("Speichern");
+
         }
-        /*btChangePW.setFocusable(i);
-        btLogOut.setFocusable(i);
-        btDeaktivate.setFocusable(i);*/
+
 
     }
 
@@ -169,7 +152,7 @@ public class ProfilActivity extends Activity implements View.OnClickListener
         {
             datePicker.show();
         }
-        else if(view == btChangeUserInfo)
+        /*else if(view == btChangeUserInfo)
         {
             if(etUserName.getText().toString().trim().equals(""))
             {
@@ -194,7 +177,7 @@ public class ProfilActivity extends Activity implements View.OnClickListener
         {
             DatabaseHelper dbh = new DatabaseHelper(this);
             //dbh.close(LoginActivity.usercheckItem);
-        }
+        }*/
     }
 
     @Override
