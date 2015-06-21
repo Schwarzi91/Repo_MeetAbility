@@ -14,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.app.DatePickerDialog;
@@ -46,7 +47,8 @@ public class ProfilActivity extends Activity implements View.OnClickListener
     //profilbild
     private ImageView  ivUser;
     //Buttons
-
+    private ImageButton ibChangePw;
+    private ImageButton ibSetings;
     private Button btDeaktivate;
 
 
@@ -56,18 +58,17 @@ public class ProfilActivity extends Activity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profil);
 
-        //Spinner
+        //Geschlecht
         spGender = (Spinner)findViewById(R.id.spGender);
         ArrayAdapter<CharSequence> activityTypeAdapter = ArrayAdapter.createFromResource(this, R.array.genderProfil, R.layout.spinner_style);
         activityTypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spGender.setAdapter(activityTypeAdapter);
         spGender.setEnabled(false);
         spGender.setSelection(LoginActivity.usercheckItem.getSex());
-        //Datum
+        //Geburtsdatum
         etAge = (EditText) findViewById(R.id.etAge);
         etAge.setInputType(InputType.TYPE_NULL);
         etAge.setEnabled(false);
-        etAge.setOnClickListener(this);
         dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.GERMANY);
 
         //view setzen
@@ -77,12 +78,15 @@ public class ProfilActivity extends Activity implements View.OnClickListener
         etDescription = (EditText)findViewById(R.id.etDescription);
         etDescription.setEnabled(false);
 
-
+        //Buttons
+        ibChangePw= (ImageButton) findViewById(R.id.ibChangePw);
+        ibSetings=(ImageButton)findViewById(R.id.ibSettings);
         btDeaktivate = (Button)findViewById(R.id.btDeaktivate);
 
         //listener
-
         btDeaktivate.setOnClickListener(this);
+        ibSetings.setOnClickListener(this);
+        ibChangePw.setOnClickListener(this);
 
         tvEmail.setText(LoginActivity.usercheckItem.getEmail());
         setDateField();
@@ -146,21 +150,17 @@ public class ProfilActivity extends Activity implements View.OnClickListener
 
 
     @Override
-    public void onClick(View view)
+    public void onClick(View v)
     {
-        if(view == etAge)
+       /* if(v == etAge)
         {
             datePicker.show();
-        }
-        /*else if(view == btChangeUserInfo)
+        }*/
+
+
+        if(v == ibChangePw)
         {
-            if(etUserName.getText().toString().trim().equals(""))
-            {
-                Toast.makeText(this, "Bitte geben Sie einen Nutzernamen ein!", Toast.LENGTH_SHORT).show();
-            }
-            else
-            {
-                if (btChangeUserInfo.getText() == "Speichern")
+               /* if (btChangeUserInfo.getText() == "Speichern")
                 {
                     setEditable(false);
                     LoginActivity.usercheckItem.setUsername(etUserName.getText().toString());
@@ -171,13 +171,12 @@ public class ProfilActivity extends Activity implements View.OnClickListener
                 } else {
                     setEditable(true);
                 }
-            }
+            } */
         }
-        else if(view == btLogOut)
+        else if(v == ibSetings)
         {
-            DatabaseHelper dbh = new DatabaseHelper(this);
-            //dbh.close(LoginActivity.usercheckItem);
-        }*/
+
+        }
     }
 
     @Override
