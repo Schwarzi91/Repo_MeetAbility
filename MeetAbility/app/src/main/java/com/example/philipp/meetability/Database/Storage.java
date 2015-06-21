@@ -5,6 +5,7 @@ import android.util.Log;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -40,8 +41,8 @@ public class Storage {
                 saveUser(new User("edgar@thi.de", "test123", "Ede Muster", 2, 20, "Ich bins nicht"));
             }
             if(getAktivityList().isEmpty()){
-                saveActivity(new Aktivity(getUserList().get(0), "Kino", 2, "25-06-2015 18:35", "25-06-2015 17:40", "Heute ins Kino Gehen", 10));
-                saveActivity(new Aktivity(getUserList().get(1), "Fischen", 1, "25-06-2015 18:35", "25-06-2015 18:40", "Heute Fischen Gehen", 5));
+                saveActivity(new Aktivity(getUserList().get(0), "Kino", 2, "20-06-2015 18:35", "27-06-2015 17:40", "Heute ins Kino Gehen", 10));
+                saveActivity(new Aktivity(getUserList().get(1), "Fischen", 1, "25-06-2015 18:35", "27-06-2015 18:40", "Heute Fischen Gehen", 5));
             }
             if(getHistoryList().isEmpty()){
                 saveHistory(new History(getAktivityList().get(0), 5, "War super"));
@@ -188,13 +189,13 @@ public class Storage {
         List<User> listUser;
         try {
             listUser = dbHelper.getUserDao().queryForEq("email", user_email);
-            if (listUser.size() == 1) {
-                return listUser.get(0);
+                if (listUser.size() == 1) {
+                    return listUser.get(0);
 
-            } else {
-                return null;
-            }
-        } catch (SQLException e) {
+                } else {
+                    return null;
+                }
+        }catch(SQLException e){
             handleEx(e);
         }
         return null;
@@ -216,32 +217,44 @@ public class Storage {
         return null;
     }
 
-    public Aktivity getFilteredAktivity(String activityName, int sex, String dateFrom, String dateTo)
+    public List<Aktivity> getFilteredAktivity(String activityName, int sex, String dateFrom, String dateTo)
     {
         List<Aktivity> listAktivity = Storage.getStorageInstance().getAktivityList();
+        List<Aktivity> listResultAktivity = new ArrayList<>();
         Date dbStartDate;
         Date dbEndDate;
-        Date searchDateFrom;
-        Date searchDateTo;
+        Date searchStartDate;
+        Date searchEndDate;
 
-        for (int x = 0; x < listAktivity.size(); x++) {
-
-            dbStartDate = dateFormatter(listAktivity.get(x).getStartDate());
-            dbEndDate = dateFormatter(listAktivity.get(x).getEndDate());
-            searchDateFrom = dateFormatter(dateFrom);
-            searchDateTo = dateFormatter(dateTo);
-
-            //if (listAktivity.get(x).getAktivityName().equals(activityName) && listAktivity.get(x).getSex() == sex)
-
-            if (listAktivity.size() == 1) {
-                return listAktivity.get(0);
-
-            } else
+        if(listAktivity.size() > 0)
+        {
+            for (int x = 0; x < listAktivity.size(); x++)
             {
+                dbStartDate = dateFormatter(listAktivity.get(x).getStartDate());
+                dbEndDate = dateFormatter(listAktivity.get(x).getEndDate());
+                searchStartDate = dateFormatter(dateFrom);
+                searchEndDate = dateFormatter(dateTo);
+
+                if (listAktivity.get(x).getAktivityName().equals(activityName)){
+                        if( listAktivity.get(x).getSex() == sex) {
+                            if(searchStartDate.getTime() <= dbEndDate.getTime()) {
+                                if(searchEndDate.getTime() >= dbStartDate.getTime()) {
+                                    {
+                                        listResultAktivity.add(listAktivity.get(x));
+                                    }
+                                }}}}
+            }
+            if(listResultAktivity.size() > 0) {
+                return listResultAktivity;
+            }
+            else{
                 return null;
             }
         }
-        return listAktivity.get(0);
+        else
+        {
+            return null;
+        }
     }
 
     public Date dateFormatter(String date)

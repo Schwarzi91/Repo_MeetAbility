@@ -143,7 +143,8 @@ public class CreateActivity extends Activity implements View.OnClickListener
             public void onTimeSet(TimePicker view, int hourOfDay, int minute)
             {
                 Calendar newTime = Calendar.getInstance();
-                newTime.set(hourOfDay, minute);
+                newTime.set(Calendar.HOUR_OF_DAY, hourOfDay);
+                newTime.set(Calendar.MINUTE, minute);
                 etFromTime.setText(hourOfDay + ":" + minute);
             }
         }, newCalendar.get(Calendar.HOUR), newCalendar.get(Calendar.MINUTE), true);
@@ -154,7 +155,8 @@ public class CreateActivity extends Activity implements View.OnClickListener
             public void onTimeSet(TimePicker view, int hourOfDay, int minute)
             {
                 Calendar newTime = Calendar.getInstance();
-                newTime.set(hourOfDay, minute);
+                newTime.set(Calendar.HOUR_OF_DAY, hourOfDay);
+                newTime.set(Calendar.MINUTE, minute);
                 etToTime.setText(hourOfDay + ":" + minute);
             }
         }, newCalendar.get(Calendar.HOUR), newCalendar.get(Calendar.MINUTE), true);

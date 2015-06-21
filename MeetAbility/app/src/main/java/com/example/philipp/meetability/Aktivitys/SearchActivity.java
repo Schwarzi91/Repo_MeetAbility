@@ -17,11 +17,13 @@ import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.example.philipp.meetability.Database.Aktivity;
 import com.example.philipp.meetability.Database.Storage;
 import com.example.philipp.meetability.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
 
 
@@ -30,6 +32,7 @@ public class SearchActivity extends Activity implements View.OnClickListener
     private Button btSearch;
     private Spinner spActivityType;
     private Spinner spGender;
+    private List<Aktivity> listResultAktivity;
 
     //Datum
     private EditText etFromDate;
@@ -153,13 +156,28 @@ public class SearchActivity extends Activity implements View.OnClickListener
         {
             if(!etToTime.getText().toString().isEmpty() && !etFromTime.getText().toString().isEmpty() && !etToDate.getText().toString().isEmpty() && !etFromDate.getText().toString().isEmpty())
             {
-                Storage.getStorageInstance().getFilteredAktivity(spActivityType.getSelectedItem().toString(), spGender.getSelectedItemPosition(), etFromDate.getText().toString() + " " + etFromTime.getText().toString(), etToDate.getText().toString() + " " + etToTime.getText().toString());
+
+
+                if(Storage.getStorageInstance().getFilteredAktivity(spActivityType.getSelectedItem().toString(), spGender.getSelectedItemPosition(), etFromDate.getText().toString() + " " + etFromTime.getText().toString(), etToDate.getText().toString() + " " + etToTime.getText().toString()) == null)
+                {
+                    Toast.makeText(this, "Keine Aktivitäten gefunden", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    listResultAktivity = Storage.getStorageInstance().getFilteredAktivity(spActivityType.getSelectedItem().toString(), spGender.getSelectedItemPosition(), etFromDate.getText().toString() + " " + etFromTime.getText().toString(), etToDate.getText().toString() + " " + etToTime.getText().toString());
+                    Intent intent = new Intent(this, ResultActivity.class);
+                   // startActivity(intent);
+                }
             }
             else
             {
                 Toast.makeText(this, "Bitte füllen Sie alle Felder aus!", Toast.LENGTH_LONG).show();
             }
         }
+    }
+
+    public List<Aktivity> getListResultAktivity()
+    {
+        return listResultAktivity;
     }
 
     @Override
