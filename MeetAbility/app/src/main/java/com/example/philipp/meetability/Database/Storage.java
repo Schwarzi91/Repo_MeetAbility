@@ -6,7 +6,9 @@ import android.util.Log;
 import com.example.philipp.meetability.Aktivitys.InitializeAktivity;
 
 import java.sql.SQLException;
+import java.sql.Time;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -216,7 +218,24 @@ public class Storage {
         return null;
     }
 
+    public Aktivity getFilteredAktivity(String activityName, int sex, Date dateFrom, Date dateTo){
+        List<Aktivity> listAktivity = Storage.getStorageInstance().getAktivityList();
+        for(int x = 0; x < listAktivity.size(); x++) {
+            if (listAktivity.get(x).getAktivityName().equals(activityName) && listAktivity.get(x).getSex() == sex
+                    && listAktivity.get(x).getAktivityName().equals(activityName) )
 
+            if (listAktivity.size() == 1) {
+                return listAktivity.get(0);
+
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        return null;
+    }
 
 }
 
