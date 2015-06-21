@@ -28,9 +28,9 @@ public class History {
 
    public  History(){}
 
-    public History(Aktivity aktivity_id, /*Timestamp ended,*/ int rating, String description){
+    public History(Aktivity activity_id, /*Timestamp ended,*/ int rating, String description){
         super();
-        this.aktivity_id=aktivity_id;
+        this.aktivity_id=activity_id;
         //this.ended=ended;
         this.rating=rating;
         this.description=description;
@@ -44,10 +44,13 @@ public class History {
     public int getRating() {return rating;}
     public String getDescription() {return description;}
 
+
     //Setter
 
     public void setAktivityId(Aktivity aktivity_id) {this.aktivity_id = aktivity_id;}
    // public void setEnded(Timestamp ended) {this.ended = ended;}
     public void setRating(int rating) {this.rating = rating;}
     public void setDescription(String description) {this.description = description;}
+
+
 }

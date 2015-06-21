@@ -3,8 +3,6 @@ package com.example.philipp.meetability.Database;
 import android.content.Context;
 import android.util.Log;
 
-import com.example.philipp.meetability.Aktivitys.InitializeAktivity;
-
 import java.sql.SQLException;
 import java.util.Collections;
 import java.util.List;
@@ -40,8 +38,8 @@ public class Storage {
                 saveUser(new User("edgar@thi.de", "test123", "Ede Muster", 2, 20, "Ich bins nicht"));
             }
             if(getAktivityList().isEmpty()){
-                saveAktivity(new Aktivity(getUserList().get(0), "Kino", 2, "Heute ins Kino Gehen", 10));
-                saveAktivity(new Aktivity(getUserList().get(1), "Fischen", 1, "Heute Fischen Gehen", 5));
+                saveActivity(new Aktivity(getUserList().get(0), "Kino", 2, "Heute ins Kino Gehen", 10));
+                saveActivity(new Aktivity(getUserList().get(1), "Fischen", 1, "Heute Fischen Gehen", 5));
             }
             if(getHistoryList().isEmpty()){
                 saveHistory(new History(getAktivityList().get(0), 5, "War super"));
@@ -65,7 +63,7 @@ public class Storage {
 
     //Data 2 com.example.philipp.meetability.Database Saver
 
-    private void saveHistory(History history) {
+    public void saveHistory(History history) {
         try {
             dbHelper.getHistoryDao().createOrUpdate(history);
         } catch (SQLException e) {
@@ -73,7 +71,7 @@ public class Storage {
         }
     }
 
-    private void saveAktivity(Aktivity aktivity) {
+    public void saveActivity(Aktivity aktivity) {
         try {
             dbHelper.getAktivityDao().createOrUpdate(aktivity);
         } catch (SQLException e) {
@@ -81,7 +79,7 @@ public class Storage {
         }
     }
 
-    private void saveReport(Report report) {
+    public void saveReport(Report report) {
         try {
             dbHelper.getReportDao().createOrUpdate(report);
         } catch (SQLException e) {
@@ -89,7 +87,7 @@ public class Storage {
         }
     }
 
-    private void saveBlock(Block block) {
+    public void saveBlock(Block block) {
         try {
             dbHelper.getBlockDao().createOrUpdate(block);
         } catch (SQLException e) {
@@ -200,12 +198,12 @@ public class Storage {
         return null;
     }
 
-    public Aktivity getAktivityByUserId(int user_id){
+    public List<Aktivity> getAktivityByUserId(int user_id){
         List<Aktivity> listAktivity;
         try {
             listAktivity = dbHelper.getAktivityDao().queryForEq("user_id", user_id);
             if (listAktivity.size() == 1) {
-                return listAktivity.get(0);
+                return listAktivity;
 
             } else {
                 return null;
