@@ -44,7 +44,7 @@ public class ReportActivity extends Activity implements View.OnClickListener{
             spinnerReport.setAdapter(activityReasonBugreportAdapter);
         }
         btReport = (Button) findViewById(R.id.btReport);
-
+        btReport.setOnClickListener(this);
     }
 
     @Override
