@@ -7,6 +7,8 @@ import com.example.philipp.meetability.Aktivitys.InitializeAktivity;
 
 import java.sql.SQLException;
 import java.sql.Time;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -17,7 +19,7 @@ import java.util.List;
 public class Storage {
     private final DatabaseHelper dbHelper;
     private static Storage INSTANCE;
-
+    private SimpleDateFormat format;
     //Creating com.example.philipp.meetability.Database
     public Storage(Context context) {dbHelper =new DatabaseHelper(context);}
 
@@ -218,11 +220,22 @@ public class Storage {
         return null;
     }
 
-    public Aktivity getFilteredAktivity(String activityName, int sex, Date dateFrom, Date dateTo){
+    public Aktivity getFilteredAktivity(String activityName, int sex, String dateFrom, String dateTo){
         List<Aktivity> listAktivity = Storage.getStorageInstance().getAktivityList();
+        Date dbStartDate;
+        Date dbEndDate;
+        Date searchDateFrom;
+        Date searchDateTo;
+
         for(int x = 0; x < listAktivity.size(); x++) {
+
+            dbStartDate = dateFormatter(listAktivity.get(x).getStartDate());
+            dbEndDate = dateFormatter(listAktivity.get(x).getEndDate());
+            searchDateFrom = dateFormatter(dateFrom);
+            searchDateTo = dateFormatter(dateTo);
+
             if (listAktivity.get(x).getAktivityName().equals(activityName) && listAktivity.get(x).getSex() == sex
-                    && listAktivity.get(x).getAktivityName().equals(activityName) )
+                     )
 
             if (listAktivity.size() == 1) {
                 return listAktivity.get(0);
@@ -234,6 +247,19 @@ public class Storage {
             }
         }
 
+        return null;
+    }
+
+    public Date dateFormatter(String date)
+    {
+        format = new SimpleDateFormat("dd-mm-yyyy HH:mm");
+        try {
+            Date dateFormatted = format.parse(date);
+            return dateFormatted;
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         return null;
     }
 

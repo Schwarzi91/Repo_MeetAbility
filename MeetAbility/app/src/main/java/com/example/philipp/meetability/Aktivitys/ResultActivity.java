@@ -9,19 +9,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.example.philipp.meetability.Database.Storage;
 import com.example.philipp.meetability.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ResultActivity extends Fragment {
+public class ResultActivity extends Fragment{
     public static final String EXTRA_MESSAGE = "EXTRA_MESSAGE";
     private ListView lvDetails;
+    private Button btSearch;
 
     public static final ResultActivity newInstance(String message)
     {
@@ -58,6 +61,7 @@ public class ResultActivity extends Fragment {
         // lvDetails.setAdapter(listAdapter);
 
         return v;
+
     }
 }
 

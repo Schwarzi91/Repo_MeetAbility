@@ -10,10 +10,14 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
+import com.example.philipp.meetability.Database.Storage;
 import com.example.philipp.meetability.R;
 
 import java.text.SimpleDateFormat;
@@ -23,6 +27,9 @@ import java.util.Locale;
 
 public class SearchActivity extends Activity implements View.OnClickListener
 {
+    private Button btSearch;
+    private Spinner spActivityType;
+    private Spinner spGender;
 
     //Datum
     private EditText etFromDate;
@@ -42,6 +49,12 @@ public class SearchActivity extends Activity implements View.OnClickListener
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+
+        btSearch = (Button) findViewById(R.id.btSearch);
+        btSearch.setOnClickListener(this);
+
+        spActivityType = (Spinner) findViewById(R.id.spActivityType);
+        spGender = (Spinner) findViewById(R.id.spGender);
 
         //Datum
         etFromDate = (EditText) findViewById(R.id.etFromDate);
@@ -98,7 +111,8 @@ public class SearchActivity extends Activity implements View.OnClickListener
             public void onTimeSet(TimePicker view, int hourOfDay, int minute)
             {
                 Calendar newTime = Calendar.getInstance();
-                newTime.set(hourOfDay, minute);
+                newTime.set(Calendar.HOUR_OF_DAY, hourOfDay);
+                newTime.set(Calendar.MINUTE, minute);
                 etFromTime.setText(hourOfDay + ":" + minute);
             }
         }, newCalendar.get(Calendar.HOUR), newCalendar.get(Calendar.MINUTE), true);
@@ -109,7 +123,8 @@ public class SearchActivity extends Activity implements View.OnClickListener
             public void onTimeSet(TimePicker view, int hourOfDay, int minute)
             {
                 Calendar newTime = Calendar.getInstance();
-                newTime.set(hourOfDay, minute);
+                newTime.set(Calendar.HOUR_OF_DAY, hourOfDay);
+                newTime.set(Calendar.MINUTE, minute);
                 etToTime.setText(hourOfDay + ":" + minute);
             }
         }, newCalendar.get(Calendar.HOUR), newCalendar.get(Calendar.MINUTE), true);
@@ -133,6 +148,17 @@ public class SearchActivity extends Activity implements View.OnClickListener
         else if(view == etToTime)
         {
             toTimePicker.show();
+        }
+        else if(view == btSearch)
+        {
+            if(!etToTime.getText().toString().isEmpty() && !etFromTime.getText().toString().isEmpty() && !etToDate.getText().toString().isEmpty() && !etFromDate.getText().toString().isEmpty())
+            {
+                Storage.getStorageInstance().getFilteredAktivity(spActivityType.getSelectedItem().toString(), spGender.getSelectedItemPosition(), etFromDate.getText().toString() + " " + etFromTime.getText().toString(), etToDate.getText().toString() + " " + etToTime.getText().toString());
+            }
+            else
+            {
+                Toast.makeText(this, "Bitte füllen Sie alle Felder aus!", Toast.LENGTH_LONG).show();
+            }
         }
     }
 
