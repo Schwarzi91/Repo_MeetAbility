@@ -24,6 +24,8 @@ public class History {
     @DatabaseField (canBeNull = true)
     private String description;
 
+
+
     //Konstruktors
 
    public  History(){}

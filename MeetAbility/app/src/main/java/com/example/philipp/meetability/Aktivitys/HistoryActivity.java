@@ -69,9 +69,12 @@ public class HistoryActivity extends Fragment implements View.OnClickListener{
         for (int x = 0; x < listAktivities.size(); x++)
         {
             date = Storage.getStorageInstance().dateFormatter(listAktivities.get(x).getEndDate());
-
-            if (date.getTime() <= atmDate.getTime()) {
-                Storage.getStorageInstance().saveHistory(new History(listAktivities.get(x), 0, listAktivities.get(x).getDescription()));
+            if (listAktivities.get(x).getChangeToHistory()==false)
+            {
+                if (date.getTime() <= atmDate.getTime()) {
+                    Storage.getStorageInstance().saveHistory(new History(listAktivities.get(x), 0, listAktivities.get(x).getDescription()));
+                    listAktivities.get(x).setChangeToHistory(true);
+                }
             }
         }
     }
@@ -103,11 +106,6 @@ public class HistoryActivity extends Fragment implements View.OnClickListener{
         ListAdapter listAdapter = new ArrayAdapter(this.getActivity(), R.layout.custom_listview_layout, listDetails);
 
         ratingBar.setRating(Storage.getStorageInstance().getHistoryList().get(0).getRating());
-
-
-        participantList = Storage.getStorageInstance().getParticipantList();
-        aktivityList = Storage.getStorageInstance().getAktivityByUserId(LoginActivity.usercheckItem.getUser_id());
-
 
 
         // lvDetails.setAdapter(listAdapter);

@@ -199,7 +199,7 @@ public class CreateActivity extends Activity implements View.OnClickListener
                     fromDate=etFromDate.getText().toString()+ " "+ etFromTime.getText().toString();
                     toDate=etToDate.getText().toString()+ " "+ etToTime.getText().toString();
 
-                    Storage.getStorageInstance().saveActivity(new Aktivity(LoginActivity.usercheckItem, spActivityTypes.getSelectedItem().toString(), spGender.getSelectedItemPosition(), fromDate, toDate, etDescription.getText().toString(), spMaxParticipants.getSelectedItemPosition()));
+                    Storage.getStorageInstance().saveActivity(new Aktivity(LoginActivity.usercheckItem, spActivityTypes.getSelectedItem().toString(), spGender.getSelectedItemPosition(), fromDate, toDate, etDescription.getText().toString(), spMaxParticipants.getSelectedItemPosition(), false));
                 }else
                     Toast.makeText(getApplicationContext(), "Beschreibung ist nicht ausgefüllt", Toast.LENGTH_LONG).show();
             }

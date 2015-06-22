@@ -43,12 +43,16 @@ public class Aktivity{
     @DatabaseField (canBeNull = false)
     private int allowed_participants;
 
+    @DatabaseField (canBeNull = false)
+    private Boolean changeToHistory;
+
 
     //Konstruktors
 
     public Aktivity(){}
 
-    public Aktivity(User user_id, String aktivity_name, int allowed_sex, String start_date, String end_date, String description, int allowed_participants){
+    public Aktivity(User user_id, String aktivity_name, int allowed_sex, String start_date, String end_date, String description,
+                    int allowed_participants, boolean changeToHistory){
         super();
         this.user_id=user_id;
         this.aktivity_name=aktivity_name;
@@ -58,6 +62,7 @@ public class Aktivity{
         this.end_date=end_date;
         this.description=description;
         this.allowed_participants =allowed_participants;
+        this.changeToHistory=changeToHistory;
     }
 
     //Aktivity Getter
@@ -71,6 +76,7 @@ public class Aktivity{
     public String getEndDate() {return end_date;}
     public String getDescription() {return description;}
     public int getMaxParticipants() {return allowed_participants;}
+    public boolean getChangeToHistory() {return changeToHistory;}
 
     //Aktivity Setter
 
@@ -84,6 +90,8 @@ public class Aktivity{
     public void setEndDate(String end_date) {this.end_date = end_date;}
     public void setDescription(String description) {this.description = description;}
     public void setMaxParticipants(int max_participants) {this.allowed_participants = max_participants;}
+
+    public void setChangeToHistory(boolean changeToHistory) {this.changeToHistory=changeToHistory;}
 
 
 
