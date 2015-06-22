@@ -73,7 +73,8 @@ public class HistoryActivity extends Fragment implements View.OnClickListener{
             {
                 if (date.getTime() <= atmDate.getTime()) {
                     Storage.getStorageInstance().saveHistory(new History(listAktivities.get(x), 0, listAktivities.get(x).getDescription()));
-                    listAktivities.get(x).setChangeToHistory(true);
+                    //listAktivities.get(x).setChangeToHistory(true);
+                   // Storage.getStorageInstance().saveActivity(listAktivities.get(x).setChangeToHistory(true));
                 }
             }
         }
@@ -82,6 +83,7 @@ public class HistoryActivity extends Fragment implements View.OnClickListener{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         ActivityToHistory();
 
         String message = getArguments().getString(EXTRA_MESSAGE);

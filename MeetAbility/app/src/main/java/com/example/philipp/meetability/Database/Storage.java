@@ -49,7 +49,7 @@ public class Storage {
                 saveActivity(new Aktivity(getUserList().get(0), "Kino", 2, "20-06-2015 18:35", "27-06-2015 17:40", "Heute ins Kino Gehen", 10, false));
                 saveActivity(new Aktivity(getUserList().get(1), "Kino", 2, "20-06-2015 18:35", "27-06-2015 18:40", "Heute Fischen Gehen", 5, false));
                 saveActivity(new Aktivity(getUserList().get(1), "Kino", 2, "20-06-2015 18:35", "27-06-2015 18:40", "Heute Fischen Gehen", 5, false));
-                saveActivity(new Aktivity(getUserList().get(1), "Fischen", 2, "20-06-2015 18:35", "27-06-2015 18:40", "Heute Fischen Gehen", 5, false));
+                saveActivity(new Aktivity(getUserList().get(1), "Fischen", 2, "19-06-2015 18:35", "20-06-2015 18:40", "Heute Fischen Gehen", 5, false));
             }
             if(getHistoryList().isEmpty()){
                 saveHistory(new History(getAktivityList().get(0), 5, "War super"));
