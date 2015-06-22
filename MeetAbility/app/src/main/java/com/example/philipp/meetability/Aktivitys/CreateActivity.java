@@ -16,7 +16,10 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
+import com.example.philipp.meetability.Database.Aktivity;
+import com.example.philipp.meetability.Database.Storage;
 import com.example.philipp.meetability.R;
 
 import java.nio.charset.Charset;
@@ -32,6 +35,11 @@ public class CreateActivity extends Activity implements View.OnClickListener
     private Spinner spActivityTypes;
     private Spinner spGender;
     private Spinner spMaxParticipants;
+
+    private String fromDate;
+    private String toDate;
+    private String unconvertDate;
+
 
     //Datum
     private EditText etFromDate;
@@ -49,7 +57,8 @@ public class CreateActivity extends Activity implements View.OnClickListener
     private Button btCreate;
     //editText
     private EditText etLocation;
-    private EditText et;
+    private EditText etDescription;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -106,6 +115,8 @@ public class CreateActivity extends Activity implements View.OnClickListener
         btCreate.setOnClickListener(this);
         //EditText
         etLocation=(EditText) findViewById(R.id.etLocation);
+        etDescription=(EditText) findViewById(R.id.etDescription);
+
 
     }
 
@@ -181,7 +192,19 @@ public class CreateActivity extends Activity implements View.OnClickListener
         {
             toTimePicker.show();
         }
-        if(view== btCreate){
+        if(view == btCreate)
+        {
+            if(etLocation.length()>0){
+                if(etDescription.length()>0) {
+                    fromDate=etFromDate.getText().toString()+ " "+ etFromTime.getText().toString();
+                    toDate=etToDate.getText().toString()+ " "+ etToTime.getText().toString();
+
+                    Storage.getStorageInstance().saveActivity(new Aktivity(LoginActivity.usercheckItem, spActivityTypes.getSelectedItem().toString(), spGender.getSelectedItemPosition(), fromDate, toDate, etDescription.getText().toString(), spMaxParticipants.getSelectedItemPosition()));
+                }else
+                    Toast.makeText(getApplicationContext(), "Beschreibung ist nicht ausgefüllt", Toast.LENGTH_LONG).show();
+            }
+            else
+                Toast.makeText(getApplicationContext(), "Location nicht gew‰hlt", Toast.LENGTH_LONG).show();
 
         }
     }
