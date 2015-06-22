@@ -143,8 +143,7 @@ public class HistoryActivity extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View v) {
 
-
-       History historyCheckItem = Storage.getStorageInstance().getHistoryList().get(0);
+        History historyCheckItem = Storage.getStorageInstance().getHistoryList().get(0);
         historyCheckItem.setRating(intRatingValue);
         Storage.getStorageInstance().saveHistory(historyCheckItem);
 

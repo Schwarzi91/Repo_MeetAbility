@@ -9,7 +9,7 @@ import com.j256.ormlite.table.DatabaseTable;
 @DatabaseTable(tableName = "participant")
 public class Participant {
 
-    @DatabaseField (generatedId = true)
+    @DatabaseField (generatedId  = true)
     private int participant_id;
 
     @DatabaseField (foreign = true, canBeNull = false)
