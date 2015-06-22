@@ -35,10 +35,8 @@ public class HistoryPageViewActivity extends android.support.v4.app.FragmentActi
     {
         List<Fragment> fragmentList = new ArrayList<>();
 
-        fragmentList.add(HistoryActivity.newInstance("Kino"));
-        fragmentList.add(HistoryActivity.newInstance("Kino"));
-        fragmentList.add(HistoryActivity.newInstance("Kino"));
-
+        fragmentList.add(HistoryActivity.newInstance("activityName", 2, 10, "20-06-2015 14:44", "20-06-2015 14:44")); //String activityName, int gender/*, String location*/, int participants, String startDate, String endDate)
+        
         return fragmentList;
     }
 }

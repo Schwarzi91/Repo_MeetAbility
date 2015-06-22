@@ -34,7 +34,6 @@ import java.util.Date;
 import java.util.List;
 
 public class HistoryActivity extends Fragment implements View.OnClickListener{
-    public static final String EXTRA_MESSAGE = "EXTRA_MESSAGE";
     private ListView lvDetails;
     private RatingBar ratingBar;
     private int intRatingValue;
@@ -47,11 +46,15 @@ public class HistoryActivity extends Fragment implements View.OnClickListener{
     private static Date date;
     private static Date atmDate;
 
-    public static final HistoryActivity newInstance(String message)
+    public static final HistoryActivity newInstance(String activityName, int gender/*, String location*/, int participants, String startDate, String endDate)
     {
         HistoryActivity f = new HistoryActivity();
         Bundle bdl = new Bundle(1);
-        bdl.putString(EXTRA_MESSAGE, message);
+        bdl.putString("activityName", activityName);
+        bdl.putInt("gender", gender);
+        bdl.putInt("participants", participants);
+        bdl.putString("strDate", startDate);
+        bdl.putString("endDate", endDate);
         f.setArguments(bdl);
         return f;
     }
@@ -85,12 +88,8 @@ public class HistoryActivity extends Fragment implements View.OnClickListener{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-
-
-        String message = getArguments().getString(EXTRA_MESSAGE);
         View v = inflater.inflate(R.layout.activity_history, container, false);
         TextView messageTextView = (TextView)v.findViewById(R.id.tvActivityType);
-        messageTextView.setText(message);
         ratingBar = (RatingBar) v.findViewById(R.id.ratingBar);
         LayerDrawable stars = (LayerDrawable) ratingBar.getProgressDrawable();
         stars.getDrawable(2).setColorFilter(Color.parseColor("#ffd700"), PorterDuff.Mode.SRC_ATOP);
