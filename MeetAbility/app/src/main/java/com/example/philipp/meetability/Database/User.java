@@ -28,10 +28,7 @@ public class User {
     private int sex;
 
     @DatabaseField (canBeNull = true)
-    private int age;
-
-    //@DatabaseField (canBeNull = true)
-   // private Image picture;
+    private String age;
 
     @DatabaseField (canBeNull = true)
     private String description;
@@ -40,7 +37,7 @@ public class User {
 
     public User(){}
 
-    public User(String email, String password, String username, int sex, int age/*, Image picture*/, String description){
+    public User(String email, String password, String username, int sex, String age, String description){
         super();
         this.email=email;
         this.password=password;
@@ -59,7 +56,7 @@ public class User {
     public String getPassword() {return password;}
     public String getUsername() {return username;}
     public int getSex() {return sex;}
-    public int getAge() {return age;}
+    public String getAge() {return age;}
    // public Image getPicture() {return picture;}
     public String getDescription() {return description;}
 
@@ -70,7 +67,7 @@ public class User {
     public void setPassword(String password) {this.password = password;}
     public void setUsername(String username) {this.username = username;}
     public void setSex(int sex) {this.sex = sex;}
-    public void setAge(int age) {this.age = age;}
+    public void setAge(String age) {this.age = age;}
   //  public void setPicture(Image picture) {this.picture = picture;}
     public void setDescription(String description) {this.description = description;}
 }

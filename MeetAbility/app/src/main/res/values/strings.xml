@@ -43,4 +43,6 @@
     <string name="reason">Ursache</string>
     <string name="report_description">Fehlerbeschreibung</string>
     <string name="report_button">Melden</string>
+    <string name="profil_button">Account Deaktivieren</string>
+
 </resources>
