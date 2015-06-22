@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Created by Philipp on 06.06.15.
  */
-public class PageViewActivity extends android.support.v4.app.FragmentActivity
+public class HistoryPageViewActivity extends android.support.v4.app.FragmentActivity
 {
     MyPageAdapter pageAdapter;
 

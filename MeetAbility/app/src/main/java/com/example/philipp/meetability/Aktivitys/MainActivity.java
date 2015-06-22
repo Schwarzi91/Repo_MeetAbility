@@ -7,15 +7,12 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
-import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.example.philipp.meetability.Database.Report;
 import com.example.philipp.meetability.R;
 
-import com.example.philipp.meetability.viewpager.PageViewActivity;
+import com.example.philipp.meetability.viewpager.HistoryPageViewActivity;
 
 
 
@@ -70,7 +67,7 @@ public class MainActivity extends Activity implements View.OnClickListener
         }
         else if(v == btShowHistory)
         {
-            Intent viewPagerIntent = new Intent(this, PageViewActivity.class);
+            Intent viewPagerIntent = new Intent(this, HistoryPageViewActivity.class);
             startActivity(viewPagerIntent);
         }
     }

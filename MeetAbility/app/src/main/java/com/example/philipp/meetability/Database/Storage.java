@@ -47,7 +47,9 @@ public class Storage {
             }
             if(getAktivityList().isEmpty()){
                 saveActivity(new Aktivity(getUserList().get(0), "Kino", 2, "20-06-2015 18:35", "27-06-2015 17:40", "Heute ins Kino Gehen", 10));
-                saveActivity(new Aktivity(getUserList().get(1), "Fischen", 1, "25-06-2015 18:35", "27-06-2015 18:40", "Heute Fischen Gehen", 5));
+                saveActivity(new Aktivity(getUserList().get(1), "Kino", 2, "20-06-2015 18:35", "27-06-2015 18:40", "Heute Fischen Gehen", 5));
+                saveActivity(new Aktivity(getUserList().get(1), "Kino", 2, "20-06-2015 18:35", "27-06-2015 18:40", "Heute Fischen Gehen", 5));
+                saveActivity(new Aktivity(getUserList().get(1), "Fischen", 2, "20-06-2015 18:35", "27-06-2015 18:40", "Heute Fischen Gehen", 5));
             }
             if(getHistoryList().isEmpty()){
                 saveHistory(new History(getAktivityList().get(0), 5, "War super"));
@@ -252,7 +254,8 @@ public class Storage {
             if(listResultAktivity.size() > 0) {
                 return listResultAktivity;
             }
-            else{
+            else
+            {
                 return null;
             }
         }
@@ -264,7 +267,7 @@ public class Storage {
 
     public Date dateFormatter(String date)
     {
-        format = new SimpleDateFormat("dd-mm-yyyy HH:mm");
+        format = new SimpleDateFormat("dd-MM-yyyy HH:mm");
         try {
             Date dateFormatted = format.parse(date);
             return dateFormatted;

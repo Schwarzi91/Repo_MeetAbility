@@ -36,7 +36,8 @@
             android:name=".Aktivitys.RegisterActivity"
             android:label="@string/title_activity_register" >
         </activity>
-        <activity android:name=".viewpager.PageViewActivity" />
+        <activity android:name=".viewpager.HistoryPageViewActivity" />
+        <activity android:name=".viewpager.ResultPageViewActivity" />
         <activity
             android:name=".Aktivitys.InitializeAktivity"
             android:label="@string/title_activity_activity_search" >

@@ -4,6 +4,7 @@ package com.example.philipp.meetability.Database;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
+import java.io.Serializable;
 
 
 /**
@@ -14,7 +15,7 @@ import com.j256.ormlite.table.DatabaseTable;
 //Initiating com.example.philipp.meetability.Database
 
 @DatabaseTable(tableName = "aktivity")
-public class Aktivity {
+public class Aktivity{
 
     @DatabaseField (generatedId = true)
     private int aktivity_id;

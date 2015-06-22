@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -19,8 +20,12 @@ import android.widget.Toast;
 
 import com.example.philipp.meetability.Database.Aktivity;
 import com.example.philipp.meetability.Database.Storage;
+import com.example.philipp.meetability.Helper.ActivityStore;
 import com.example.philipp.meetability.R;
+import com.example.philipp.meetability.viewpager.HistoryPageViewActivity;
+import com.example.philipp.meetability.viewpager.ResultPageViewActivity;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
@@ -56,8 +61,21 @@ public class SearchActivity extends Activity implements View.OnClickListener
         btSearch = (Button) findViewById(R.id.btSearch);
         btSearch.setOnClickListener(this);
 
+
+
+
         spActivityType = (Spinner) findViewById(R.id.spActivityType);
+        ArrayAdapter<CharSequence> activityTypeAdapter = ArrayAdapter.createFromResource(this,
+                R.array.activityTypes, R.layout.spinner_style);
+        activityTypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spActivityType.setAdapter(activityTypeAdapter);
+
         spGender = (Spinner) findViewById(R.id.spGender);
+        ArrayAdapter<CharSequence> gender = ArrayAdapter.createFromResource(this,
+                R.array.gender, R.layout.spinner_style);
+        gender.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spGender.setAdapter(gender);
+        //Spinner ende
 
         //Datum
         etFromDate = (EditText) findViewById(R.id.etFromDate);
@@ -164,8 +182,14 @@ public class SearchActivity extends Activity implements View.OnClickListener
                 }
                 else {
                     listResultAktivity = Storage.getStorageInstance().getFilteredAktivity(spActivityType.getSelectedItem().toString(), spGender.getSelectedItemPosition(), etFromDate.getText().toString() + " " + etFromTime.getText().toString(), etToDate.getText().toString() + " " + etToTime.getText().toString());
-                    Intent intent = new Intent(this, ResultActivity.class);
-                   // startActivity(intent);
+
+                    ActivityStore listActStore = new ActivityStore(listResultAktivity);
+                    Intent viewPagerIntent = new Intent(this, ResultPageViewActivity.class);
+                    startActivity(viewPagerIntent);
+
+                   // Intent intent = new Intent(this, ResultPageViewActivity.class);
+                    //intent.putExtra("Results", (Serializable) listActStore);
+                    //startActivity(intent);
                 }
             }
             else
