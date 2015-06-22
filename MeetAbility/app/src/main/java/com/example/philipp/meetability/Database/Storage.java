@@ -1,7 +1,12 @@
 package com.example.philipp.meetability.Database;
 
 import android.content.Context;
+import android.provider.Telephony;
 import android.util.Log;
+
+import com.example.philipp.meetability.Aktivitys.LoginActivity;
+
+import java.lang.reflect.Array;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -35,8 +40,8 @@ public class Storage {
 
     public void createTestDataIfNeccessary() {
         try {
-        if (getUserList().isEmpty()) {
-
+            if (getUserList().isEmpty())
+            {
                 saveUser(new User("muster@thi.de", "test123", "Max Muster", 2, 20, "Ich bin Dumm"));
                 saveUser(new User("edgar@thi.de", "test123", "Ede Muster", 2, 20, "Ich bins nicht"));
             }
@@ -270,5 +275,103 @@ public class Storage {
         return null;
     }
 
+    public List<Participant> getParticipantByLoggedUser ()
+    {
+        List<Participant> listParticipant = Storage.getStorageInstance().getParticipantList();
+        List<Participant> listParticipantByUser = new ArrayList<Participant>();
+
+        if(listParticipant.size()>0)
+        {
+            for (int x = 0; x < listParticipant.size(); x++)
+            {
+                if (listParticipant.get(x).getUserId().equals(LoginActivity.usercheckItem.getUser_id()))
+                {
+                    listParticipantByUser.add(listParticipant.get(x));
+                }
+            }
+            if(listParticipantByUser.size() > 0)
+            {
+                return listParticipantByUser;
+            }
+            else
+            {
+                return null;
+            }
+        }
+        else
+        {
+            return null;
+        }
+
+    }
+
+    public List<Aktivity> getActivtiesByLoggedUser ()
+    {
+        List<Participant> listParticipantByUser = Storage.getStorageInstance().getParticipantByLoggedUser();
+        List<Aktivity> listAktivity = Storage.getStorageInstance().getAktivityList();
+        List<Aktivity> listAktivitiesByUser = new ArrayList<>();
+
+        if(listAktivity.size() > 0)
+        {
+            for (int x = 0; x < listParticipantByUser.size(); x++)
+            {
+                for (int y = 0; y < listAktivity.size(); y++)
+                {
+                    if (listParticipantByUser.get(x).getUserId().equals(listAktivity.get(y).getUserId()))
+                    {
+                        listAktivitiesByUser.add(listAktivity.get(y));
+                    }
+                }
+            }
+            if (listAktivitiesByUser.size() > 0)
+            {
+                return listAktivitiesByUser;
+            }
+            else
+            {
+                return null;
+            }
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    public List<History> listFilteredHistoryByUser ()
+    {
+        List<History> listHistory = Storage.getStorageInstance().getHistoryList();
+        List<Aktivity> listAktivitiesByUser = Storage.getStorageInstance().getActivtiesByLoggedUser();
+        List<History> listFilteredHistoryByUser = new ArrayList<>();
+
+        if (listAktivitiesByUser.size() > 0)
+        {
+            for (int x = 0; x < listHistory.size(); x++)
+            {
+                for (int y = 0; y <listAktivitiesByUser.size(); y++)
+                {
+                    if (listHistory.get(x).getAktivityId().equals(listAktivitiesByUser.get(y).getAktivityId()))
+                    {
+                        listFilteredHistoryByUser.add(listHistory.get(x));
+                    }
+                }
+            }
+            if (listFilteredHistoryByUser.size() > 0)
+            {
+                return listFilteredHistoryByUser;
+            }
+            else
+            {
+                return null;
+            }
+        }
+        else
+        {
+            return null;
+        }
+    }
+
 }
+
+
 
