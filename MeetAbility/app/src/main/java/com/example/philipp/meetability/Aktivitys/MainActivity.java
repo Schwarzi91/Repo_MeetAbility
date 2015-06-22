@@ -51,6 +51,8 @@ public class MainActivity extends Activity implements View.OnClickListener
         btShowProfile.setOnClickListener(this);
         btShowHistory.setOnClickListener(this);
 
+        HistoryActivity.ActivityToHistory();
+
 
     }
 

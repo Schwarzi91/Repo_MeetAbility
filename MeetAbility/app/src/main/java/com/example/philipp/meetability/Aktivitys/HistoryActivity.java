@@ -44,8 +44,8 @@ public class HistoryActivity extends Fragment implements View.OnClickListener{
     private List<Participant> participantList;
     private List<Aktivity> aktivityList;
     private SimpleDateFormat format;
-    private Date date;
-    private Date atmDate;
+    private static Date date;
+    private static Date atmDate;
 
     public static final HistoryActivity newInstance(String message)
     {
@@ -56,7 +56,7 @@ public class HistoryActivity extends Fragment implements View.OnClickListener{
         return f;
     }
 
-    public void ActivityToHistory ()
+    public static void ActivityToHistory ()
     {
         //Hier werden die "vergangenen" Aktivities zu Historys gemacht!
         List<Aktivity> listAktivities = Storage.getStorageInstance().getAktivityList();
@@ -73,8 +73,9 @@ public class HistoryActivity extends Fragment implements View.OnClickListener{
             {
                 if (date.getTime() <= atmDate.getTime()) {
                     Storage.getStorageInstance().saveHistory(new History(listAktivities.get(x), 0, listAktivities.get(x).getDescription()));
-                    //listAktivities.get(x).setChangeToHistory(true);
-                   // Storage.getStorageInstance().saveActivity(listAktivities.get(x).setChangeToHistory(true));
+
+                    listAktivities.get(x).setChangeToHistory(true);
+                    Storage.getStorageInstance().saveActivity(listAktivities.get(x));
                 }
             }
         }
@@ -84,7 +85,7 @@ public class HistoryActivity extends Fragment implements View.OnClickListener{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        ActivityToHistory();
+
 
         String message = getArguments().getString(EXTRA_MESSAGE);
         View v = inflater.inflate(R.layout.activity_history, container, false);
