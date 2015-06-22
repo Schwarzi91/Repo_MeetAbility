@@ -387,6 +387,39 @@ public class Storage {
         }
     }
 
+    public List<Aktivity> listAktivitiesForHistorysById ()
+    {
+        List<History> listHistory = Storage.getStorageInstance().listFilteredHistoryByUser();
+        List<Aktivity> listAktivitiesByUser = Storage.getStorageInstance().getActivtiesByLoggedUser();
+        List<Aktivity> listAktivitiesForHistorysById = new ArrayList<>();
+
+        if (listHistory.size() > 0)
+        {
+            for (int x = 0; x < listHistory.size(); x++)
+            {
+                for (int y = 0; y <listAktivitiesByUser.size(); y++)
+                {
+                    if (listHistory.get(x).getAktivityId().equals(listAktivitiesByUser.get(y).getAktivityId()))
+                    {
+                        listAktivitiesForHistorysById.add(listAktivitiesByUser.get(x));
+                    }
+                }
+            }
+            if (listAktivitiesForHistorysById.size() > 0)
+            {
+                return listAktivitiesForHistorysById;
+            }
+            else
+            {
+                return null;
+            }
+        }
+        else
+        {
+            return null;
+        }
+    }
+
 }
 
 
