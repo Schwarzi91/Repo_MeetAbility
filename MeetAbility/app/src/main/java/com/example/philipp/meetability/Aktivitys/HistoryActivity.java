@@ -27,7 +27,10 @@ import com.example.philipp.meetability.R;
 
 import org.xml.sax.helpers.LocatorImpl;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class HistoryActivity extends Fragment implements View.OnClickListener{
@@ -40,6 +43,9 @@ public class HistoryActivity extends Fragment implements View.OnClickListener{
     private View view;
     private List<Participant> participantList;
     private List<Aktivity> aktivityList;
+    private SimpleDateFormat format;
+    private Date date;
+    private Date atmDate;
 
     public static final HistoryActivity newInstance(String message)
     {
@@ -50,9 +56,31 @@ public class HistoryActivity extends Fragment implements View.OnClickListener{
         return f;
     }
 
+    public void ActivityToHistory ()
+    {
+        //Hier werden die "vergangenen" Aktivities zu Historys gemacht!
+        List<Aktivity> listAktivities = Storage.getStorageInstance().getAktivityList();
+        List<History> listHistory = Storage.getStorageInstance().getHistoryList();
+        Calendar c = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+        String formattedDate = sdf.format(c.getTime());
+        atmDate = Storage.getStorageInstance().dateFormatter(formattedDate);
+
+        for (int x = 0; x < listAktivities.size(); x++)
+        {
+            date = Storage.getStorageInstance().dateFormatter(listAktivities.get(x).getEndDate());
+
+            if (date.getTime() <= atmDate.getTime()) {
+                Storage.getStorageInstance().saveHistory(new History(listAktivities.get(x), 0, listAktivities.get(x).getDescription()));
+            }
+        }
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        ActivityToHistory();
+
         String message = getArguments().getString(EXTRA_MESSAGE);
         View v = inflater.inflate(R.layout.activity_history, container, false);
         TextView messageTextView = (TextView)v.findViewById(R.id.tvActivityType);

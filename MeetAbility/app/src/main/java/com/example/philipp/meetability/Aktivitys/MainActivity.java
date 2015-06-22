@@ -10,11 +10,19 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.example.philipp.meetability.Database.Aktivity;
+import com.example.philipp.meetability.Database.History;
+import com.example.philipp.meetability.Database.Storage;
 import com.example.philipp.meetability.R;
 
 import com.example.philipp.meetability.viewpager.HistoryPageViewActivity;
 
-
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 
 
 public class MainActivity extends Activity implements View.OnClickListener
@@ -25,6 +33,7 @@ public class MainActivity extends Activity implements View.OnClickListener
     private ImageButton btShowHistory;
     private TextView tvUsername;
     private String strUsername;
+
 
 
     @Override
@@ -42,7 +51,9 @@ public class MainActivity extends Activity implements View.OnClickListener
         btShowProfile.setOnClickListener(this);
         btShowHistory.setOnClickListener(this);
 
+
     }
+
 
     @Override
     public void onClick(View v)
@@ -102,4 +113,6 @@ public class MainActivity extends Activity implements View.OnClickListener
 
         return super.onOptionsItemSelected(item);
     }
+
+
 }
