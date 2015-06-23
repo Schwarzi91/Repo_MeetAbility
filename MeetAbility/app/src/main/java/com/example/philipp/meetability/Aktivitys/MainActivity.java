@@ -15,6 +15,7 @@ import com.example.philipp.meetability.Database.History;
 import com.example.philipp.meetability.Database.Storage;
 import com.example.philipp.meetability.R;
 
+import com.example.philipp.meetability.viewpager.CurrentActivitiesPageViewActivity;
 import com.example.philipp.meetability.viewpager.HistoryPageViewActivity;
 
 import java.text.DateFormat;
@@ -80,7 +81,7 @@ public class MainActivity extends Activity implements View.OnClickListener
         }
         else if(v == btShowHistory)
         {
-            Intent viewPagerIntent = new Intent(this, HistoryPageViewActivity.class);
+            Intent viewPagerIntent = new Intent(this, CurrentActivitiesPageViewActivity.class);
             startActivity(viewPagerIntent);
         }
     }

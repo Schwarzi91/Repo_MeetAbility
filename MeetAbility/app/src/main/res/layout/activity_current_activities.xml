@@ -239,16 +239,6 @@
             </ScrollView>
 
         </LinearLayout>
-
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@string/participate"
-            android:id="@+id/btCreate"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="1"
-            android:background="@drawable/register_login_button"/>
     </LinearLayout>
 
 </LinearLayout>
