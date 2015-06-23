@@ -156,7 +156,7 @@ public class CreateActivity extends Activity implements View.OnClickListener
                 Calendar newTime = Calendar.getInstance();
                 newTime.set(Calendar.HOUR_OF_DAY, hourOfDay);
                 newTime.set(Calendar.MINUTE, minute);
-                etFromTime.setText(hourOfDay + ":" + minute);
+                etFromTime.setText(hourOfDay + ":" + pad(minute));
             }
         }, newCalendar.get(Calendar.HOUR), newCalendar.get(Calendar.MINUTE), true);
 
@@ -168,9 +168,24 @@ public class CreateActivity extends Activity implements View.OnClickListener
                 Calendar newTime = Calendar.getInstance();
                 newTime.set(Calendar.HOUR_OF_DAY, hourOfDay);
                 newTime.set(Calendar.MINUTE, minute);
-                etToTime.setText(hourOfDay + ":" + minute);
+                etToTime.setText(hourOfDay + ":" + pad(minute));
             }
         }, newCalendar.get(Calendar.HOUR), newCalendar.get(Calendar.MINUTE), true);
+    }
+
+    public String pad(int input)
+    {
+
+        String str = "";
+
+        if (input > 10) {
+
+            str = Integer.toString(input);
+        } else {
+            str = "0" + Integer.toString(input);
+
+        }
+        return str;
     }
 
     @Override
@@ -199,7 +214,14 @@ public class CreateActivity extends Activity implements View.OnClickListener
                     fromDate=etFromDate.getText().toString()+ " "+ etFromTime.getText().toString();
                     toDate=etToDate.getText().toString()+ " "+ etToTime.getText().toString();
 
+                    Toast.makeText(this, "Aktivität angelegt", Toast.LENGTH_SHORT).show();
                     Storage.getStorageInstance().saveActivity(new Aktivity(LoginActivity.usercheckItem, spActivityTypes.getSelectedItem().toString(), spGender.getSelectedItemPosition(), fromDate, toDate, etDescription.getText().toString(), spMaxParticipants.getSelectedItemPosition(), false));
+                    etLocation.setText("");
+                    etDescription.setText("");
+                    etFromDate.setText("");
+                    etToDate.setText("");
+                    etFromTime.setText("");
+                    etToTime.setText("");
                 }else
                     Toast.makeText(getApplicationContext(), "Beschreibung ist nicht ausgefüllt", Toast.LENGTH_LONG).show();
             }

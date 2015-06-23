@@ -158,14 +158,17 @@ public class ProfilActivity extends Activity implements View.OnClickListener
         }
         else if(v==btDeaktivate && btDeaktivate.getText().equals("Aenderungen Speichern")){
 
-                    setEditable(false);
-                    LoginActivity.usercheckItem.setUsername(etUserName.getText().toString());
-                    LoginActivity.usercheckItem.setSex(spGender.getSelectedItemPosition());
-                    LoginActivity.usercheckItem.setDescription(etDescription.getText().toString());
-                    Storage.getStorageInstance().saveUser(LoginActivity.usercheckItem);
-                    btDeaktivate.setText("Account Deaktivieren");
-                    tvEmail.requestFocus();
-                    Toast.makeText(getApplicationContext(), "Aenderungen gespeichert", Toast.LENGTH_LONG).show();
+            setEditable(false);
+            LoginActivity.usercheckItem.setUsername(etUserName.getText().toString());
+            LoginActivity.usercheckItem.setSex(spGender.getSelectedItemPosition());
+            LoginActivity.usercheckItem.setDescription(etDescription.getText().toString());
+            LoginActivity.usercheckItem.setAge(etAge.getText().toString());
+            Storage.getStorageInstance().saveUser(LoginActivity.usercheckItem);
+
+
+            btDeaktivate.setText("Account Deaktivieren");
+            tvEmail.requestFocus();
+            Toast.makeText(getApplicationContext(), "Aenderungen gespeichert", Toast.LENGTH_LONG).show();
             }
 
     }
