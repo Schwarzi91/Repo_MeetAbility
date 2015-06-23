@@ -43,7 +43,10 @@ public class RegisterActivity extends Activity implements View.OnClickListener
         btRegistration.setOnClickListener(this);
 
         if(deaktivate==true){
-            etEmail.setVisibility(View.GONE);
+            etEmail.setHint("Password");
+            etPassword.setHint("Neues Password");
+            //etEmail.setVisibility(View.GONE);
+            btRegistration.setText("Password ändern");
         }
 
 
@@ -70,6 +73,24 @@ public class RegisterActivity extends Activity implements View.OnClickListener
             {
                 //etEmail.setText(null); usability -> man sollte nicht immer wieder seine e-mail eingeben müssen
                 etPassword.setText(null);
+                etPassword2.setText(null);
+                etEmail.requestFocus();
+                Toast.makeText(getApplicationContext(), "Falsches Passwort", Toast.LENGTH_LONG).show();
+            }
+        }
+        else if(btRegistration.getText().equals("Password ändern")){
+            if(pw1.equals(pw2) && email.equals(LoginActivity.usercheckItem.getPassword())){
+                LoginActivity.usercheckItem.setPassword(pw1);
+                Storage.getStorageInstance().saveUser(LoginActivity.usercheckItem);
+                Toast.makeText(getApplicationContext(), "Passwort erfolgreich geändert", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(this, MainActivity.class);
+                this.startActivity(intent);
+                this.finish();
+
+            }
+            else{
+                etPassword.setText(null);
+                etEmail.setText(null);
                 etPassword2.setText(null);
                 etEmail.requestFocus();
                 Toast.makeText(getApplicationContext(), "Falsches Passwort", Toast.LENGTH_LONG).show();
