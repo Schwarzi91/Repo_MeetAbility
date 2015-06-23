@@ -300,7 +300,7 @@ public class Storage {
         {
             for (int x = 0; x < listParticipant.size(); x++)
             {
-                if (listParticipant.get(x).getUserId().getUser_id() == LoginActivity.usercheckItem.getUser_id())
+                if (listParticipant.get(x).getUser().getUser_id() == LoginActivity.usercheckItem.getUser_id())
                 {
                     listParticipantByUser.add(listParticipant.get(x));
                 }
@@ -333,7 +333,7 @@ public class Storage {
             {
                 for (int y = 0; y < listAktivity.size(); y++)
                 {
-                    if (listParticipantByUser.get(x).getUserId().getUser_id() == listAktivity.get(y).getUserId().getUser_id())
+                    if (listParticipantByUser.get(x).getUser().getUser_id() == listAktivity.get(y).getUserId().getUser_id())
                     {
                         listAktivitiesByUser.add(listAktivity.get(y));
                     }
@@ -439,6 +439,19 @@ public class Storage {
         return listCurrentActivities;
     }
     */
+
+
+    List<Aktivity> getAktivitiesbyUserId(int id){
+        List<Participant> participantlist=Storage.getStorageInstance().getParticipantList();
+        List<Aktivity> aktivitylist=new ArrayList<Aktivity>();
+
+        for(Participant p:participantlist){
+            if(p.getUser().getUser_id()==id){
+                aktivitylist.add(p.getAktivity());
+            }
+        }
+        return aktivitylist;
+    }
 }
 
 

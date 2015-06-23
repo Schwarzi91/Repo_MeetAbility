@@ -13,10 +13,10 @@ public class Participant {
     private int participant_id;
 
     @DatabaseField (foreign = true, canBeNull = false)
-    private User user_id;
+    private User user;
 
     @DatabaseField (foreign = true, canBeNull = false)
-    private Aktivity aktivity_id;
+    private Aktivity aktivity;
 
     @DatabaseField (canBeNull = false)
     private boolean creator;
@@ -28,8 +28,8 @@ public class Participant {
 
     public Participant(User user_id, Aktivity aktivity_id, boolean creator){
         super();
-        this.user_id=user_id;
-        this.aktivity_id=aktivity_id;
+        this.user=user_id;
+        this.aktivity=aktivity_id;
         this.creator=creator;
 
     }
@@ -37,13 +37,13 @@ public class Participant {
     //Getter
 
     public int getParticipantId() {return participant_id;}
-    public User getUserId() {return user_id;}
-    public Aktivity getAktivityId() {return aktivity_id;}
+    public User getUser() {return user;}
+    public Aktivity getAktivity() {return aktivity;}
     public boolean isCreator() {return creator;}
 
     //Setter
 
-    public void setUserId(User user_id) {this.user_id = user_id;}
-    public void setAktivityId(Aktivity aktivity_id) {this.aktivity_id = aktivity_id;}
+    public void setUserId(User user_id) {this.user = user_id;}
+    public void setAktivityId(Aktivity aktivity_id) {this.aktivity = aktivity_id;}
     public void setCreator(boolean creator) {this.creator = creator;}
 }
