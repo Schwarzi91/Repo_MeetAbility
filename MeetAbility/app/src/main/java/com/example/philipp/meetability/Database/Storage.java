@@ -42,8 +42,8 @@ public class Storage {
         try {
             if (getUserList().isEmpty())
             {
-                saveUser(new User("muster@thi.de", "test123", "Max Muster", 2, 20, "Ich bin Dumm"));
-                saveUser(new User("edgar@thi.de", "test123", "Ede Muster", 2, 20, "Ich bins nicht"));
+                saveUser(new User("muster@thi.de", "test123", "Max Muster", 2,"20-06-1992" , "Ich bin Dumm"));
+                saveUser(new User("edgar@thi.de", "test123", "Ede Muster", 2, "01-01-1995", "Ich bins nicht"));
             }
             if(getAktivityList().isEmpty()){
                 saveActivity(new Aktivity(getUserList().get(0), "Kino", 2, "20-06-2015 18:35", "27-06-2015 17:40", "Heute ins Kino Gehen", 10, false));
@@ -265,6 +265,19 @@ public class Storage {
         }
     }
 
+    public Date onlyDateFormatter(String date)
+    {
+        format = new SimpleDateFormat("dd-MM-yyyy");
+        try {
+            Date dateFormatted = format.parse(date);
+            return dateFormatted;
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public Date dateFormatter(String date)
     {
         format = new SimpleDateFormat("dd-MM-yyyy HH:mm");
@@ -287,7 +300,7 @@ public class Storage {
         {
             for (int x = 0; x < listParticipant.size(); x++)
             {
-                if (listParticipant.get(x).getUserId().equals(LoginActivity.usercheckItem.getUser_id()))
+                if (listParticipant.get(x).getUserId().getUser_id() == LoginActivity.usercheckItem.getUser_id())
                 {
                     listParticipantByUser.add(listParticipant.get(x));
                 }
@@ -406,7 +419,25 @@ public class Storage {
             return null;
         }
     }
+/*
+    public List<Aktivity> getCurrentActivitiesByLoggedUser()
+    {
+        List<Aktivity> listActivitiesByLoggedUser = new ArrayList<>();
+        List<Aktivity> listCurrentActivities = new ArrayList<>();
 
+        listActivitiesByLoggedUser = getActivtiesByLoggedUser();
+
+        for(int i = 0; i < listActivitiesByLoggedUser.size(); i++)
+        {
+            if()
+            {
+                listCurrentActivities.add(listActivitiesByLoggedUser.get(i));
+            }
+        }
+
+        return listCurrentActivities;
+    }
+    */
 }
 
 

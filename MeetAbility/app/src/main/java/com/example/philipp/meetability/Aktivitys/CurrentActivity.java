@@ -1,34 +1,20 @@
 package com.example.philipp.meetability.Aktivitys;
 
-import android.graphics.Color;
-import android.graphics.PorterDuff;
-import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.RatingBar;
 import android.widget.TextView;
 
-import com.example.philipp.meetability.Database.Aktivity;
-import com.example.philipp.meetability.Database.Participant;
-import com.example.philipp.meetability.Database.Storage;
-import com.example.philipp.meetability.Helper.ActivityStore;
 import com.example.philipp.meetability.R;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class ResultActivity extends Fragment implements View.OnClickListener{
+public class CurrentActivity extends Fragment{
     public static final String EXTRA_MESSAGE = "EXTRA_MESSAGE";
     private ListView lvDetails;
-    private Button btParticipant;
-    private List<Aktivity> listActivities;
+    private Button btTeilnehmen;
 
     private TextView tvActivityType;
     private TextView tvGender;
@@ -39,15 +25,11 @@ public class ResultActivity extends Fragment implements View.OnClickListener{
     private TextView tvFromTime;
     private TextView tvToTime;
     private TextView tvDescription;
-    private int position;
-    private int userId;
-    private int activityId;
-    private Participant participant;
 
-    public static final ResultActivity newInstance(String activityName, int gender, /*String location,*/ int participants,
+    public static final CurrentActivity newInstance(String activityName, int gender, /*String location,*/ int participants,
                                                    String startTime, String endTime, String description, int position)
     {
-        ResultActivity f = new ResultActivity();
+        CurrentActivity f = new CurrentActivity();
         Bundle bdl = new Bundle(1);
         bdl.putString("activityName", activityName);
         bdl.putInt("gender", gender);
@@ -56,7 +38,6 @@ public class ResultActivity extends Fragment implements View.OnClickListener{
         bdl.putString("startTime", startTime);
         bdl.putString("endTime", endTime);
         bdl.putString("description", description);
-        bdl.putInt("position", position);
         f.setArguments(bdl);
         return f;
     }
@@ -65,12 +46,7 @@ public class ResultActivity extends Fragment implements View.OnClickListener{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        //String message = getArguments().getString(EXTRA_MESSAGE);
-        View v = inflater.inflate(R.layout.activity_searchresult, container, false);
-        //TextView messageTextView = (TextView)v.findViewById(R.id.tvActivityType);
-        //messageTextView.setText(message);
-
-        btParticipant = (Button) v.findViewById(R.id.btParticipate);
+        View v = inflater.inflate(R.layout.activity_current_activities, container, false);
 
         tvDescription = (TextView) v.findViewById(R.id.tvDescription);
         tvActivityType = (TextView) v.findViewById(R.id.tvActivityType);
@@ -82,23 +58,6 @@ public class ResultActivity extends Fragment implements View.OnClickListener{
         tvFromTime = (TextView) v.findViewById(R.id.tvFromTime);
         tvToTime = (TextView) v.findViewById(R.id.tvToTime);
 
-        listActivities = ActivityStore.getListActivity();
-
-        userId = LoginActivity.usercheckItem.getUser_id();
-        activityId = listActivities.get(getArguments().getInt("position")).getAktivityId();
-
-        //lvDetails = (ListView) v.findViewById(R.id.lvDetails);
-        /*List<String> listDetails = new ArrayList<String>();
-
-        listDetails.add("CineStar Westpark");
-        listDetails.add("19:30 - 00:30 Uhr");
-        listDetails.add("Nur Frauen");
-        listDetails.add("2/5 Teilnehmer");
-        listDetails.add("Ich hätte lust auf einen gemütlichen Kinoabend blblablalbalkja lajlbökjaöd ladj flajböalj aöjbaldfjsd fjasdöf asdföjasdöfj fjaösdfj aödjsf öajflöadsj fasdjfidsflasdjf löasd fjasödifj siödfljl< h");
-
-        ListAdapter listAdapter = new ArrayAdapter(this.getActivity(), R.layout.custom_listview_layout, listDetails);
-*/
-        // lvDetails.setAdapter(listAdapter);
 
         tvActivityType.setText(getArguments().getString("activityName"));
         //tvLocation.setText(getArguments().getString("location"));
@@ -115,16 +74,6 @@ public class ResultActivity extends Fragment implements View.OnClickListener{
             tvGender.setText("weiblich");
 
         return v;
-    }
-
-    @Override
-    public void onClick(View v)
-    {
-        if(v == btParticipant)
-        {
-            participant = new Participant(LoginActivity.usercheckItem, listActivities.get(position), false);
-            Storage.getStorageInstance().saveParticipant(participant);
-        }
     }
 }
 

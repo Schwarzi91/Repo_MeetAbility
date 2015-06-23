@@ -71,7 +71,6 @@ public class LoginActivity extends Activity implements View.OnClickListener
 
         else
         {
-            //etEmail.setText(null); usability
             etPassword.setText(null);
             etEmail.requestFocus();
             Toast.makeText(getApplicationContext(), "E-Mail oder Passwort falsch", Toast.LENGTH_LONG).show();
@@ -80,6 +79,7 @@ public class LoginActivity extends Activity implements View.OnClickListener
         }
         else if(v == tvNotRegistered)
         {
+            RegisterActivity.deaktivate=false;
             Intent intent = new Intent(this, RegisterActivity.class);
             startActivity(intent);
         }

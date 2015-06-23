@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by Philipp on 22.06.15.
  */
-public class ActivityStore
+public class ActivityStore //speichert die gefundenen Activities zwischen
 {
     private static List<Aktivity> listActivity;
 

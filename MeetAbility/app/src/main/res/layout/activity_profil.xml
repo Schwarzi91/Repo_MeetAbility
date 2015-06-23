@@ -24,46 +24,50 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"></FrameLayout>
-
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:gravity="right">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/ivuser"
-                android:src="@drawable/user"
-                android:layout_weight="1"
-                android:layout_marginRight="60dp" />
+                android:src="@drawable/user_pic"
+                android:layout_weight="1" />
 
         </LinearLayout>
 
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/ibChangePw"
-            android:layout_weight="0.1"
-            android:src="@drawable/cast_ic_notification_on"
-            android:background="#80000000"
-            android:clickable="true"
-            android:focusable="true"
-            android:layout_marginRight="20dp" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="right">
 
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/ibSettings"
-            android:layout_weight="0.1"
-            android:src="@drawable/ic_setting_dark"
-            android:background="#80000000"
-            android:clickable="true"
-            android:focusable="true" />
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ibChangePw"
+                android:layout_weight="0.1"
+                android:src="@drawable/icon_pw_change"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="@null"
+                android:layout_gravity="right" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ibSettings"
+                android:layout_weight="0.1"
+                android:src="@drawable/icon_user_change"
+                android:background="@null"
+                android:clickable="true"
+                android:focusable="true"
+                android:longClickable="false"
+                android:layout_gravity="right" />
+        </LinearLayout>
 
     </LinearLayout>
 
@@ -99,7 +103,8 @@
                 android:id="@+id/etEmail"
                 android:textSize="18dp"
                 android:textColor="#ffffff"
-                android:text="Bitte E-Mail Adresse eingeben" />
+                android:textColorHint="#ffffff"
+                android:hint="Bitte E-Mail Adresse eingeben" />
         </TableRow>
 
         <TableRow
@@ -132,39 +137,7 @@
                 android:textColorHint="#ffffff"
                 android:textSize="18dp"
                 android:id="@+id/etUserName"
-                android:text="Bitte Benutzername eingeben" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:text="Geschlecht"
-                android:textStyle="bold"
-                android:textColor="#ffffff"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_weight="5"
-                android:textAlignment="center"
-                android:singleLine="true" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/edittext">
-
-            <Spinner
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/spGender"
-                android:focusable="false"
-                android:spinnerMode="dialog"
-                android:textSize="20dp"
-                android:textColor="#ffffff" />
+                android:hint="Bitte Benutzername eingeben" />
 
         </TableRow>
 
@@ -182,23 +155,62 @@
                 android:layout_weight="5"
                 android:textAlignment="center"
                 android:singleLine="true" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:text="Geschlecht"
+                android:textStyle="bold"
+                android:textColor="#ffffff"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_weight="5"
+                android:textAlignment="center"
+                android:singleLine="true" />
         </TableRow>
 
         <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/edittext">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-            <EditText
+            <TableRow
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="date"
-                android:ems="10"
-                android:id="@+id/etAge"
-                android:layout_column="0"
-                android:textColorHint="#ffffff"
-                android:textColor="#ffffff"
-                android:textSize="18dp"/>
+                android:background="@drawable/edittext"
+                android:layout_gravity="left">
+
+                <EditText
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:inputType="date"
+                    android:ems="10"
+                    android:id="@+id/etAge"
+                    android:textColorHint="#ffffff"
+                    android:textColor="#ffffff"
+                    android:textSize="18dp"
+                    android:layout_weight="0.25"
+                    android:focusable="false"/>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@drawable/edittext"
+                android:baselineAligned="false"
+                android:clickable="false">
+
+                <Spinner
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/spGender"
+                    android:focusable="false"
+                    android:spinnerMode="dialog"
+                    android:textSize="20dp"
+                    android:textColor="#ffffff"
+                    android:layout_weight="2"
+                    android:layout_gravity="center" />
+
+            </TableRow>
 
         </TableRow>
 
@@ -240,38 +252,11 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Profil Bearbeiten"
-            android:id="@+id/btChangeUserInfo"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="1"
-            android:background="@drawable/register_login_button"/>
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Passwort ändern"
-            android:id="@+id/btChangePW"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="1"
-            android:background="@drawable/register_login_button"/>
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Logout"
-            android:id="@+id/btLogOut"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="1"
-            android:background="@drawable/register_login_button"/>
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Account Deaktivieren"
+            android:text="@string/profil_button"
             android:id="@+id/btDeaktivate"
-            android:layout_gravity="center_horizontal"
             android:layout_weight="1"
-            android:background="@drawable/register_login_button"/>
+            android:background="@drawable/register_login_button"
+            android:layout_gravity="center_horizontal" />
 
 
         <LinearLayout

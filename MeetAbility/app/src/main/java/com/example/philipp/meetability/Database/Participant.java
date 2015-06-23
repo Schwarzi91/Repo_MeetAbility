@@ -26,7 +26,7 @@ public class Participant {
 
     public Participant(){}
 
-    public Participant(User user_id, Aktivity aktivity_id, boolean creator){
+    public Participant(User user_id, Aktivity aktivity_id, boolean ceator){
         super();
         this.user_id=user_id;
         this.aktivity_id=aktivity_id;

@@ -26,6 +26,7 @@ public class RegisterActivity extends Activity implements View.OnClickListener
     private String email;
     private String pw1;
     private String pw2;
+    public static boolean deaktivate;
 
 
     @Override
@@ -41,6 +42,10 @@ public class RegisterActivity extends Activity implements View.OnClickListener
 
         btRegistration.setOnClickListener(this);
 
+        if(deaktivate==true){
+            etEmail.setVisibility(View.GONE);
+        }
+
 
     }
 
@@ -55,7 +60,7 @@ public class RegisterActivity extends Activity implements View.OnClickListener
         {
             if (Storage.getStorageInstance().getUserByEmail(email) == null && pw1.equals(pw2))
             {
-                Storage.getStorageInstance().saveUser(new User(email, pw1, "", 0, 0, ""));
+                Storage.getStorageInstance().saveUser(new User(email, pw1, "", 0,"00-00-0000", ""));
                 LoginActivity.usercheckItem = Storage.getStorageInstance().getUserByEmail(email);
                 Intent intent = new Intent(this, ProfilActivity.class);
                 this.startActivity(intent);

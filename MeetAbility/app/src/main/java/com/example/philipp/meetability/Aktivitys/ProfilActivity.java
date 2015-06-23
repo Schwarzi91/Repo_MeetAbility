@@ -3,7 +3,6 @@ package com.example.philipp.meetability.Aktivitys;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.Menu;
@@ -17,14 +16,10 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
-import android.app.DatePickerDialog;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.philipp.meetability.Database.DatabaseHelper;
 import com.example.philipp.meetability.Database.Storage;
-import com.example.philipp.meetability.Database.User;
-import com.example.philipp.meetability.Helper.ProfilHelper;
 import com.example.philipp.meetability.R;
 
 import java.text.SimpleDateFormat;
@@ -48,7 +43,7 @@ public class ProfilActivity extends Activity implements View.OnClickListener
     private ImageView  ivUser;
     //Buttons
     private ImageButton ibChangePw;
-    private ImageButton ibSetings;
+    private ImageButton ibSetting;
     private Button btDeaktivate;
 
 
@@ -70,27 +65,30 @@ public class ProfilActivity extends Activity implements View.OnClickListener
         etAge.setInputType(InputType.TYPE_NULL);
         etAge.setEnabled(false);
         dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.GERMANY);
-
         //view setzen
         tvEmail = (TextView) findViewById(R.id.etEmail);
         etUserName = (EditText) findViewById(R.id.etUserName);
         etUserName.setEnabled(false);
         etDescription = (EditText)findViewById(R.id.etDescription);
         etDescription.setEnabled(false);
-
         //Buttons
         ibChangePw= (ImageButton) findViewById(R.id.ibChangePw);
-        ibSetings=(ImageButton)findViewById(R.id.ibSettings);
+        ibSetting =(ImageButton)findViewById(R.id.ibSettings);
         btDeaktivate = (Button)findViewById(R.id.btDeaktivate);
+
 
         //listener
         btDeaktivate.setOnClickListener(this);
-        ibSetings.setOnClickListener(this);
+        ibSetting.setOnClickListener(this);
         ibChangePw.setOnClickListener(this);
+        etAge.setOnClickListener(this);
 
-        tvEmail.setText(LoginActivity.usercheckItem.getEmail());
-        setDateField();
+        //Disable Editing E-Mail
+        tvEmail.setEnabled(false);
+     
 
+
+        //Schauen ob User neu angelegt wurde
         if(LoginActivity.usercheckItem.getUsername().equals(""))
         {
             setEditable(true);
@@ -99,36 +97,30 @@ public class ProfilActivity extends Activity implements View.OnClickListener
         {
             etUserName.setText(LoginActivity.usercheckItem.getUsername());
             etDescription.setText(LoginActivity.usercheckItem.getDescription());
+            tvEmail.setText(LoginActivity.usercheckItem.getEmail());
+            etAge.setText(LoginActivity.usercheckItem.getAge());
+            setDateField();
+
 
         }
     }
 
 
-
+    //Felder Aktivieren/Deaktivieren
     private void setEditable(boolean i)
     {
-
-        if (i == false)
-        {
-            i = true;
+        if (i == false){
             etDescription.setEnabled(false);
             etAge.setEnabled(false);
             etUserName.setEnabled(false);
             spGender.setEnabled(false);
-
         }
-        else
-        {
-
+        else {
             etDescription.setEnabled(true);
             etAge.setEnabled(true);
             etUserName.setEnabled(true);
             spGender.setEnabled(true);
-            i = false;
-
         }
-
-
     }
 
     protected void setDateField()
@@ -145,38 +137,40 @@ public class ProfilActivity extends Activity implements View.OnClickListener
 
         },newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
 
-
     }
 
 
     @Override
     public void onClick(View v)
     {
-       /* if(v == etAge)
-        {
-            datePicker.show();
-        }*/
+        if(v == etAge){datePicker.show();}
 
-
-        if(v == ibChangePw)
-        {
-               /* if (btChangeUserInfo.getText() == "Speichern")
-                {
-                    setEditable(false);
-                    LoginActivity.usercheckItem.setUsername(etUserName.getText().toString());
-                    LoginActivity.usercheckItem.setSex(spGender.getSelectedItemPosition());
-                    LoginActivity.usercheckItem.setDescription(etDescription.getText().toString());
-                    Storage.getStorageInstance().saveUser(LoginActivity.usercheckItem);
-                    //etAge.setFocusable(false);
-                } else {
-                    setEditable(true);
-                }
-            } */
+        else if(v == ibChangePw) {
+            RegisterActivity.deaktivate=true;
+            Intent intent = new Intent(this,RegisterActivity.class);
+            this.startActivity(intent);
+            this.finish();
         }
-        else if(v == ibSetings)
-        {
-
+        else if(v == ibSetting && btDeaktivate.getText().equals("Account Deaktivieren")){
+            setEditable(true);
+            etUserName.requestFocus();
+            btDeaktivate.setText("Aenderungen Speichern");
         }
+        else if(v==btDeaktivate && btDeaktivate.getText().equals("Aenderungen Speichern")){
+
+            setEditable(false);
+            LoginActivity.usercheckItem.setUsername(etUserName.getText().toString());
+            LoginActivity.usercheckItem.setSex(spGender.getSelectedItemPosition());
+            LoginActivity.usercheckItem.setDescription(etDescription.getText().toString());
+            LoginActivity.usercheckItem.setAge(etAge.getText().toString());
+            Storage.getStorageInstance().saveUser(LoginActivity.usercheckItem);
+
+
+            btDeaktivate.setText("Account Deaktivieren");
+            tvEmail.requestFocus();
+            Toast.makeText(getApplicationContext(), "Aenderungen gespeichert", Toast.LENGTH_LONG).show();
+            }
+
     }
 
     @Override
@@ -188,9 +182,6 @@ public class ProfilActivity extends Activity implements View.OnClickListener
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
