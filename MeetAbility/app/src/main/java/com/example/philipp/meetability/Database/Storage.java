@@ -333,7 +333,7 @@ public class Storage {
             {
                 for (int y = 0; y < listAktivity.size(); y++)
                 {
-                    if (listParticipantByUser.get(x).getUserId().equals(listAktivity.get(y).getUserId()))
+                    if (listParticipantByUser.get(x).getUserId().getUser_id() == listAktivity.get(y).getUserId().getUser_id())
                     {
                         listAktivitiesByUser.add(listAktivity.get(y));
                     }
@@ -366,7 +366,8 @@ public class Storage {
             {
                 for (int y = 0; y <listAktivitiesByUser.size(); y++)
                 {
-                    if (listHistory.get(x).getAktivityId().equals(listAktivitiesByUser.get(y).getAktivityId()))
+
+                    if (listHistory.get(x).getAktivityId().getAktivityId() == listAktivitiesByUser.get(y).getAktivityId())
                     {
                         listFilteredHistoryByUser.add(listHistory.get(x));
                     }
@@ -399,7 +400,7 @@ public class Storage {
             {
                 for (int y = 0; y <listAktivitiesByUser.size(); y++)
                 {
-                    if (listHistory.get(x).getAktivityId().equals(listAktivitiesByUser.get(y).getAktivityId()))
+                    if (listHistory.get(x).getAktivityId().getAktivityId() == listAktivitiesByUser.get(y).getAktivityId())
                     {
                         listAktivitiesForHistorysById.add(listAktivitiesByUser.get(x));
                     }
