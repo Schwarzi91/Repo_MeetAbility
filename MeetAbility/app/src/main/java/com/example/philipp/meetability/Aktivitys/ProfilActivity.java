@@ -100,8 +100,6 @@ public class ProfilActivity extends Activity implements View.OnClickListener
             tvEmail.setText(LoginActivity.usercheckItem.getEmail());
             etAge.setText(LoginActivity.usercheckItem.getAge());
             setDateField();
-
-
         }
     }
 
@@ -116,7 +114,6 @@ public class ProfilActivity extends Activity implements View.OnClickListener
             spGender.setEnabled(false);
         }
         else {
-            tvEmail.setText(LoginActivity.usercheckItem.getEmail());
             etDescription.setEnabled(true);
             etAge.setEnabled(true);
             etUserName.setEnabled(true);
