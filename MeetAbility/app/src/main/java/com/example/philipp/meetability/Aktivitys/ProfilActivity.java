@@ -116,6 +116,7 @@ public class ProfilActivity extends Activity implements View.OnClickListener
             spGender.setEnabled(false);
         }
         else {
+            tvEmail.setText(LoginActivity.usercheckItem.getEmail());
             etDescription.setEnabled(true);
             etAge.setEnabled(true);
             etUserName.setEnabled(true);
