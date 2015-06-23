@@ -19,6 +19,7 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.philipp.meetability.Database.Aktivity;
+import com.example.philipp.meetability.Database.Participant;
 import com.example.philipp.meetability.Database.Storage;
 import com.example.philipp.meetability.R;
 
@@ -40,7 +41,7 @@ public class CreateActivity extends Activity implements View.OnClickListener
     private String toDate;
     private String unconvertDate;
 
-
+    private Participant participant;
     //Datum
     private EditText etFromDate;
     private EditText etToDate;
@@ -156,7 +157,7 @@ public class CreateActivity extends Activity implements View.OnClickListener
                 Calendar newTime = Calendar.getInstance();
                 newTime.set(Calendar.HOUR_OF_DAY, hourOfDay);
                 newTime.set(Calendar.MINUTE, minute);
-                etFromTime.setText(hourOfDay + ":" + minute);
+                etFromTime.setText(hourOfDay + ":" + pad(minute));
             }
         }, newCalendar.get(Calendar.HOUR), newCalendar.get(Calendar.MINUTE), true);
 
@@ -168,9 +169,24 @@ public class CreateActivity extends Activity implements View.OnClickListener
                 Calendar newTime = Calendar.getInstance();
                 newTime.set(Calendar.HOUR_OF_DAY, hourOfDay);
                 newTime.set(Calendar.MINUTE, minute);
-                etToTime.setText(hourOfDay + ":" + minute);
+                etToTime.setText(hourOfDay + ":" + pad(minute));
             }
         }, newCalendar.get(Calendar.HOUR), newCalendar.get(Calendar.MINUTE), true);
+    }
+
+    public String pad(int input)
+    {
+
+        String str = "";
+
+        if (input > 10) {
+
+            str = Integer.toString(input);
+        } else {
+            str = "0" + Integer.toString(input);
+
+        }
+        return str;
     }
 
     @Override
@@ -199,7 +215,17 @@ public class CreateActivity extends Activity implements View.OnClickListener
                     fromDate=etFromDate.getText().toString()+ " "+ etFromTime.getText().toString();
                     toDate=etToDate.getText().toString()+ " "+ etToTime.getText().toString();
 
-                    Storage.getStorageInstance().saveActivity(new Aktivity(LoginActivity.usercheckItem, spActivityTypes.getSelectedItem().toString(), spGender.getSelectedItemPosition(), fromDate, toDate, etDescription.getText().toString(), spMaxParticipants.getSelectedItemPosition(), false));
+                    Toast.makeText(this, "Aktivität angelegt", Toast.LENGTH_SHORT).show();
+                    Storage.getStorageInstance().saveActivity(new Aktivity(LoginActivity.usercheckItem, spActivityTypes.getSelectedItem().toString(), spGender.getSelectedItemPosition(),etLocation.getText().toString(), fromDate, toDate, etDescription.getText().toString(), spMaxParticipants.getSelectedItemPosition(), false));
+                    participant= new Participant(LoginActivity.usercheckItem, Storage.getStorageInstance().getAktivityList().get(Storage.getStorageInstance().getAktivityList().size()-1), true);
+                    Storage.getStorageInstance().saveParticipant(participant);
+
+                    etLocation.setText("");
+                    etDescription.setText("");
+                    etFromDate.setText("");
+                    etToDate.setText("");
+                    etFromTime.setText("");
+                    etToTime.setText("");
                 }else
                     Toast.makeText(getApplicationContext(), "Beschreibung ist nicht ausgefüllt", Toast.LENGTH_LONG).show();
             }

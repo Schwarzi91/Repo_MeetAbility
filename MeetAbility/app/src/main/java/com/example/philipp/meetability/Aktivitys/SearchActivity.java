@@ -134,7 +134,7 @@ public class SearchActivity extends Activity implements View.OnClickListener
                 Calendar newTime = Calendar.getInstance();
                 newTime.set(Calendar.HOUR_OF_DAY, hourOfDay);
                 newTime.set(Calendar.MINUTE, minute);
-                etFromTime.setText(hourOfDay + ":" + minute);
+                etFromTime.setText(hourOfDay + ":" + pad(minute));
             }
         }, newCalendar.get(Calendar.HOUR), newCalendar.get(Calendar.MINUTE), true);
 
@@ -146,9 +146,25 @@ public class SearchActivity extends Activity implements View.OnClickListener
                 Calendar newTime = Calendar.getInstance();
                 newTime.set(Calendar.HOUR_OF_DAY, hourOfDay);
                 newTime.set(Calendar.MINUTE, minute);
-                etToTime.setText(hourOfDay + ":" + minute);
+                etToTime.setText(hourOfDay + ":" + pad(minute));
             }
         }, newCalendar.get(Calendar.HOUR), newCalendar.get(Calendar.MINUTE), true);
+    }
+
+
+    public String pad(int input)
+    {
+
+        String str = "";
+
+        if (input > 10) {
+
+            str = Integer.toString(input);
+        } else {
+            str = "0" + Integer.toString(input);
+
+        }
+        return str;
     }
 
     @Override

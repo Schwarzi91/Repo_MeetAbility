@@ -46,10 +46,10 @@ public class Storage {
                 saveUser(new User("edgar@thi.de", "test123", "Ede Muster", 2, "01-01-1995", "Ich bins nicht"));
             }
             if(getAktivityList().isEmpty()){
-                saveActivity(new Aktivity(getUserList().get(0), "Kino", 2, "20-06-2015 18:35", "27-06-2015 17:40", "Heute ins Kino Gehen", 10, false));
-                saveActivity(new Aktivity(getUserList().get(1), "Kino", 2, "20-06-2015 18:35", "27-06-2015 18:40", "Heute Fischen Gehen", 5, false));
-                saveActivity(new Aktivity(getUserList().get(1), "Kino", 2, "20-06-2015 18:35", "27-06-2015 18:40", "Heute Fischen Gehen", 5, false));
-                saveActivity(new Aktivity(getUserList().get(1), "Fischen", 2, "19-06-2015 18:35", "20-06-2015 18:40", "Heute Fischen Gehen", 5, false));
+                saveActivity(new Aktivity(getUserList().get(0), "Kino", 2,"Movieplex", "20-06-2015 18:35", "27-06-2015 17:40", "Heute ins Kino Gehen", 10, false));
+                saveActivity(new Aktivity(getUserList().get(1), "Kino", 2,"Cinestar", "20-06-2015 18:35", "27-06-2015 18:40", "Heute Fischen Gehen", 5, false));
+                saveActivity(new Aktivity(getUserList().get(1), "Kino", 2,"Cinestar", "20-06-2015 18:35", "27-06-2015 18:40", "Heute Fischen Gehen", 5, false));
+                saveActivity(new Aktivity(getUserList().get(1), "Fischen", 2,"Donau", "19-06-2015 18:35", "20-06-2015 18:40", "Heute Fischen Gehen", 5, false));
             }
             if(getHistoryList().isEmpty()){
                 saveHistory(new History(getAktivityList().get(0), 5, "War super"));
@@ -300,7 +300,7 @@ public class Storage {
         {
             for (int x = 0; x < listParticipant.size(); x++)
             {
-                if (listParticipant.get(x).getUserId().equals(LoginActivity.usercheckItem.getUser_id()))
+                if (listParticipant.get(x).getUserId().getUser_id() == LoginActivity.usercheckItem.getUser_id())
                 {
                     listParticipantByUser.add(listParticipant.get(x));
                 }
@@ -327,13 +327,13 @@ public class Storage {
         List<Aktivity> listAktivity = Storage.getStorageInstance().getAktivityList();
         List<Aktivity> listAktivitiesByUser = new ArrayList<>();
 
-        if(listAktivity.size() > 0)
+        if(listAktivity.size() > 0 && listParticipantByUser !=null)
         {
             for (int x = 0; x < listParticipantByUser.size(); x++)
             {
                 for (int y = 0; y < listAktivity.size(); y++)
                 {
-                    if (listParticipantByUser.get(x).getUserId().equals(listAktivity.get(y).getUserId()))
+                    if (listParticipantByUser.get(x).getUserId().getUser_id() == listAktivity.get(y).getUserId().getUser_id())
                     {
                         listAktivitiesByUser.add(listAktivity.get(y));
                     }
@@ -359,32 +359,29 @@ public class Storage {
         List<History> listHistory = Storage.getStorageInstance().getHistoryList();
         List<Aktivity> listAktivitiesByUser = Storage.getStorageInstance().getActivtiesByLoggedUser();
         List<History> listFilteredHistoryByUser = new ArrayList<>();
+        if(listAktivitiesByUser!=null) {
+            if (listAktivitiesByUser.size() > 0) {
+                for (int x = 0; x < listHistory.size(); x++) {
+                    for (int y = 0; y < listAktivitiesByUser.size(); y++) {
 
-        if (listAktivitiesByUser.size() > 0)
-        {
-            for (int x = 0; x < listHistory.size(); x++)
-            {
-                for (int y = 0; y <listAktivitiesByUser.size(); y++)
-                {
-                    if (listHistory.get(x).getAktivityId().equals(listAktivitiesByUser.get(y).getAktivityId()))
-                    {
-                        listFilteredHistoryByUser.add(listHistory.get(x));
+                        if (listHistory.get(x).getAktivityId().getAktivityId() == listAktivitiesByUser.get(y).getAktivityId()) {
+                            listFilteredHistoryByUser.add(listHistory.get(x));
+                        }
                     }
                 }
-            }
-            if (listFilteredHistoryByUser.size() > 0)
-            {
-                return listFilteredHistoryByUser;
-            }
-            else
-            {
+                if (listFilteredHistoryByUser.size() > 0) {
+                    return listFilteredHistoryByUser;
+                } else {
+                    return null;
+                }
+            } else {
                 return null;
             }
-        }
-        else
-        {
-            return null;
-        }
+        }else
+            {
+                return null;
+         }
+
     }
 
     public List<Aktivity> listAktivitiesForHistorysById ()
@@ -392,34 +389,56 @@ public class Storage {
         List<History> listHistory = Storage.getStorageInstance().listFilteredHistoryByUser();
         List<Aktivity> listAktivitiesByUser = Storage.getStorageInstance().getActivtiesByLoggedUser();
         List<Aktivity> listAktivitiesForHistorysById = new ArrayList<>();
-
-        if (listHistory.size() > 0)
-        {
-            for (int x = 0; x < listHistory.size(); x++)
+        if(listHistory!=null){
+            if (listHistory.size() > 0)
             {
-                for (int y = 0; y <listAktivitiesByUser.size(); y++)
+                for (int x = 0; x < listHistory.size(); x++)
                 {
-                    if (listHistory.get(x).getAktivityId().equals(listAktivitiesByUser.get(y).getAktivityId()))
+                    for (int y = 0; y <listAktivitiesByUser.size(); y++)
                     {
-                        listAktivitiesForHistorysById.add(listAktivitiesByUser.get(x));
+                        if (listHistory.get(x).getAktivityId().getAktivityId() == listAktivitiesByUser.get(y).getAktivityId())
+                        {
+                            listAktivitiesForHistorysById.add(listAktivitiesByUser.get(x));
+                        }
                     }
                 }
-            }
-            if (listAktivitiesForHistorysById.size() > 0)
-            {
-                return listAktivitiesForHistorysById;
-            }
-            else
-            {
-                return null;
-            }
+                if (listAktivitiesForHistorysById.size() > 0)
+                {
+                    return listAktivitiesForHistorysById;
+                }
+                else
+                {
+                    return null;
+                }
         }
+        else
+        {
+            return null;
+        }}
         else
         {
             return null;
         }
     }
+/*
+    public List<Aktivity> getCurrentActivitiesByLoggedUser()
+    {
+        List<Aktivity> listActivitiesByLoggedUser = new ArrayList<>();
+        List<Aktivity> listCurrentActivities = new ArrayList<>();
 
+        listActivitiesByLoggedUser = getActivtiesByLoggedUser();
+
+        for(int i = 0; i < listActivitiesByLoggedUser.size(); i++)
+        {
+            if()
+            {
+                listCurrentActivities.add(listActivitiesByLoggedUser.get(i));
+            }
+        }
+
+        return listCurrentActivities;
+    }
+    */
 }
 
 
