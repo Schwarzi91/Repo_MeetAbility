@@ -300,7 +300,7 @@ public class Storage {
         {
             for (int x = 0; x < listParticipant.size(); x++)
             {
-                if (listParticipant.get(x).getUserId().equals(LoginActivity.usercheckItem.getUser_id()))
+                if (listParticipant.get(x).getUserId().getUser_id() == LoginActivity.usercheckItem.getUser_id())
                 {
                     listParticipantByUser.add(listParticipant.get(x));
                 }
