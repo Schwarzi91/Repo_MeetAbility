@@ -85,8 +85,8 @@ public class ProfilActivity extends Activity implements View.OnClickListener
 
         //Disable Editing E-Mail
         tvEmail.setEnabled(false);
-     
-
+        //Setting Spinner
+        setDateField();
 
         //Schauen ob User neu angelegt wurde
         if(LoginActivity.usercheckItem.getUsername().equals(""))
@@ -99,7 +99,6 @@ public class ProfilActivity extends Activity implements View.OnClickListener
             etDescription.setText(LoginActivity.usercheckItem.getDescription());
             tvEmail.setText(LoginActivity.usercheckItem.getEmail());
             etAge.setText(LoginActivity.usercheckItem.getAge());
-            setDateField();
         }
     }
 
@@ -152,9 +151,9 @@ public class ProfilActivity extends Activity implements View.OnClickListener
         else if(v == ibSetting && btDeaktivate.getText().equals("Account Deaktivieren")){
             setEditable(true);
             etUserName.requestFocus();
-            btDeaktivate.setText("Aenderungen Speichern");
+            btDeaktivate.setText("Änderungen Speichern");
         }
-        else if(v==btDeaktivate && btDeaktivate.getText().equals("Aenderungen Speichern")){
+        else if(v==btDeaktivate && btDeaktivate.getText().equals("Änderungen Speichern")){
 
             setEditable(false);
             LoginActivity.usercheckItem.setUsername(etUserName.getText().toString());
@@ -166,8 +165,15 @@ public class ProfilActivity extends Activity implements View.OnClickListener
 
             btDeaktivate.setText("Account Deaktivieren");
             tvEmail.requestFocus();
-            Toast.makeText(getApplicationContext(), "Aenderungen gespeichert", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Änderungen gespeichert", Toast.LENGTH_LONG).show();
             }
+        else{
+            Toast.makeText(getApplicationContext(), "Account wurde deaktiviert", Toast.LENGTH_LONG).show();
+            LoginActivity.usercheckItem=null;
+            Intent intent = new Intent(this, LoginActivity.class);
+            this.startActivity(intent);
+            this.finish();
+        }
 
     }
 
