@@ -327,7 +327,7 @@ public class Storage {
         List<Aktivity> listAktivity = Storage.getStorageInstance().getAktivityList();
         List<Aktivity> listAktivitiesByUser = new ArrayList<>();
 
-        if(listAktivity.size() > 0)
+        if(listAktivity.size() > 0 && listParticipantByUser !=null)
         {
             for (int x = 0; x < listParticipantByUser.size(); x++)
             {
@@ -359,33 +359,29 @@ public class Storage {
         List<History> listHistory = Storage.getStorageInstance().getHistoryList();
         List<Aktivity> listAktivitiesByUser = Storage.getStorageInstance().getActivtiesByLoggedUser();
         List<History> listFilteredHistoryByUser = new ArrayList<>();
+        if(listAktivitiesByUser!=null) {
+            if (listAktivitiesByUser.size() > 0) {
+                for (int x = 0; x < listHistory.size(); x++) {
+                    for (int y = 0; y < listAktivitiesByUser.size(); y++) {
 
-        if (listAktivitiesByUser.size() > 0)
-        {
-            for (int x = 0; x < listHistory.size(); x++)
-            {
-                for (int y = 0; y <listAktivitiesByUser.size(); y++)
-                {
-
-                    if (listHistory.get(x).getAktivityId().getAktivityId() == listAktivitiesByUser.get(y).getAktivityId())
-                    {
-                        listFilteredHistoryByUser.add(listHistory.get(x));
+                        if (listHistory.get(x).getAktivityId().getAktivityId() == listAktivitiesByUser.get(y).getAktivityId()) {
+                            listFilteredHistoryByUser.add(listHistory.get(x));
+                        }
                     }
                 }
-            }
-            if (listFilteredHistoryByUser.size() > 0)
-            {
-                return listFilteredHistoryByUser;
-            }
-            else
-            {
+                if (listFilteredHistoryByUser.size() > 0) {
+                    return listFilteredHistoryByUser;
+                } else {
+                    return null;
+                }
+            } else {
                 return null;
             }
-        }
-        else
-        {
-            return null;
-        }
+        }else
+            {
+                return null;
+         }
+
     }
 
     public List<Aktivity> listAktivitiesForHistorysById ()
@@ -393,28 +389,32 @@ public class Storage {
         List<History> listHistory = Storage.getStorageInstance().listFilteredHistoryByUser();
         List<Aktivity> listAktivitiesByUser = Storage.getStorageInstance().getActivtiesByLoggedUser();
         List<Aktivity> listAktivitiesForHistorysById = new ArrayList<>();
-
-        if (listHistory.size() > 0)
-        {
-            for (int x = 0; x < listHistory.size(); x++)
+        if(listHistory!=null){
+            if (listHistory.size() > 0)
             {
-                for (int y = 0; y <listAktivitiesByUser.size(); y++)
+                for (int x = 0; x < listHistory.size(); x++)
                 {
-                    if (listHistory.get(x).getAktivityId().getAktivityId() == listAktivitiesByUser.get(y).getAktivityId())
+                    for (int y = 0; y <listAktivitiesByUser.size(); y++)
                     {
-                        listAktivitiesForHistorysById.add(listAktivitiesByUser.get(x));
+                        if (listHistory.get(x).getAktivityId().getAktivityId() == listAktivitiesByUser.get(y).getAktivityId())
+                        {
+                            listAktivitiesForHistorysById.add(listAktivitiesByUser.get(x));
+                        }
                     }
                 }
-            }
-            if (listAktivitiesForHistorysById.size() > 0)
-            {
-                return listAktivitiesForHistorysById;
-            }
-            else
-            {
-                return null;
-            }
+                if (listAktivitiesForHistorysById.size() > 0)
+                {
+                    return listAktivitiesForHistorysById;
+                }
+                else
+                {
+                    return null;
+                }
         }
+        else
+        {
+            return null;
+        }}
         else
         {
             return null;
