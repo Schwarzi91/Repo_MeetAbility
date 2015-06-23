@@ -5,8 +5,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 
 import com.example.philipp.meetability.Aktivitys.CurrentActivity;
+import com.example.philipp.meetability.Aktivitys.LoginActivity;
 import com.example.philipp.meetability.Aktivitys.ResultActivity;
 import com.example.philipp.meetability.Database.Aktivity;
+import com.example.philipp.meetability.Database.Storage;
 import com.example.philipp.meetability.R;
 
 import java.util.ArrayList;
@@ -41,12 +43,13 @@ public class CurrentActivitiesPageViewActivity extends android.support.v4.app.Fr
     public List<Fragment> getFragments()
     {
         List<Fragment> fragmentList = new ArrayList<>();
+        currentActivityList = Storage.getStorageInstance().getAktivitiesbyUserId(LoginActivity.usercheckItem.getUser_id());
 
         for(int i = 0; i < currentActivityList.size(); i++)
         {
             fragmentList.add(CurrentActivity.newInstance(currentActivityList.get(i).getAktivityName(), currentActivityList.get(i).getSex(),
-                    currentActivityList.get(i).getMaxParticipants(), currentActivityList.get(i).getStartDate(), currentActivityList.get(i).getEndDate(),
-                    currentActivityList.get(i).getDescription(), i));
+                    currentActivityList.get(i).getLocation(), currentActivityList.get(i).getMaxParticipants(),
+                    currentActivityList.get(i).getStartDate(), currentActivityList.get(i).getEndDate(), currentActivityList.get(i).getDescription(), i));
         }
         return fragmentList;
     }

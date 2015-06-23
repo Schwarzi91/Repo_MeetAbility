@@ -441,7 +441,7 @@ public class Storage {
     */
 
 
-    List<Aktivity> getAktivitiesbyUserId(int id){
+    public List<Aktivity> getAktivitiesbyUserId(int id){
         List<Participant> participantlist=Storage.getStorageInstance().getParticipantList();
         List<Aktivity> aktivitylist=new ArrayList<Aktivity>();
 

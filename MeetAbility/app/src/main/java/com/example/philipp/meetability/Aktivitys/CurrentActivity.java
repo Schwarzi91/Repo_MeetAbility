@@ -11,8 +11,8 @@ import android.widget.TextView;
 
 import com.example.philipp.meetability.R;
 
-public class CurrentActivity extends Fragment{
-    public static final String EXTRA_MESSAGE = "EXTRA_MESSAGE";
+public class CurrentActivity extends Fragment
+{
     private ListView lvDetails;
     private Button btTeilnehmen;
 
@@ -26,14 +26,14 @@ public class CurrentActivity extends Fragment{
     private TextView tvToTime;
     private TextView tvDescription;
 
-    public static final CurrentActivity newInstance(String activityName, int gender, /*String location,*/ int participants,
+    public static final CurrentActivity newInstance(String activityName, int gender, String location, int participants,
                                                    String startTime, String endTime, String description, int position)
     {
         CurrentActivity f = new CurrentActivity();
         Bundle bdl = new Bundle(1);
         bdl.putString("activityName", activityName);
         bdl.putInt("gender", gender);
-        //bdl.putString("location", location);
+        bdl.putString("location", location);
         bdl.putInt("teilnehmer", participants);
         bdl.putString("startTime", startTime);
         bdl.putString("endTime", endTime);
@@ -60,7 +60,7 @@ public class CurrentActivity extends Fragment{
 
 
         tvActivityType.setText(getArguments().getString("activityName"));
-        //tvLocation.setText(getArguments().getString("location"));
+        tvLocation.setText(getArguments().getString("location"));
         tvFromDate.setText(getArguments().getString("startTime"));
         tvToDate.setText(getArguments().getString("endTime"));
         tvParticipants.setText(getArguments().getInt("teilnehmer")+"");
