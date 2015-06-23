@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 
+import com.example.philipp.meetability.Aktivitys.CurrentActivity;
 import com.example.philipp.meetability.Aktivitys.ResultActivity;
 import com.example.philipp.meetability.Database.Aktivity;
 import com.example.philipp.meetability.R;
@@ -17,7 +18,7 @@ import java.util.List;
 public class CurrentActivitiesPageViewActivity extends android.support.v4.app.FragmentActivity
 {
     MyPageAdapter pageAdapter;
-    private List<Aktivity> activityList;
+    private List<Aktivity> currentActivityList;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -25,7 +26,7 @@ public class CurrentActivitiesPageViewActivity extends android.support.v4.app.Fr
         setContentView(R.layout.activity_viewpager);
 
 
-        activityList = new ArrayList<>();
+        currentActivityList = new ArrayList<>();
 
         List<Fragment> fragments = getFragments();
         pageAdapter = new MyPageAdapter(getSupportFragmentManager(), fragments);
@@ -41,13 +42,12 @@ public class CurrentActivitiesPageViewActivity extends android.support.v4.app.Fr
     {
         List<Fragment> fragmentList = new ArrayList<>();
 
-        for(int i = 0; i < activityList.size(); i++)
+        for(int i = 0; i < currentActivityList.size(); i++)
         {
-            fragmentList.add(ResultActivity.newInstance(activityList.get(i).getAktivityName(), activityList.get(i).getSex(),
-                    activityList.get(i).getMaxParticipants(), activityList.get(i).getStartDate(), activityList.get(i).getEndDate(),
-                    activityList.get(i).getDescription()));
+            fragmentList.add(CurrentActivity.newInstance(currentActivityList.get(i).getAktivityName(), currentActivityList.get(i).getSex(),
+                    currentActivityList.get(i).getMaxParticipants(), currentActivityList.get(i).getStartDate(), currentActivityList.get(i).getEndDate(),
+                    currentActivityList.get(i).getDescription(), i));
         }
-
         return fragmentList;
     }
 }

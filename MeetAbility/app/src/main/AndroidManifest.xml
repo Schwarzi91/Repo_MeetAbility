@@ -68,6 +68,10 @@
             android:name=".Aktivitys.ReportActivity"
             android:label="@string/title_activity_activity_report">
         </activity>
+        <activity
+            android:name=".viewpager.CurrentActivitiesPageViewActivity"
+            android:label="Bevorstehende Activities">
+        </activity>
     </application>
 
 </manifest>

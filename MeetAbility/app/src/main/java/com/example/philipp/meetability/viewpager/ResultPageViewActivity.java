@@ -50,7 +50,7 @@ public class ResultPageViewActivity extends android.support.v4.app.FragmentActiv
         {
             fragmentList.add(ResultActivity.newInstance(activityList.get(i).getAktivityName(), activityList.get(i).getSex(),
                     activityList.get(i).getMaxParticipants(), activityList.get(i).getStartDate(), activityList.get(i).getEndDate(),
-                    activityList.get(i).getDescription()));
+                    activityList.get(i).getDescription(), i));
         }
 
         return fragmentList;

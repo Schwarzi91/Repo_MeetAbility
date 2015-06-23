@@ -27,7 +27,7 @@ public class CurrentActivity extends Fragment{
     private TextView tvDescription;
 
     public static final CurrentActivity newInstance(String activityName, int gender, /*String location,*/ int participants,
-                                                   String startTime, String endTime, String description)
+                                                   String startTime, String endTime, String description, int position)
     {
         CurrentActivity f = new CurrentActivity();
         Bundle bdl = new Bundle(1);

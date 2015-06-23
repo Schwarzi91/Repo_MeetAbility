@@ -16,16 +16,19 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.example.philipp.meetability.Database.Aktivity;
+import com.example.philipp.meetability.Database.Participant;
 import com.example.philipp.meetability.Database.Storage;
+import com.example.philipp.meetability.Helper.ActivityStore;
 import com.example.philipp.meetability.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ResultActivity extends Fragment{
+public class ResultActivity extends Fragment implements View.OnClickListener{
     public static final String EXTRA_MESSAGE = "EXTRA_MESSAGE";
     private ListView lvDetails;
-    private Button btTeilnehmen;
+    private Button btParticipant;
+    private List<Aktivity> listActivities;
 
     private TextView tvActivityType;
     private TextView tvGender;
@@ -36,9 +39,13 @@ public class ResultActivity extends Fragment{
     private TextView tvFromTime;
     private TextView tvToTime;
     private TextView tvDescription;
+    private int position;
+    private int userId;
+    private int activityId;
+    private Participant participant;
 
     public static final ResultActivity newInstance(String activityName, int gender, /*String location,*/ int participants,
-                                                   String startTime, String endTime, String description)
+                                                   String startTime, String endTime, String description, int position)
     {
         ResultActivity f = new ResultActivity();
         Bundle bdl = new Bundle(1);
@@ -49,6 +56,7 @@ public class ResultActivity extends Fragment{
         bdl.putString("startTime", startTime);
         bdl.putString("endTime", endTime);
         bdl.putString("description", description);
+        bdl.putInt("position", position);
         f.setArguments(bdl);
         return f;
     }
@@ -62,6 +70,8 @@ public class ResultActivity extends Fragment{
         //TextView messageTextView = (TextView)v.findViewById(R.id.tvActivityType);
         //messageTextView.setText(message);
 
+        btParticipant = (Button) v.findViewById(R.id.btParticipate);
+
         tvDescription = (TextView) v.findViewById(R.id.tvDescription);
         tvActivityType = (TextView) v.findViewById(R.id.tvActivityType);
         tvGender = (TextView) v.findViewById(R.id.tvGender);
@@ -71,6 +81,11 @@ public class ResultActivity extends Fragment{
         tvToDate = (TextView) v.findViewById(R.id.tvToDate);
         tvFromTime = (TextView) v.findViewById(R.id.tvFromTime);
         tvToTime = (TextView) v.findViewById(R.id.tvToTime);
+
+        listActivities = ActivityStore.getListActivity();
+
+        userId = LoginActivity.usercheckItem.getUser_id();
+        activityId = listActivities.get(getArguments().getInt("position")).getAktivityId();
 
         //lvDetails = (ListView) v.findViewById(R.id.lvDetails);
         /*List<String> listDetails = new ArrayList<String>();
@@ -100,6 +115,16 @@ public class ResultActivity extends Fragment{
             tvGender.setText("weiblich");
 
         return v;
+    }
+
+    @Override
+    public void onClick(View v)
+    {
+        if(v == btParticipant)
+        {
+            participant = new Participant(LoginActivity.usercheckItem, listActivities.get(position), false);
+            Storage.getStorageInstance().saveParticipant(participant);
+        }
     }
 }
 

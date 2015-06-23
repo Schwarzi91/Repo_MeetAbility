@@ -419,7 +419,25 @@ public class Storage {
             return null;
         }
     }
+/*
+    public List<Aktivity> getCurrentActivitiesByLoggedUser()
+    {
+        List<Aktivity> listActivitiesByLoggedUser = new ArrayList<>();
+        List<Aktivity> listCurrentActivities = new ArrayList<>();
 
+        listActivitiesByLoggedUser = getActivtiesByLoggedUser();
+
+        for(int i = 0; i < listActivitiesByLoggedUser.size(); i++)
+        {
+            if()
+            {
+                listCurrentActivities.add(listActivitiesByLoggedUser.get(i));
+            }
+        }
+
+        return listCurrentActivities;
+    }
+    */
 }
 
 
