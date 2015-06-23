@@ -44,14 +44,14 @@ public class ResultActivity extends Fragment implements View.OnClickListener{
     private int activityId;
     private Participant participant;
 
-    public static final ResultActivity newInstance(String activityName, int gender, /*String location,*/ int participants,
+    public static final ResultActivity newInstance(String activityName, int gender, String location, int participants,
                                                    String startTime, String endTime, String description, int position)
     {
         ResultActivity f = new ResultActivity();
         Bundle bdl = new Bundle(1);
         bdl.putString("activityName", activityName);
         bdl.putInt("gender", gender);
-        //bdl.putString("location", location);
+        bdl.putString("location", location);
         bdl.putInt("teilnehmer", participants);
         bdl.putString("startTime", startTime);
         bdl.putString("endTime", endTime);
@@ -100,8 +100,10 @@ public class ResultActivity extends Fragment implements View.OnClickListener{
 */
         // lvDetails.setAdapter(listAdapter);
 
+        btParticipant.setOnClickListener(this);
+
         tvActivityType.setText(getArguments().getString("activityName"));
-        //tvLocation.setText(getArguments().getString("location"));
+        tvLocation.setText(getArguments().getString("location"));
         tvFromDate.setText(getArguments().getString("startTime"));
         tvToDate.setText(getArguments().getString("endTime"));
         tvParticipants.setText(getArguments().getInt("teilnehmer")+"");
