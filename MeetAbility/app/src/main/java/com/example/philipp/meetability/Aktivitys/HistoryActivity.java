@@ -45,6 +45,14 @@ public class HistoryActivity extends Fragment implements View.OnClickListener{
     private SimpleDateFormat format;
     private static Date date;
     private static Date atmDate;
+    private TextView tvActivityType;
+    private TextView tvGender;
+    private TextView tvParticipants;
+    private TextView tvFromDate;
+    private TextView tvToDate;
+    private TextView tvFromTime;
+    private TextView tvToTime;
+    private TextView tvDescription;
 
     public static final HistoryActivity newInstance(String activityName, int gender/*, String location*/, int participants, String startDate, String endDate)
     {
@@ -96,16 +104,25 @@ public class HistoryActivity extends Fragment implements View.OnClickListener{
 
         addListenerOnRatingBar();
 
-        //lvDetails = (ListView) v.findViewById(R.id.lvDetails);
-        List<String> listDetails = new ArrayList<String>();
 
-        listDetails.add("CineStar Westpark");
-        listDetails.add("19:30 - 00:30 Uhr");
-        listDetails.add("Nur Frauen");
-        listDetails.add("2/5 Teilnehmer");
-        listDetails.add("Ich hätte lust auf einen gemütlichen Kinoabend blblablalbalkja lajlbökjaöd ladj flajböalj aöjbaldfjsd fjasdöf asdföjasdöfj fjaösdfj aödjsf öajflöadsj fasdjfidsflasdjf löasd fjasödifj siödfljl< h");
+        List<Aktivity> listAktivity = Storage.getStorageInstance().listAktivitiesForHistorysById();
 
-        ListAdapter listAdapter = new ArrayAdapter(this.getActivity(), R.layout.custom_listview_layout, listDetails);
+
+
+            tvActivityType.setText(getArguments().getString("activityName"));
+            if(getArguments().getInt("gender") == 0)
+                tvGender.setText("egal");
+            else if(getArguments().getInt("gender") == 1)
+                tvGender.setText("männlich");
+            else if(getArguments().getInt("gender") == 2)
+                tvGender.setText("weiblich");
+            tvParticipants.setText(getArguments().getString("participants"));
+            tvFromDate.setText(getArguments().getString("startTime"));
+            tvToDate.setText(getArguments().getString("endTime"));
+
+
+
+        ListAdapter listAdapter = new ArrayAdapter(this.getActivity(), R.layout.custom_listview_layout);
 
         ratingBar.setRating(Storage.getStorageInstance().getHistoryList().get(0).getRating());
 
