@@ -19,6 +19,7 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.philipp.meetability.Database.Aktivity;
+import com.example.philipp.meetability.Database.Participant;
 import com.example.philipp.meetability.Database.Storage;
 import com.example.philipp.meetability.R;
 
@@ -40,7 +41,7 @@ public class CreateActivity extends Activity implements View.OnClickListener
     private String toDate;
     private String unconvertDate;
 
-
+    private Participant participant;
     //Datum
     private EditText etFromDate;
     private EditText etToDate;
@@ -215,7 +216,10 @@ public class CreateActivity extends Activity implements View.OnClickListener
                     toDate=etToDate.getText().toString()+ " "+ etToTime.getText().toString();
 
                     Toast.makeText(this, "Aktivität angelegt", Toast.LENGTH_SHORT).show();
-                    Storage.getStorageInstance().saveActivity(new Aktivity(LoginActivity.usercheckItem, spActivityTypes.getSelectedItem().toString(), spGender.getSelectedItemPosition(), fromDate, toDate, etDescription.getText().toString(), spMaxParticipants.getSelectedItemPosition(), false));
+                    Storage.getStorageInstance().saveActivity(new Aktivity(LoginActivity.usercheckItem, spActivityTypes.getSelectedItem().toString(), spGender.getSelectedItemPosition(),etLocation.getText().toString(), fromDate, toDate, etDescription.getText().toString(), spMaxParticipants.getSelectedItemPosition(), false));
+                    participant= new Participant(LoginActivity.usercheckItem, Storage.getStorageInstance().getAktivityList().get(Storage.getStorageInstance().getAktivityList().size()-1), true);
+                    Storage.getStorageInstance().saveParticipant(participant);
+
                     etLocation.setText("");
                     etDescription.setText("");
                     etFromDate.setText("");

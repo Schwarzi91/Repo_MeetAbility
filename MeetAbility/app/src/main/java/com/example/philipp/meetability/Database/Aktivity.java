@@ -29,7 +29,8 @@ public class Aktivity{
     @DatabaseField (canBeNull = true)
     private int allowed_sex;
 
-
+    @DatabaseField (canBeNull = true)
+    private String location;
 
     @DatabaseField (canBeNull = true)
     private String start_date;
@@ -51,13 +52,13 @@ public class Aktivity{
 
     public Aktivity(){}
 
-    public Aktivity(User user_id, String aktivity_name, int allowed_sex, String start_date, String end_date, String description,
+    public Aktivity(User user_id, String aktivity_name, int allowed_sex, String location, String start_date, String end_date, String description,
                     int allowed_participants, boolean changeToHistory){
         super();
         this.user_id=user_id;
         this.aktivity_name=aktivity_name;
         this.allowed_sex=allowed_sex;
-
+        this.location=location;
         this.start_date=start_date;
         this.end_date=end_date;
         this.description=description;
@@ -71,7 +72,7 @@ public class Aktivity{
     public String getAktivityName(){return aktivity_name;}
     public User getUserId(){return user_id;}
     public int getSex() {return allowed_sex;}
-
+    public String getLocation() {return location;}
     public String getStartDate() {return start_date;}
     public String getEndDate() {return end_date;}
     public String getDescription() {return description;}
@@ -85,6 +86,7 @@ public class Aktivity{
     public void setAktivityName(String aktivity_name) {this.aktivity_name = aktivity_name;}
     public void setUser_id(User user_id) {this.user_id = user_id;}
     public void setSex(int sex) {this.allowed_sex = sex;}
+    public void setLocation(String location) {this.location = location;}
 
     public void setStartDate(String start_date) {this.start_date = start_date;}
     public void setEndDate(String end_date) {this.end_date = end_date;}
