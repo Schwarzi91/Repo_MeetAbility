@@ -217,7 +217,7 @@ public class CreateActivity extends Activity implements View.OnClickListener
 
                     Toast.makeText(this, "Aktivität angelegt", Toast.LENGTH_SHORT).show();
                     Storage.getStorageInstance().saveActivity(new Aktivity(LoginActivity.usercheckItem, spActivityTypes.getSelectedItem().toString(), spGender.getSelectedItemPosition(),etLocation.getText().toString(), fromDate, toDate, etDescription.getText().toString(), spMaxParticipants.getSelectedItemPosition(), false));
-                    //participant= new Participant(LoginActivity.usercheckItem.getUser_id(), Storage.getStorageInstance().getAktivityList().get(Storage.getStorageInstance().getAktivityList().size()-1), true);
+                    participant= new Participant(LoginActivity.usercheckItem.getUser_id(), Storage.getStorageInstance().getAktivityList().get(Storage.getStorageInstance().getAktivityList().size()-1).getAktivityId(), true);
                     Storage.getStorageInstance().saveParticipant(participant);
 
                     etLocation.setText("");
