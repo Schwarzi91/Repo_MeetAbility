@@ -56,8 +56,8 @@ public class Storage {
                 saveHistory(new History(getAktivityList().get(1), 0, "War kacke"));
             }
             if(getParticipantList().isEmpty()){
-                saveParticipant(new Participant(getUserList().get(0),getAktivityList().get(0),false));
-                saveParticipant(new Participant(getUserList().get(1),getAktivityList().get(1),false));
+                saveParticipant(new Participant(0,0,false));
+                saveParticipant(new Participant(1,1,false));
             }
 
         }catch (Exception e){
@@ -300,7 +300,7 @@ public class Storage {
         {
             for (int x = 0; x < listParticipant.size(); x++)
             {
-                if (listParticipant.get(x).getUser().getUser_id() == LoginActivity.usercheckItem.getUser_id())
+                if (listParticipant.get(x).getUserId() == LoginActivity.usercheckItem.getUser_id())
                 {
                     listParticipantByUser.add(listParticipant.get(x));
                 }
@@ -333,7 +333,7 @@ public class Storage {
             {
                 for (int y = 0; y < listAktivity.size(); y++)
                 {
-                    if (listParticipantByUser.get(x).getUser().getUser_id() == listAktivity.get(y).getUserId().getUser_id())
+                    if (listParticipantByUser.get(x).getUserId() == listAktivity.get(y).getUserId().getUser_id())
                     {
                         listAktivitiesByUser.add(listAktivity.get(y));
                     }
@@ -440,14 +440,25 @@ public class Storage {
     }
     */
 
+    public Aktivity getAktivityByID(int id){
+        List<Aktivity> aktivitylist=Storage.getStorageInstance().getAktivityList();
+        for(Aktivity a:aktivitylist){
+            if(a.getAktivityId()==id){
+                return a;
+            }
+        }
+
+        return null;
+    }
+
 
     public List<Aktivity> getAktivitiesbyUserId(int id){
         List<Participant> participantlist=Storage.getStorageInstance().getParticipantList();
         List<Aktivity> aktivitylist=new ArrayList<Aktivity>();
 
         for(Participant p:participantlist){
-            if(p.getUser().getUser_id()==id){
-                aktivitylist.add(p.getAktivity());
+            if(p.getUserId()==id){
+                aktivitylist.add(getAktivityByID(p.getAktivityID()));
             }
         }
         return aktivitylist;

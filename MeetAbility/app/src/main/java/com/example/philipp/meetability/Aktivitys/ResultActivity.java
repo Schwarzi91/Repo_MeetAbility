@@ -124,7 +124,7 @@ public class ResultActivity extends Fragment implements View.OnClickListener{
     {
         if(v == btParticipant)
         {
-            participant = new Participant(LoginActivity.usercheckItem, listActivities.get(position), false);
+            participant = new Participant(LoginActivity.usercheckItem.getUser_id(), listActivities.get(position).getAktivityId(), false);
             Storage.getStorageInstance().saveParticipant(participant);
         }
     }
