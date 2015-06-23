@@ -36,8 +36,12 @@
             android:name=".Aktivitys.RegisterActivity"
             android:label="@string/title_activity_register" >
         </activity>
-        <activity android:name=".viewpager.HistoryPageViewActivity" />
-        <activity android:name=".viewpager.ResultPageViewActivity" />
+        <activity
+            android:name=".viewpager.HistoryPageViewActivity"
+            android:label="Historie"/>
+        <activity
+            android:name=".viewpager.ResultPageViewActivity"
+            android:label="Suchergebnisse"/>
         <activity
             android:name=".Aktivitys.InitializeAktivity"
             android:label="@string/title_activity_activity_search" >
@@ -49,16 +53,16 @@
         </activity>
         <activity
             android:name=".Aktivitys.SearchActivity"
-            android:label="@string/title_activity_activity_search" >
+            android:label="Suchen" >
         </activity>
         <activity
             android:name=".Aktivitys.CreateActivity"
-            android:label="@string/title_activity_create"
+            android:label="Activity anlegen"
             android:windowSoftInputMode="adjustPan" >
         </activity>
         <activity
             android:name=".Aktivitys.ProfilActivity"
-            android:label="@string/title_activity_profil" >
+            android:label="Profil" >
         </activity>
         <activity
             android:name=".Aktivitys.ReportActivity"
