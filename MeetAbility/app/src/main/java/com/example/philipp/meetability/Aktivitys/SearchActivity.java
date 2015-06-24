@@ -236,6 +236,10 @@ public class SearchActivity extends Activity implements View.OnClickListener
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_logout) {
+            LoginActivity.usercheckItem = null;
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+            finish();
             return true;
         }
         if (id == R.id.action_userreport) {

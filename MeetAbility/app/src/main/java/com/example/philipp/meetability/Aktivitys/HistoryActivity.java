@@ -62,9 +62,10 @@ public class HistoryActivity extends Fragment implements View.OnClickListener{
         bdl.putString("activityName", activityName);
         bdl.putInt("gender", gender);
         bdl.putInt("participants", participants);
-        bdl.putString("strDate", startDate);
+        bdl.putString("startDate", startDate);
         bdl.putString("endDate", endDate);
         bdl.putString("description", description);
+        bdl.putString("location", location);
         f.setArguments(bdl);
         return f;
     }
@@ -127,8 +128,8 @@ public class HistoryActivity extends Fragment implements View.OnClickListener{
         else if(getArguments().getInt("gender") == 2)
             tvGender.setText("weiblich");
         tvParticipants.setText(getArguments().getString("participants"));
-        tvFromDate.setText(getArguments().getString("startTime"));
-        tvToDate.setText(getArguments().getString("endTime"));
+        tvFromDate.setText(getArguments().getString("startDate"));
+        tvToDate.setText(getArguments().getString("endDate"));
         tvDescription.setText(getArguments().getString("description"));
         tvLocation.setText(getArguments().getString("location"));
 

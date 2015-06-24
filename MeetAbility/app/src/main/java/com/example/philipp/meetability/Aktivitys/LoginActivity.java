@@ -84,7 +84,7 @@ public class LoginActivity extends Activity implements View.OnClickListener
             startActivity(intent);
         }
     }
-
+/*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -115,5 +115,5 @@ public class LoginActivity extends Activity implements View.OnClickListener
         }
 
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 }

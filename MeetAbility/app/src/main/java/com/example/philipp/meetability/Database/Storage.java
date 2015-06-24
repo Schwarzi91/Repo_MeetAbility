@@ -491,6 +491,15 @@ public class Storage {
         return historylist;
     }
 
+    public int getCreatorByAktivityId(int id){
+       List<Participant> participantlist= getParticipantList();
+        for(Participant p: participantlist){
+            if(p.getAktivityID()==id && p.isCreator()){
+                return  p.getUserId();
+            }
+        }
+        return 0;
+    }
 
 
 

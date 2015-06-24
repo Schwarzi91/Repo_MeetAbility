@@ -44,9 +44,10 @@ public class ResultActivity extends Fragment implements View.OnClickListener{
     private int activityId;
     private int position;
     private Participant participant;
+    private TextView tvCreator;
 
     public static final ResultActivity newInstance(String activityName, int gender, String location, int participants,
-                                                   String startTime, String endTime, String description, int position)
+                                                   String startTime, String endTime, String description, int position, String creator)
     {
         ResultActivity f = new ResultActivity();
         Bundle bdl = new Bundle(1);
@@ -58,6 +59,7 @@ public class ResultActivity extends Fragment implements View.OnClickListener{
         bdl.putString("endTime", endTime);
         bdl.putString("description", description);
         bdl.putInt("position", position);
+        bdl.putString("creator", creator);
         f.setArguments(bdl);
         return f;
     }
@@ -82,6 +84,7 @@ public class ResultActivity extends Fragment implements View.OnClickListener{
         tvToDate = (TextView) v.findViewById(R.id.tvToDate);
         tvFromTime = (TextView) v.findViewById(R.id.tvFromTime);
         tvToTime = (TextView) v.findViewById(R.id.tvToTime);
+        tvCreator = (TextView) v.findViewById(R.id.tvCreator);
 
         listActivities = ActivityStore.getListActivity();
 
@@ -110,6 +113,7 @@ public class ResultActivity extends Fragment implements View.OnClickListener{
         tvParticipants.setText(getArguments().getInt("teilnehmer")+"");
         tvDescription.setText(getArguments().getString("description"));
         position = getArguments().getInt("position");
+        tvCreator.setText("Veranstalter: " + getArguments().getString("creator"));
 
         if(getArguments().getInt("gender") == 0)
             tvGender.setText("egal");
@@ -127,8 +131,8 @@ public class ResultActivity extends Fragment implements View.OnClickListener{
         if(v == btParticipant)
         {
             Toast.makeText(getActivity(), "Sie sind der Veranstaltung beigetreten", Toast.LENGTH_SHORT).show();
-            btParticipant.setEnabled(true);
-            btParticipant.getBackground().setColorFilter(0xcccccc, PorterDuff.Mode.MULTIPLY);
+            btParticipant.setEnabled(false);
+            btParticipant.getBackground().setColorFilter(0xcccccc, PorterDuff.Mode.CLEAR);
             participant = new Participant(LoginActivity.usercheckItem.getUser_id(), listActivities.get(position).getAktivityId(), false);
             Storage.getStorageInstance().saveParticipant(participant);
         }

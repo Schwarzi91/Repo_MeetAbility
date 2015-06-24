@@ -50,7 +50,8 @@
                 android:id="@+id/tvActivityType"
                 android:layout_weight="5"
                 android:gravity="center"
-                android:textSize="17dp"/>
+                android:textSize="17dp"
+                android:textColor="#ffffff"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -59,7 +60,8 @@
                 android:spinnerMode="dropdown"
                 android:gravity="center"
                 android:layout_weight="5"
-                android:textSize="17dp"/>
+                android:textSize="17dp"
+                android:textColor="#ffffff"/>
         </TableRow>
     </TableLayout>
 
@@ -144,11 +146,35 @@
 
                 <LinearLayout
                     android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:weightSum="10"
+                    android:layout_marginRight="10dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tvFromTime"
+                        android:textColor="#ffffff"
+                        android:text="vom"
+                        android:layout_weight="5"
+                        android:textSize="17dp"/>
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tvToTime"
+                        android:textColor="#ffffff"
+                        android:text="bis"
+                        android:layout_weight="5"
+                        android:textSize="17dp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="5"
                     android:weightSum="10">
-
                     <TextView
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
@@ -164,31 +190,6 @@
                         android:id="@+id/tvToDate"
                         android:textColor="#ffffff"
                         android:text="12.01.2016"
-                        android:layout_weight="5"
-                        android:textSize="17dp"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:weightSum="10">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/tvFromTime"
-                        android:textColor="#ffffff"
-                        android:text="13:25"
-                        android:layout_weight="5"
-                        android:textSize="17dp"/>
-
-                    <TextView
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/etToTime"
-                        android:textColor="#ffffff"
-                        android:text="15:00"
                         android:layout_weight="5"
                         android:textSize="17dp"/>
                 </LinearLayout>

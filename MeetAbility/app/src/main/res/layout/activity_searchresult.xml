@@ -8,247 +8,265 @@
     tools:context="com.example.philipp.meetability.Aktivitys.CreateActivity"
     android:orientation="vertical"
     android:background="@drawable/wood">
-
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:weightSum="10">
-
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:text="@string/activity_type"
-                android:textStyle="bold"
-                android:textColor="#ffffff"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_weight="5"
-                android:textAlignment="center"/>
-
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:text="@string/gender"
-                android:textColor="#ffffff"
-                android:textStyle="bold"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_weight="5"
-                android:textAlignment="center"/>
-        </TableRow>
-
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/edittext"
-            android:weightSum="10">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:id="@+id/tvActivityType"
-                android:layout_weight="5"
-                android:gravity="center"
-                android:textSize="17dp"
-                android:textColor="#ffffff"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:id="@+id/tvGender"
-                android:spinnerMode="dropdown"
-                android:gravity="center"
-                android:layout_weight="5"
-                android:textSize="17dp"
-                android:textColor="#ffffff"/>
-        </TableRow>
-    </TableLayout>
-
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:weightSum="10">
-
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Location"
-                android:textColor="#ffffff"
-                android:textStyle="bold"
-                android:layout_weight="5"/>
-
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/participants"
-                android:textColor="#ffffff"
-                android:textStyle="bold"
-                android:layout_weight="5"/>
-
-            </TableRow>
-
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/edittext"
-            android:weightSum="10">
-
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:id="@+id/tvLocation"
-                android:textColor="#ffffff"
-                android:layout_weight="5"
-                android:textSize="17dp"/>
-
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:id="@+id/tvParticipants"
-                android:textColor="#ffffff"
-                android:layout_weight="5"
-                android:textSize="17dp"/>
-        </TableRow>
-    </TableLayout>
-
-    <FrameLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp">
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/date"
-                android:textColor="#ffffff"
-                android:textStyle="bold"
-                android:id="@+id/tvTime" />
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="fill_parent"
-                android:layout_height="match_parent"
-                android:weightSum="10"
-                android:background="@drawable/edittext">
-
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:weightSum="10"
-                    android:layout_marginRight="10dp">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/tvFromTime"
-                        android:textColor="#ffffff"
-                        android:text="vom"
-                        android:layout_weight="5"
-                        android:textSize="17dp"/>
-
-                    <TextView
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/tvToTime"
-                        android:textColor="#ffffff"
-                        android:text="bis"
-                        android:layout_weight="5"
-                        android:textSize="17dp"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="5"
-                    android:weightSum="10"
-                    android:layout_marginLeft="10dp">
-
-                    <TextView
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/tvFromDate"
-                        android:text="30.12.2015"
-                        android:textColor="#ffffff"
-                        android:layout_weight="5"
-                        android:textSize="17dp"/>
-
-                    <TextView
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/tvToDate"
-                        android:textColor="#ffffff"
-                        android:text="12.01.2016"
-                        android:layout_weight="5"
-                        android:textSize="17dp"/>
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </FrameLayout>
+<FrameLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/edittext"
+    android:layout_weight="10">
 
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:weightSum="10"
-        android:layout_marginTop="11dp">
+        android:layout_height="match_parent">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:weightSum="10">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:text="@string/activity_type"
+                    android:textStyle="bold"
+                    android:textColor="#ffffff"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_weight="5"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:text="@string/gender"
+                    android:textColor="#ffffff"
+                    android:textStyle="bold"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_weight="5"
+                    android:textAlignment="center"/>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="10">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/tvActivityType"
+                    android:layout_weight="5"
+                    android:gravity="center"
+                    android:textSize="17dp"
+                    android:textColor="#ffffff"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/tvGender"
+                    android:spinnerMode="dropdown"
+                    android:gravity="center"
+                    android:layout_weight="5"
+                    android:textSize="17dp"
+                    android:textColor="#ffffff"/>
+            </TableRow>
+        </TableLayout>
+
+        <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:weightSum="10">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Location"
+                        android:textColor="#ffffff"
+                        android:textStyle="bold"
+                        android:layout_weight="5"/>
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="@string/participants"
+                        android:textColor="#ffffff"
+                        android:textStyle="bold"
+                        android:layout_weight="5"/>
+
+                    </TableRow>
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="10">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/tvLocation"
+                        android:textColor="#ffffff"
+                        android:layout_weight="5"
+                        android:textSize="17dp"/>
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/tvParticipants"
+                        android:textColor="#ffffff"
+                        android:layout_weight="5"
+                        android:textSize="17dp"/>
+                </TableRow>
+            </TableLayout>
+
+        <FrameLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="@string/date"
+                        android:textColor="#ffffff"
+                        android:textStyle="bold"
+                        android:id="@+id/tvTime" />
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="fill_parent"
+                        android:layout_height="match_parent"
+                        android:weightSum="10">
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:weightSum="10"
+                            android:layout_marginRight="10dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/tvFromTime"
+                                android:textColor="#ffffff"
+                                android:text="vom"
+                                android:layout_weight="5"
+                                android:textSize="17dp"/>
+
+                            <TextView
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/tvToTime"
+                                android:textColor="#ffffff"
+                                android:text="bis"
+                                android:layout_weight="5"
+                                android:textSize="17dp"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5"
+                            android:weightSum="10"
+                            android:layout_marginLeft="10dp">
+
+                            <TextView
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/tvFromDate"
+                                android:text="30.12.2015"
+                                android:textColor="#ffffff"
+                                android:layout_weight="5"
+                                android:textSize="17dp"/>
+
+                            <TextView
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/tvToDate"
+                                android:textColor="#ffffff"
+                                android:text="12.01.2016"
+                                android:layout_weight="5"
+                                android:textSize="17dp"/>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </FrameLayout>
 
         <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="9">
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:weightSum="10"
+                android:layout_marginTop="11dp">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="9">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="@string/description"
+                        android:textColor="#ffffff"
+                        android:textStyle="bold"/>
+
+                    <ScrollView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/tvDescription"
+                            android:textColor="#ffffff"
+                            android:textSize="17dp"/>
+                    </ScrollView>
+
+                </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/description"
-                android:textColor="#ffffff"
-                android:textStyle="bold"/>
-
-            <ScrollView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/tvDescription"
-                    android:background="@drawable/edittext"
-                    android:textColor="#ffffff"
-                    android:textSize="17dp"/>
-            </ScrollView>
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Ersteller: JohnDerCocksulter"
+                android:id="@+id/tvCreator"
+                />
 
         </LinearLayout>
-
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@string/participate"
-            android:id="@+id/btParticipate"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="1"
-            android:background="@drawable/register_login_button"/>
     </LinearLayout>
+
+</FrameLayout>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/participate"
+        android:id="@+id/btParticipate"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="1"
+        android:background="@drawable/register_login_button"/>
 
 </LinearLayout>

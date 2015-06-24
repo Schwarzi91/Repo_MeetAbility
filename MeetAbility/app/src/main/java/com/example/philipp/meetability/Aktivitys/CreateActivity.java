@@ -230,9 +230,41 @@ public class CreateActivity extends Activity implements View.OnClickListener
                     Toast.makeText(getApplicationContext(), "Beschreibung ist nicht ausgefüllt", Toast.LENGTH_LONG).show();
             }
             else
-                Toast.makeText(getApplicationContext(), "Location nicht gew‰hlt", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Location nicht gewählt", Toast.LENGTH_LONG).show();
 
         }
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_activity_all, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_logout) {
+            LoginActivity.usercheckItem = null;
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+            finish();
+            return true;
+        }
+        if (id == R.id.action_userreport) {
+            Intent intent = new Intent(this, ReportActivity.class);
+            intent.putExtra("report", "userreport");
+            startActivity(intent);
+        }
+        if (id == R.id.action_bugreport) {
+            Intent intent = new Intent(this, ReportActivity.class);
+            intent.putExtra("report", "bugreport");
+            startActivity(intent);
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
 }

@@ -8,6 +8,8 @@ import com.example.philipp.meetability.Aktivitys.HistoryActivity;
 import com.example.philipp.meetability.Aktivitys.ResultActivity;
 import com.example.philipp.meetability.Aktivitys.SearchActivity;
 import com.example.philipp.meetability.Database.Aktivity;
+import com.example.philipp.meetability.Database.Storage;
+import com.example.philipp.meetability.Database.User;
 import com.example.philipp.meetability.Helper.ActivityStore;
 import com.example.philipp.meetability.R;
 
@@ -21,6 +23,7 @@ public class ResultPageViewActivity extends android.support.v4.app.FragmentActiv
 {
     MyPageAdapter pageAdapter;
     private List<Aktivity> activityList;
+    private String username;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -48,9 +51,17 @@ public class ResultPageViewActivity extends android.support.v4.app.FragmentActiv
 
         for(int i = 0; i < activityList.size(); i++)
         {
+
+            List<User> userlist= Storage.getStorageInstance().getUserList();
+            int user_id=Storage.getStorageInstance().getCreatorByAktivityId(activityList.get(i).getAktivityId());
+            for(User e:userlist){
+                if(e.getUser_id()==user_id){
+                  username=e.getUsername();
+                }
+            }
             fragmentList.add(ResultActivity.newInstance(activityList.get(i).getAktivityName(), activityList.get(i).getSex(),
                     activityList.get(i).getLocation(), activityList.get(i).getMaxParticipants(), activityList.get(i).getStartDate(),
-                    activityList.get(i).getEndDate(), activityList.get(i).getDescription(), i));
+                    activityList.get(i).getEndDate(), activityList.get(i).getDescription(), i, username));
         }
 
         return fragmentList;

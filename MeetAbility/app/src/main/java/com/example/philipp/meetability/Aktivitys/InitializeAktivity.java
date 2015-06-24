@@ -47,7 +47,7 @@ public class InitializeAktivity extends Activity implements View.OnClickListener
 
 
     }
-
+/*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -78,7 +78,7 @@ public class InitializeAktivity extends Activity implements View.OnClickListener
         }
 
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 }
 
 
