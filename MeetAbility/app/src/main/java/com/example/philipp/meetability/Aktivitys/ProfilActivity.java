@@ -91,6 +91,7 @@ public class ProfilActivity extends Activity implements View.OnClickListener
         //Schauen ob User neu angelegt wurde
         if(LoginActivity.usercheckItem.getUsername().equals(""))
         {
+            btDeaktivate.setText("Änderungen Speichern");
             tvEmail.setText(LoginActivity.usercheckItem.getEmail());
             setEditable(true);
         }

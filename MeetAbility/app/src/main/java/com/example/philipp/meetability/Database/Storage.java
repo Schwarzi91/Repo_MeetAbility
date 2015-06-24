@@ -46,10 +46,16 @@ public class Storage {
                 saveUser(new User("edgar@thi.de", "test123", "Ede Muster", 2, "01-01-1995", "Ich bins nicht"));
             }
             if(getAktivityList().isEmpty()){
-                saveActivity(new Aktivity(getUserList().get(0), "Kino", 2,"Movieplex", "20-06-2015 18:35", "27-06-2015 17:40", "Heute ins Kino Gehen", 10, false));
-                saveActivity(new Aktivity(getUserList().get(1), "Kino", 2,"Cinestar", "20-06-2015 18:35", "27-06-2015 18:40", "Heute Fischen Gehen", 5, false));
-                saveActivity(new Aktivity(getUserList().get(1), "Kino", 2,"Cinestar", "20-06-2015 18:35", "27-06-2015 18:40", "Heute Fischen Gehen", 5, false));
-                saveActivity(new Aktivity(getUserList().get(1), "Fischen", 2,"Donau", "19-06-2015 18:35", "20-06-2015 18:40", "Heute Fischen Gehen", 5, false));
+                saveActivity(new Aktivity(getUserList().get(0), "Kino", 2,"Movieplex", "20-06-2015 18:35", "27-06-2015 17:40", "Heute Kino", 10, false));
+                saveActivity(new Aktivity(getUserList().get(1), "Kino", 2,"Cinestar", "20-06-2015 18:35", "27-06-2015 18:40", "Terminator", 5, false));
+                saveActivity(new Aktivity(getUserList().get(1), "Kino", 2,"Cinestar", "20-06-2015 18:35", "27-06-2015 18:40", "Bibi Blocksberg", 5, false));
+                saveActivity(new Aktivity(getUserList().get(1), "Fischen", 2,"Donau", "19-06-2015 18:35", "27-06-2015 18:40", "Heute Fischen gehen", 5, false));
+                saveActivity(new Aktivity(getUserList().get(1), "Fischen", 2,"Burgheim", "20-06-2015 18:35", "27-06-2015 18:40", "Carphunters", 5, false));
+                saveActivity(new Aktivity(getUserList().get(1), "Fischen", 2,"Donau", "19-06-2015 18:35", "27-06-2015 18:40", "yeah fischen", 5, false));
+                saveActivity(new Aktivity(getUserList().get(1), "Shoppen", 2,"Westpark", "20-06-2015 18:35", "27-06-2015 18:40", "Schuhe", 5, false));
+                saveActivity(new Aktivity(getUserList().get(1), "Shoppen", 2,"Donau-City-Center", "19-06-2015 18:35", "27-06-2015 18:40", "City", 5, false));
+                saveActivity(new Aktivity(getUserList().get(1), "Party", 2,"Suxul", "20-06-2015 18:35", "27-06-2015 18:40", "Heute schütten das raucht", 5, false));
+                saveActivity(new Aktivity(getUserList().get(1), "Party", 2,"Maki", "19-06-2015 18:35", "27-06-2015 18:40", "Juhuu", 5, false));
             }
             if(getHistoryList().isEmpty()){
                 saveHistory(new History(getAktivityList().get(0), 5, "War super"));
