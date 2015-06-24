@@ -44,6 +44,7 @@ public class Storage {
             {
                 saveUser(new User("muster@thi.de", "test123", "Max Muster", 2,"20-06-1992" , "Ich bin Dumm"));
                 saveUser(new User("edgar@thi.de", "test123", "Ede Muster", 2, "01-01-1995", "Ich bins nicht"));
+                saveUser(new User("@", "y", "Ede Muster", 2, "01-01-1945", "Hittler?"));
             }
             if(getAktivityList().isEmpty()){
                 saveActivity(new Aktivity(getUserList().get(0), "Kino", 2,"Movieplex", "20-06-2015 18:35", "27-06-2015 17:40", "Heute Kino", 10, false));
