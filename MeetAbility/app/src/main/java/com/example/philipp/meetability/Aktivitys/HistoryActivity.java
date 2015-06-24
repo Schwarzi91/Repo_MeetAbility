@@ -50,11 +50,12 @@ public class HistoryActivity extends Fragment implements View.OnClickListener{
     private TextView tvParticipants;
     private TextView tvFromDate;
     private TextView tvToDate;
+    private TextView tvLocation;
     private TextView tvFromTime;
     private TextView tvToTime;
     private TextView tvDescription;
 
-    public static final HistoryActivity newInstance(String activityName, int gender/*, String location*/, int participants, String startDate, String endDate)
+    public static final HistoryActivity newInstance(String activityName, int gender, String location, int participants, String startDate, String endDate, String description)
     {
         HistoryActivity f = new HistoryActivity();
         Bundle bdl = new Bundle(1);
@@ -63,6 +64,7 @@ public class HistoryActivity extends Fragment implements View.OnClickListener{
         bdl.putInt("participants", participants);
         bdl.putString("strDate", startDate);
         bdl.putString("endDate", endDate);
+        bdl.putString("description", description);
         f.setArguments(bdl);
         return f;
     }
@@ -102,6 +104,14 @@ public class HistoryActivity extends Fragment implements View.OnClickListener{
         LayerDrawable stars = (LayerDrawable) ratingBar.getProgressDrawable();
         stars.getDrawable(2).setColorFilter(Color.parseColor("#ffd700"), PorterDuff.Mode.SRC_ATOP);
 
+        tvActivityType = (TextView) v.findViewById(R.id.tvActivityType);
+        tvDescription = (TextView) v.findViewById(R.id.tvDescription);
+        tvGender = (TextView) v.findViewById(R.id.tvGender);
+        tvFromDate = (TextView) v.findViewById(R.id.tvFromDate);
+        tvToDate = (TextView) v.findViewById(R.id.tvToDate);
+        tvParticipants = (TextView) v.findViewById(R.id.tvParticipants);
+        tvLocation = (TextView) v.findViewById(R.id.tvLocation);
+
         addListenerOnRatingBar();
 
 
@@ -109,16 +119,18 @@ public class HistoryActivity extends Fragment implements View.OnClickListener{
 
 
 
-            tvActivityType.setText(getArguments().getString("activityName"));
-            if(getArguments().getInt("gender") == 0)
-                tvGender.setText("egal");
-            else if(getArguments().getInt("gender") == 1)
-                tvGender.setText("männlich");
-            else if(getArguments().getInt("gender") == 2)
-                tvGender.setText("weiblich");
-            tvParticipants.setText(getArguments().getString("participants"));
-            tvFromDate.setText(getArguments().getString("startTime"));
-            tvToDate.setText(getArguments().getString("endTime"));
+        tvActivityType.setText(getArguments().getString("activityName"));
+        if(getArguments().getInt("gender") == 0)
+            tvGender.setText("egal");
+        else if(getArguments().getInt("gender") == 1)
+            tvGender.setText("männlich");
+        else if(getArguments().getInt("gender") == 2)
+            tvGender.setText("weiblich");
+        tvParticipants.setText(getArguments().getString("participants"));
+        tvFromDate.setText(getArguments().getString("startTime"));
+        tvToDate.setText(getArguments().getString("endTime"));
+        tvDescription.setText(getArguments().getString("description"));
+        tvLocation.setText(getArguments().getString("location"));
 
 
 
