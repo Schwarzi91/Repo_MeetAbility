@@ -7,6 +7,7 @@ import android.support.v4.view.ViewPager;
 import android.widget.Toast;
 
 import com.example.philipp.meetability.Aktivitys.HistoryActivity;
+import com.example.philipp.meetability.Aktivitys.LoginActivity;
 import com.example.philipp.meetability.Aktivitys.MainActivity;
 import com.example.philipp.meetability.Database.Aktivity;
 import com.example.philipp.meetability.Database.Storage;
@@ -47,7 +48,7 @@ public class HistoryPageViewActivity extends android.support.v4.app.FragmentActi
     public List<Fragment> getFragments()
     {
         List<Fragment> fragmentList = new ArrayList<>();
-        List<Aktivity> listAktivity = Storage.getStorageInstance().listAktivitiesForHistorysById();
+        List<Aktivity> listAktivity = Storage.getStorageInstance().getHistoryByUser(LoginActivity.usercheckItem.getUser_id());
         if(listAktivity!=null) {
             for (int x = 0; x < listAktivity.size(); x++) {
                 fragmentList.add(HistoryActivity.newInstance(listAktivity.get(x).getAktivityName(), listAktivity.get(x).getSex(), listAktivity.get(x).getMaxParticipants(),

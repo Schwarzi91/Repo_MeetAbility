@@ -463,6 +463,31 @@ public class Storage {
         }
         return aktivitylist;
     }
+
+    public List<Aktivity> getHistoryByUser(int id){
+        List<Participant> participantlist=Storage.getStorageInstance().getParticipantList();
+        List<Aktivity> aktivitylist=new ArrayList<Aktivity>();
+        List<Aktivity> historylist=new ArrayList<Aktivity>();
+
+        for(Participant p:participantlist){
+            if(p.getUserId()==id){
+                    aktivitylist.add(getAktivityByID(p.getAktivityID()));
+                    for (int x = 0; x < aktivitylist.size(); x++)
+                    {
+                        if (aktivitylist.get(x).getChangeToHistory() == true)
+                        {
+                            historylist.add(getAktivityByID(p.getAktivityID()));
+                        }
+                    }
+
+            }
+        }
+        return aktivitylist;
+    }
+
+
+
+
 }
 
 
