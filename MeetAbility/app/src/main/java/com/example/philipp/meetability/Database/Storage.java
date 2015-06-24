@@ -53,9 +53,9 @@ public class Storage {
                 saveActivity(new Aktivity(getUserList().get(1), "Fischen", 2,"Burgheim", "20-06-2015 18:35", "27-06-2015 18:40", "Carphunters", 5, false));
                 saveActivity(new Aktivity(getUserList().get(1), "Fischen", 2,"Donau", "19-06-2015 18:35", "27-06-2015 18:40", "yeah fischen", 5, false));
                 saveActivity(new Aktivity(getUserList().get(1), "Shoppen", 2,"Westpark", "20-06-2015 18:35", "27-06-2015 18:40", "Schuhe", 5, false));
-                saveActivity(new Aktivity(getUserList().get(1), "Shoppen", 2,"Donau-City-Center", "19-06-2015 18:35", "27-06-2015 18:40", "City", 5, false));
-                saveActivity(new Aktivity(getUserList().get(1), "Party", 2,"Suxul", "20-06-2015 18:35", "27-06-2015 18:40", "Heute schütten das raucht", 5, false));
-                saveActivity(new Aktivity(getUserList().get(1), "Party", 2,"Maki", "19-06-2015 18:35", "27-06-2015 18:40", "Juhuu", 5, false));
+                saveActivity(new Aktivity(getUserList().get(1), "Shoppen", 2,"Donau-City-Center", "19-06-2015 18:35", "21-06-2015 18:40", "City", 5, false));
+                saveActivity(new Aktivity(getUserList().get(1), "Party", 2,"Suxul", "20-06-2015 18:35", "22-06-2015 18:40", "Heute schütten das raucht", 5, true));
+                saveActivity(new Aktivity(getUserList().get(1), "Party", 2,"Maki", "19-06-2015 18:35", "20-06-2015 18:40", "Juhuu", 5, true));
             }
             if(getHistoryList().isEmpty()){
                 saveHistory(new History(getAktivityList().get(0), 5, "War super"));
@@ -475,20 +475,19 @@ public class Storage {
         List<Aktivity> aktivitylist=new ArrayList<Aktivity>();
         List<Aktivity> historylist=new ArrayList<Aktivity>();
 
-        for(Participant p:participantlist){
+        for(Participant p:participantlist)
+        {
             if(p.getUserId()==id){
                     aktivitylist.add(getAktivityByID(p.getAktivityID()));
-                    for (int x = 0; x < aktivitylist.size(); x++)
-                    {
-                        if (aktivitylist.get(x).getChangeToHistory() == true)
-                        {
-                            historylist.add(getAktivityByID(p.getAktivityID()));
-                        }
-                    }
-
+                    if(getAktivityByID(p.getAktivityID()).getChangeToHistory() == true)
+                {
+                    historylist.add(getAktivityByID(p.getAktivityID()));
+                }
             }
         }
-        return aktivitylist;
+
+
+        return historylist;
     }
 
 
