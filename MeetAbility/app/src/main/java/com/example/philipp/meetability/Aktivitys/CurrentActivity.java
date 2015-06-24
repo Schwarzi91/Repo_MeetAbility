@@ -12,24 +12,26 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.philipp.meetability.Database.Aktivity;
+import com.example.philipp.meetability.Database.Storage;
 import com.example.philipp.meetability.R;
 import com.example.philipp.meetability.viewpager.HistoryPageViewActivity;
 
-public class CurrentActivity extends Fragment
-{
-    private ListView lvDetails;
-    private Button btTeilnehmen;
+import java.util.List;
 
+public class CurrentActivity extends Fragment implements View.OnClickListener
+{
+    private int position;
     private TextView tvActivityType;
     private TextView tvGender;
     private TextView tvLocation;
     private TextView tvParticipants;
     private TextView tvFromDate;
     private TextView tvToDate;
-    private TextView tvFromTime;
-    private TextView tvToTime;
     private TextView tvDescription;
+    private Button btLeftActivity;
 
     public static final CurrentActivity newInstance(String activityName, int gender, String location, int participants,
                                                    String startTime, String endTime, String description, int position)
@@ -43,6 +45,7 @@ public class CurrentActivity extends Fragment
         bdl.putString("startTime", startTime);
         bdl.putString("endTime", endTime);
         bdl.putString("description", description);
+        bdl.putInt("position", position);
         f.setArguments(bdl);
         return f;
     }
@@ -60,9 +63,9 @@ public class CurrentActivity extends Fragment
         tvParticipants = (TextView) v.findViewById(R.id.tvParticipants);
         tvFromDate = (TextView) v.findViewById(R.id.tvFromDate);
         tvToDate = (TextView) v.findViewById(R.id.tvToDate);
-        tvFromTime = (TextView) v.findViewById(R.id.tvFromTime);
-        tvToTime = (TextView) v.findViewById(R.id.tvToTime);
 
+        btLeftActivity = (Button) v.findViewById(R.id.btLeftActivity);
+        btLeftActivity.setOnClickListener(this);
 
         tvActivityType.setText(getArguments().getString("activityName"));
         tvLocation.setText(getArguments().getString("location"));
@@ -79,6 +82,11 @@ public class CurrentActivity extends Fragment
             tvGender.setText("weiblich");
 
         return v;
+    }
+
+    @Override
+    public void onClick(View v) {
+        Toast.makeText(getActivity(), "Kommt demnächst ;)", Toast.LENGTH_SHORT).show();
     }
 }
 

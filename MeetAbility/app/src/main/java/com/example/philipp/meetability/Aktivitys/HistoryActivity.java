@@ -127,7 +127,7 @@ public class HistoryActivity extends Fragment implements View.OnClickListener{
             tvGender.setText("männlich");
         else if(getArguments().getInt("gender") == 2)
             tvGender.setText("weiblich");
-        tvParticipants.setText(getArguments().getString("participants"));
+        tvParticipants.setText(getArguments().getInt("participants")+"/"+"10");
         tvFromDate.setText(getArguments().getString("startDate"));
         tvToDate.setText(getArguments().getString("endDate"));
         tvDescription.setText(getArguments().getString("description"));
@@ -141,8 +141,8 @@ public class HistoryActivity extends Fragment implements View.OnClickListener{
 
 
         // lvDetails.setAdapter(listAdapter);
-        btRate = (Button) v.findViewById(R.id.btRate);
-        btRate.setOnClickListener(this);
+       // btRate = (Button) v.findViewById(R.id.btRate);
+        //btRate.setOnClickListener(this);
         return v;
         //userId = LoginActivity.usercheckItem.getUser_id();
     }

@@ -9,175 +9,203 @@
     android:orientation="vertical"
     android:background="@drawable/wood">
 
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:weightSum="10">
-
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:text="@string/activity_type"
-                android:textStyle="bold"
-                android:textColor="#ffffff"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_weight="5"
-                android:textAlignment="center"/>
-
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:text="@string/gender"
-                android:textColor="#ffffff"
-                android:textStyle="bold"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_weight="5"
-                android:textAlignment="center"/>
-        </TableRow>
-
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/edittext"
-            android:weightSum="10">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:id="@+id/tvActivityType"
-                android:layout_weight="5"
-                android:gravity="center"
-                android:textSize="17dp"
-                android:textColor="#ffffff"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:id="@+id/tvGender"
-                android:spinnerMode="dropdown"
-                android:gravity="center"
-                android:layout_weight="5"
-                android:textSize="17dp"
-                android:textColor="#ffffff"/>
-        </TableRow>
-    </TableLayout>
-
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:weightSum="10">
-
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Location"
-                android:textColor="#ffffff"
-                android:textStyle="bold"
-                android:layout_weight="5"/>
-
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/participants"
-                android:textColor="#ffffff"
-                android:textStyle="bold"
-                android:layout_weight="5"/>
-
-            </TableRow>
-
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/edittext"
-            android:weightSum="10">
-
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:id="@+id/tvLocation"
-                android:textColor="#ffffff"
-                android:layout_weight="5"
-                android:textSize="17dp"/>
-
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:id="@+id/tvParticipants"
-                android:textColor="#ffffff"
-                android:layout_weight="5"
-                android:textSize="17dp"/>
-        </TableRow>
-    </TableLayout>
-
     <FrameLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp">
+        android:layout_height="fill_parent"
+        android:background="@drawable/edittext"
+        android:layout_weight="10">
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/date"
-                android:textColor="#ffffff"
-                android:textStyle="bold"
-                android:id="@+id/tvTime" />
-
             <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="fill_parent"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:weightSum="10"
-                android:background="@drawable/edittext">
+                android:layout_marginTop="11dp">
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:weightSum="10"
-                    android:layout_marginRight="10dp">
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:id="@+id/imageView5"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/activity"
+                        android:layout_marginRight="5dp"/>
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="128dp"
                         android:layout_height="wrap_content"
-                        android:id="@+id/tvFromTime"
+                        android:text="@string/activity_type"
+                        android:textStyle="bold"
                         android:textColor="#ffffff"
-                        android:text="vom"
-                        android:layout_weight="5"
-                        android:textSize="17dp"/>
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textSize="23dp"
+                        android:gravity="center|left" />
 
                     <TextView
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/tvToTime"
+                        android:id="@+id/tvActivityType"
+                        android:gravity="center|left"
+                        android:textSize="17dp"
+                        android:text="hallo"
+                        android:textColor="#ffffff"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:id="@+id/imageView"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/unisex"
+                        android:layout_marginRight="5dp"/>
+
+                    <TextView
+                        android:layout_width="128dp"
+                        android:layout_height="fill_parent"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="@string/gender"
+                        android:id="@+id/textView2"
+                        android:textSize="23dp"
+                        android:textStyle="bold"
                         android:textColor="#ffffff"
-                        android:text="bis"
-                        android:layout_weight="5"
+                        android:gravity="center|left"/>
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/tvGender"
+                        android:spinnerMode="dropdown"
+                        android:gravity="center|left"
+                        android:text="männlich"
+                        android:textSize="17dp"
+                        android:textColor="#ffffff"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:id="@+id/imageView2"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/icon_12638"
+                        android:layout_marginRight="5dp"/>
+
+                    <TextView
+                        android:layout_width="128dp"
+                        android:layout_height="fill_parent"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Location"
+                        android:textColor="#ffffff"
+                        android:textStyle="bold"
+                        android:textSize="23dp"
+                        android:gravity="center|left"/>
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/tvLocation"
+                        android:text="cock"
+                        android:gravity="center|left"
+                        android:textColor="#ffffff"
                         android:textSize="17dp"/>
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="fill_parent"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="5"
-                    android:weightSum="10"
-                    android:layout_marginLeft="10dp">
+                    android:layout_marginTop="15dp">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:id="@+id/imageView4"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/event_icon"
+                        android:layout_marginRight="5dp"/>
+
+                    <TextView
+                        android:layout_width="128dp"
+                        android:layout_height="fill_parent"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Teilnehmer"
+                        android:textColor="#ffffff"
+                        android:textStyle="bold"
+                        android:textSize="23dp"
+                        android:gravity="center|left"/>
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/tvParticipants"
+                        android:textColor="#ffffff"
+                        android:gravity="center|left"
+                        android:text="5/5"
+                        android:textSize="17dp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:id="@+id/imageView3"
+                        android:src="@drawable/calendar"
+                        android:layout_marginRight="5dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="@string/date"
+                        android:textColor="#ffffff"
+                        android:textStyle="bold"
+                        android:id="@+id/tvTime"
+                        android:textSize="23dp"
+                        android:gravity="center"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tvFromTime"
+                        android:textColor="#ffffff"
+                        android:text="vom"
+                        android:layout_weight="15"
+                        android:textSize="17dp"
+                        android:gravity="right"/>
 
                     <TextView
                         android:layout_width="fill_parent"
@@ -186,7 +214,25 @@
                         android:text="30.12.2015"
                         android:textColor="#ffffff"
                         android:layout_weight="5"
-                        android:textSize="17dp"/>
+                        android:textSize="17dp"
+                        android:gravity="center"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tvToTime"
+                        android:textColor="#ffffff"
+                        android:text="bis"
+                        android:layout_weight="15"
+                        android:textSize="17dp"
+                        android:gravity="right"/>
 
                     <TextView
                         android:layout_width="fill_parent"
@@ -195,8 +241,49 @@
                         android:textColor="#ffffff"
                         android:text="12.01.2016"
                         android:layout_weight="5"
-                        android:textSize="17dp"/>
+                        android:textSize="17dp"
+                        android:gravity="center"/>
                 </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:scaleType="fitCenter"
+                        android:id="@+id/imageView6"
+                        android:src="@drawable/description_icon"
+                        android:layout_marginRight="5dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="@string/description"
+                        android:textColor="#ffffff"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:textSize="23dp"
+                        android:layout_marginRight="5dp"/>
+
+                </LinearLayout>
+
+                <ScrollView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginLeft="45dp">
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/tvDescription"
+                        android:textColor="#ffffff"
+                        android:textSize="17dp"/>
+                </ScrollView>
+
 
             </LinearLayout>
 
@@ -204,41 +291,14 @@
 
     </FrameLayout>
 
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:weightSum="10"
-        android:layout_marginTop="11dp">
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="9">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/description"
-                android:textColor="#ffffff"
-                android:textStyle="bold"/>
-
-            <ScrollView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/tvDescription"
-                    android:background="@drawable/edittext"
-                    android:textColor="#ffffff"
-                    android:textSize="17dp"/>
-            </ScrollView>
-
-        </LinearLayout>
-    </LinearLayout>
-
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Veranstaltung verlassen"
+        android:id="@+id/btLeftActivity"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="1"
+        android:background="@drawable/register_login_button"
+        android:drawableBottom="@drawable/icon_delete"/>
 </LinearLayout>
