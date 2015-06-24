@@ -14,6 +14,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.philipp.meetability.Database.Aktivity;
 import com.example.philipp.meetability.Database.Participant;
@@ -39,9 +40,9 @@ public class ResultActivity extends Fragment implements View.OnClickListener{
     private TextView tvFromTime;
     private TextView tvToTime;
     private TextView tvDescription;
-    private int position;
     private int userId;
     private int activityId;
+    private int position;
     private Participant participant;
 
     public static final ResultActivity newInstance(String activityName, int gender, String location, int participants,
@@ -108,6 +109,7 @@ public class ResultActivity extends Fragment implements View.OnClickListener{
         tvToDate.setText(getArguments().getString("endTime"));
         tvParticipants.setText(getArguments().getInt("teilnehmer")+"");
         tvDescription.setText(getArguments().getString("description"));
+        position = getArguments().getInt("position");
 
         if(getArguments().getInt("gender") == 0)
             tvGender.setText("egal");
@@ -124,6 +126,9 @@ public class ResultActivity extends Fragment implements View.OnClickListener{
     {
         if(v == btParticipant)
         {
+            Toast.makeText(getActivity(), "Sie sind der Veranstaltung beigetreten", Toast.LENGTH_SHORT).show();
+            btParticipant.setEnabled(true);
+            btParticipant.getBackground().setColorFilter(0xcccccc, PorterDuff.Mode.MULTIPLY);
             participant = new Participant(LoginActivity.usercheckItem.getUser_id(), listActivities.get(position).getAktivityId(), false);
             Storage.getStorageInstance().saveParticipant(participant);
         }
