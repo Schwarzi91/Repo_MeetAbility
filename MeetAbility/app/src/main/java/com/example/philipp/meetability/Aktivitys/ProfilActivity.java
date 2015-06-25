@@ -39,6 +39,7 @@ public class ProfilActivity extends Activity implements View.OnClickListener
     private TextView tvEmail;
     private EditText etUserName;
     private EditText etDescription;
+    private EditText etEmail;
     //profilbild
     private ImageView  ivUser;
     //Buttons
@@ -76,6 +77,10 @@ public class ProfilActivity extends Activity implements View.OnClickListener
         ibSetting =(ImageButton)findViewById(R.id.ibSettings);
         btDeaktivate = (Button)findViewById(R.id.btDeaktivate);
 
+        etEmail = (EditText) findViewById(R.id.etEmail);
+        etEmail.setInputType(InputType.TYPE_NULL
+
+        );
 
         //listener
         btDeaktivate.setOnClickListener(this);
@@ -169,7 +174,7 @@ public class ProfilActivity extends Activity implements View.OnClickListener
             tvEmail.requestFocus();
             Toast.makeText(getApplicationContext(), "Änderungen gespeichert", Toast.LENGTH_LONG).show();
             }
-        else{
+        else if (btDeaktivate.getText().equals("Account Deaktivieren")){
             Toast.makeText(getApplicationContext(), "Account wurde deaktiviert", Toast.LENGTH_LONG).show();
             LoginActivity.usercheckItem=null;
             Intent intent = new Intent(this, LoginActivity.class);
