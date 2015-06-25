@@ -45,7 +45,8 @@ public class Storage {
                 saveUser(new User("muster@thi.de", "test123", "Max Muster", 2,"20-06-1992" , "Ich bin Dumm"));
                 saveUser(new User("edgar@thi.de", "test123", "Ede Muster", 2, "01-01-1995", "Ich bins nicht"));
                 saveUser(new User("@", "y", "Ede Muster", 2, "01-01-1945", "Hittler?"));
-                saveUser(new User("student@thi.de", "123", "Consulting Claus", 2, "01-01-1991", "Ich kann alles!"));
+                saveUser(new User("claus@thi.de", "123", "Consulting Claus", 2, "01-01-1991", "Ich kann alles!"));
+                saveUser(new User("bernd@thi.de", "123", "Beratungs Bernd", 2, "02-02-1993", "König der Berater"));
             }
             if(getAktivityList().isEmpty()){
                 saveActivity(new Aktivity(getUserList().get(0), "Kino", 2,"Movieplex", "20-06-2015 18:35", "27-06-2015 17:40", "Heute Kino", 10, false));
@@ -57,7 +58,7 @@ public class Storage {
                 saveActivity(new Aktivity(getUserList().get(1), "Shoppen", 2,"Westpark", "20-06-2015 18:35", "27-06-2015 18:40", "Schuhe", 5, false));
                 saveActivity(new Aktivity(getUserList().get(1), "Shoppen", 2,"Donau-City-Center", "19-06-2015 18:35", "21-06-2015 18:40", "City", 5, false));
                 saveActivity(new Aktivity(getUserList().get(1), "Party", 2,"Suxul", "20-06-2015 18:35", "22-06-2015 18:40", "Heute schütten das raucht", 5, true));
-                saveActivity(new Aktivity(getUserList().get(1), "Party", 2,"Maki", "19-06-2015 18:35", "20-06-2015 18:40", "Juhuu", 5, true));
+                saveActivity(new Aktivity(getUserList().get(1), "Party", 2,"Maki", "19-06-2015 18:35", "20-06-2015 lau18:40", "Juhuu", 5, true));
             }
             if(getHistoryList().isEmpty()){
                 saveHistory(new History(getAktivityList().get(0), 5, "War super"));
