@@ -4,7 +4,11 @@
         <item>Fischen</item>
         <item>Party</item>
         <item>Essen</item>
-        <item>Shoppen</item>
+        <item>Sport</item>
+        <item>Kaffee trinken</item>
+        <item>Minigolf</item>
+        <item>Chillen</item>
+        <item>Sonstiges</item>
     </string-array>
 
     <string-array name="gender">
