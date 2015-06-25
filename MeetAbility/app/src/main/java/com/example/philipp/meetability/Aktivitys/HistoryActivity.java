@@ -36,7 +36,6 @@ import java.util.List;
 public class HistoryActivity extends Fragment implements View.OnClickListener{
     private ListView lvDetails;
     private RatingBar ratingBar;
-    private int intRatingValue;
     private int userId;
     private Button btRate;
     private View view;
@@ -54,8 +53,11 @@ public class HistoryActivity extends Fragment implements View.OnClickListener{
     private TextView tvFromTime;
     private TextView tvToTime;
     private TextView tvDescription;
+    private int intRatingValue;
 
-    public static final HistoryActivity newInstance(String activityName, int gender, String location, int participants, String startDate, String endDate, String description)
+    public static final HistoryActivity newInstance(String activityName, int gender, String location,
+                                                    int participants, String startDate, String endDate,
+                                                    String description, int intGetRating, int position)
     {
         HistoryActivity f = new HistoryActivity();
         Bundle bdl = new Bundle(1);
@@ -66,6 +68,8 @@ public class HistoryActivity extends Fragment implements View.OnClickListener{
         bdl.putString("endDate", endDate);
         bdl.putString("description", description);
         bdl.putString("location", location);
+        bdl.putInt("rating", intGetRating);
+        bdl.putInt("position", position);
         f.setArguments(bdl);
         return f;
     }
@@ -137,7 +141,7 @@ public class HistoryActivity extends Fragment implements View.OnClickListener{
 
         ListAdapter listAdapter = new ArrayAdapter(this.getActivity(), R.layout.custom_listview_layout);
 
-        ratingBar.setRating(Storage.getStorageInstance().getHistoryList().get(0).getRating());
+        ratingBar.setRating(getArguments().getInt("rating"));
 
 
         // lvDetails.setAdapter(listAdapter);
@@ -160,10 +164,11 @@ public class HistoryActivity extends Fragment implements View.OnClickListener{
         ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             public void onRatingChanged(RatingBar ratingBar, float rating,
                                         boolean fromUser) {
-                intRatingValue = ratingBar.getNumStars();
-
-
-            }
+                //intRatingValue = ratingBar.getNumStars();
+                Participant partiRating = Storage.getStorageInstance().getParticipantByLoggedUser().get(getArguments().getInt("position"));
+                partiRating.setRating((int) ratingBar.getRating());
+                Storage.getStorageInstance().saveParticipant(partiRating);
+                }
         });
 
     }
@@ -175,7 +180,6 @@ public class HistoryActivity extends Fragment implements View.OnClickListener{
         History historyCheckItem = Storage.getStorageInstance().getHistoryList().get(0);
         historyCheckItem.setRating(intRatingValue);
         Storage.getStorageInstance().saveHistory(historyCheckItem);
-
     }
 }
 

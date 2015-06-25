@@ -118,7 +118,7 @@ public class MainActivity extends Activity implements View.OnClickListener
             startActivity(intent);
         }
 
-        if(id == R.id.history)
+       if(id == R.id.history)
         {
             Intent intent = new Intent(this, HistoryPageViewActivity.class);
             startActivity(intent);

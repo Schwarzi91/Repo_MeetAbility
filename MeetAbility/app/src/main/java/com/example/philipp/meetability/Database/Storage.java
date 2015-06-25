@@ -63,8 +63,8 @@ public class Storage {
                 saveHistory(new History(getAktivityList().get(1), 0, "War kacke"));
             }
             if(getParticipantList().isEmpty()){
-                saveParticipant(new Participant(0,0,false));
-                saveParticipant(new Participant(1,1,false));
+                saveParticipant(new Participant(0,0,false, 3));
+                saveParticipant(new Participant(1,1,false, 5));
             }
 
         }catch (Exception e){
@@ -427,25 +427,6 @@ public class Storage {
             return null;
         }
     }
-/*
-    public List<Aktivity> getCurrentActivitiesByLoggedUser()
-    {
-        List<Aktivity> listActivitiesByLoggedUser = new ArrayList<>();
-        List<Aktivity> listCurrentActivities = new ArrayList<>();
-
-        listActivitiesByLoggedUser = getActivtiesByLoggedUser();
-
-        for(int i = 0; i < listActivitiesByLoggedUser.size(); i++)
-        {
-            if()
-            {
-                listCurrentActivities.add(listActivitiesByLoggedUser.get(i));
-            }
-        }
-
-        return listCurrentActivities;
-    }
-    */
 
     public Aktivity getAktivityByID(int id){
         List<Aktivity> aktivitylist=Storage.getStorageInstance().getAktivityList();
@@ -464,22 +445,22 @@ public class Storage {
         List<Aktivity> aktivitylist=new ArrayList<Aktivity>();
 
         for(Participant p:participantlist){
-            if(p.getUserId()==id){
+            if(p.getUserId()==id /*&& getAktivityByID(p.getAktivityID()).getChangeToHistory() == false*/){
                 aktivitylist.add(getAktivityByID(p.getAktivityID()));
             }
         }
         return aktivitylist;
     }
 
-    public List<Aktivity> getHistoryByUser(int id){
+    public List<Aktivity> getHistoryByUserId(int id){
         List<Participant> participantlist=Storage.getStorageInstance().getParticipantList();
-        List<Aktivity> aktivitylist=new ArrayList<Aktivity>();
+       // List<Aktivity> aktivitylist=new ArrayList<Aktivity>();
         List<Aktivity> historylist=new ArrayList<Aktivity>();
 
         for(Participant p:participantlist)
         {
             if(p.getUserId()==id){
-                    aktivitylist.add(getAktivityByID(p.getAktivityID()));
+                    //aktivitylist.add(getAktivityByID(p.getAktivityID()));
                     if(getAktivityByID(p.getAktivityID()).getChangeToHistory() == true)
                 {
                     historylist.add(getAktivityByID(p.getAktivityID()));

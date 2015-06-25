@@ -10,6 +10,7 @@ import com.example.philipp.meetability.Aktivitys.HistoryActivity;
 import com.example.philipp.meetability.Aktivitys.LoginActivity;
 import com.example.philipp.meetability.Aktivitys.MainActivity;
 import com.example.philipp.meetability.Database.Aktivity;
+import com.example.philipp.meetability.Database.Participant;
 import com.example.philipp.meetability.Database.Storage;
 import com.example.philipp.meetability.R;
 
@@ -48,11 +49,12 @@ public class HistoryPageViewActivity extends android.support.v4.app.FragmentActi
     public List<Fragment> getFragments()
     {
         List<Fragment> fragmentList = new ArrayList<>();
-        List<Aktivity> listAktivity = Storage.getStorageInstance().getHistoryByUser(LoginActivity.usercheckItem.getUser_id());
+        List<Aktivity> listAktivity = Storage.getStorageInstance().getHistoryByUserId(LoginActivity.usercheckItem.getUser_id());
+        List<Participant> listParticipant = Storage.getStorageInstance().getParticipantByLoggedUser();
         if(listAktivity!=null) {
             for (int x = 0; x < listAktivity.size(); x++) {
                 fragmentList.add(HistoryActivity.newInstance(listAktivity.get(x).getAktivityName(), listAktivity.get(x).getSex(), listAktivity.get(x).getLocation(), listAktivity.get(x).getMaxParticipants(),
-                        listAktivity.get(x).getStartDate(), listAktivity.get(x).getEndDate(), listAktivity.get(x).getDescription()));
+                        listAktivity.get(x).getStartDate(), listAktivity.get(x).getEndDate(), listAktivity.get(x).getDescription(), listParticipant.get(x).getRating(), x));
             }
         }
         return fragmentList;

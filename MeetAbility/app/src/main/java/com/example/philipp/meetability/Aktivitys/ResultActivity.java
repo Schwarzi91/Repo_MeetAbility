@@ -134,7 +134,7 @@ public class ResultActivity extends Fragment implements View.OnClickListener{
             btParticipant.setEnabled(false);
             btParticipant.setText("beigetreten");
             btParticipant.getBackground().setColorFilter(0xcccccc, PorterDuff.Mode.CLEAR);
-            participant = new Participant(LoginActivity.usercheckItem.getUser_id(), listActivities.get(position).getAktivityId(), false);
+            participant = new Participant(LoginActivity.usercheckItem.getUser_id(), listActivities.get(position).getAktivityId(), false, 0);
             Storage.getStorageInstance().saveParticipant(participant);
         }
     }
