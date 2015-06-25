@@ -447,7 +447,7 @@ public class Storage {
         List<Aktivity> aktivitylist=new ArrayList<Aktivity>();
 
         for(Participant p:participantlist){
-            if(p.getUserId()==id /*&& getAktivityByID(p.getAktivityID()).getChangeToHistory() == false*/){
+            if(p.getUserId()==id && getAktivityByID(p.getAktivityID()).getChangeToHistory() == false){
                 aktivitylist.add(getAktivityByID(p.getAktivityID()));
             }
         }

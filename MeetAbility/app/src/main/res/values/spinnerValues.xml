@@ -38,10 +38,10 @@
 
     <string-array name="reasons_userreport">
         <item>Nervig und geschmacklos</item>
-        <item>Enthält Pornographie</item>
-        <item>Es ist gegen meine Ansichten</item>
-        <item>Es fördert Gewalt</item>
-        <item>Es ist eine Falschmeldung</item>
+        <item>Sexuelle Belästigung</item>
+        <item>Ist gegen meine Ansichten</item>
+        <item>Fördert Gewalt</item>
+        <item>User entspricht nicht der Beschreibung</item>
         <item>Etwas anderes</item>
     </string-array>
 
